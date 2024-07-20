@@ -12,6 +12,12 @@ code {
     monospace;
 }
 
+/* @media (min-width: 768px) {
+  .login_page{
+    margin-left: 15rem;
+  }
+} */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
