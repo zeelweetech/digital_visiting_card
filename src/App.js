@@ -17,7 +17,7 @@ function App() {
           {/* <Route element={<PrivateRoute />}> */}
           <Route path="/theme_color" element={<ThemeColor />} />
           {/* </Route> */}
-        </Routes>
+        </Routes>  
       </BrowserRouter>
     </div>
   );
