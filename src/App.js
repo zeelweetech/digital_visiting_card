@@ -21,7 +21,7 @@ function App() {
           <Route path="/profile" element={<Profile/>} />
           <Route path="/profile_content" element={<Profile_content/>} />
           {/* </Route> */}
-        </Routes>
+        </Routes>  
       </BrowserRouter>
     </div>
   );

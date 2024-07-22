@@ -136,7 +136,8 @@ function Login() {
             </div>
 
             <button
-              className="flex bg-darkblue rounded-full py-2 px-10 text-white text-base font-semibold mt-8"
+              type="submit"
+              className="inline justify-center bg-darkblue rounded-full py-2 px-10 text-white text-base font-semibold mt-8"
               onClick={(e) => handleOnSubmit(e)}
             >
               Login
