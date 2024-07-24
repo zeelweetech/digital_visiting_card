@@ -5,7 +5,6 @@ import { PrivateAuthRoute, PrivateRoute } from "./utils";
 import ThemeColor from "./components/ThemeColor";
 import { Toaster } from "react-hot-toast";
 import Profile from "./components/Profile";
-import Profile_content from "./components/Profile_content";
 
 function App() {
   return (
@@ -14,14 +13,13 @@ function App() {
       <BrowserRouter>
         <Routes>
           {/* <Route element={<PrivateAuthRoute />}> */}
-            <Route path="/" element={<Login />} />
+          <Route path="/" element={<Login />} />
           {/* </Route> */}
           {/* <Route element={<PrivateRoute />}> */}
           <Route path="/theme_color" element={<ThemeColor />} />
-          <Route path="/profile" element={<Profile/>} />
-          <Route path="/profile_content" element={<Profile_content/>} />
+          <Route path="/profile" element={<Profile />} />
           {/* </Route> */}
-        </Routes>  
+        </Routes>
       </BrowserRouter>
     </div>
   );

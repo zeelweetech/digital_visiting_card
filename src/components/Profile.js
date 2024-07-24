@@ -1,66 +1,198 @@
-import React from "react";
+import React, { useState } from "react";
 import profile from "../assets/image/profile.png";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCamera } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCamera } from "@fortawesome/free-solid-svg-icons";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import ProfileContent from "./ProfileContent";
 
 function Profile() {
+  const [values, setValues] = useState({});
+  const [errors, setErrors] = useState({});
+  const [model, setModel] = useState(false);
+  const navigate = useNavigate();
+  console.log("values", values);
+
+  const handleOnChange = (e) => {
+    const { name, value, files } = e.target;
+    if (name === "image") {
+      setValues({ ...values, [name]: files[0] });
+      setErrors({ ...errors, [name]: "" });
+    } else {
+      setValues({ ...values, [name]: value });
+      setErrors({ ...errors, [name]: "" });
+    }
+  };
+
+  const validation = () => {
+    const newErrors = {};
+
+    if (!values?.image) {
+      newErrors.image = "Please enter an image";
+    }
+
+    if (!values?.name) {
+      newErrors.name = "Please enter a name";
+    }
+
+    if (!values?.title) {
+      newErrors.title = "Please enter a title";
+    }
+
+    if (!values?.company) {
+      newErrors.company = "Please enter a company name";
+    }
+
+    if (!values?.description) {
+      newErrors.description = "Please enter a description";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleOnSubmit = async (e) => {
+    e.preventDefault();
+    if (validation()) {
+      setModel(true);
+    }
+  };
+
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen bg-sky-50 p-4">
-      <form className="flex flex-col items-center w-full max-w-md">
+    <>
+      {!model && (
+        <div className="flex flex-col justify-center items-center min-h-screen p-4">
+          <form className="flex flex-col items-center w-full max-w-md">
+            <p className="text-3xl font-semibold">Add Your Information</p>
+            <div className="relative mt-10">
+              {values?.image ? (
+                <img
+                  className="inline-block h-32 w-32 rounded-full"
+                  src={URL.createObjectURL(values?.image)}
+                  alt="Profile"
+                />
+              ) : (
+                <img
+                  className="inline-block h-32 w-32 rounded-full"
+                  src={profile}
+                  alt="Profile"
+                />
+              )}
+              <label
+                className="absolute bottom-4 right-2 rounded-full p-2"
+                aria-label="Change Profile Picture"
+              >
+                <FontAwesomeIcon
+                  icon={faCamera}
+                  // className={values?.image ? "hidden" : "text-darkblue text-xl"}
+                  className="text-darkblue text-xl"
+                />
+                <input
+                  className="hidden"
+                  id="image"
+                  type="file"
+                  accept="image/*"
+                  name="image"
+                  onChange={(e) => handleOnChange(e)}
+                />
+              </label>
+              {errors?.image && (
+                <p className="text-xs text-red-500">{errors?.image}</p>
+              )}
+            </div>
 
-      <p className="text-3xl font-semibold">Add Your Business Information</p>
+            <div className="w-full mt-8">
+              <input
+                className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-darkblue"
+                id="inline-full-name"
+                type="text"
+                placeholder="Enter Name"
+                name="name"
+                value={values?.name}
+                onChange={(e) => handleOnChange(e)}
+              />
+              {errors?.name && (
+                <p className="text-xs text-red-500">{errors?.name}</p>
+              )}
+            </div>
 
-        <div className="relative mt-10">
-          <img
-            className="inline-block h-32 w-32 rounded-full"
-            src={profile}
-            alt="Profile"
-          />
-          <button 
-            className="absolute bottom-4 right-2 rounded-full p-2"
-            aria-label="Change Profile Picture"
-          >
-            <FontAwesomeIcon icon={faCamera} className="text-darkblue text-xl"/>
-          </button>
+            <div className="w-full mt-5">
+              <input
+                className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-darkblue"
+                id="inline-full-title"
+                type="text"
+                placeholder="Enter Title"
+                name="title"
+                value={values?.title}
+                onChange={(e) => handleOnChange(e)}
+              />
+              {errors?.title && (
+                <p className="text-xs text-red-500">{errors?.title}</p>
+              )}
+            </div>
+
+            <div className="w-full mt-5">
+              <input
+                className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-darkblue"
+                id="inline-full-title"
+                type="text"
+                placeholder="Enter company name"
+                name="company"
+                value={values?.company}
+                onChange={(e) => handleOnChange(e)}
+              />
+              {errors?.company && (
+                <p className="text-xs text-red-500">{errors?.company}</p>
+              )}
+            </div>
+
+            <div className="w-full mt-5">
+              <textarea
+                className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-darkblue"
+                rows="4"
+                placeholder="Description"
+                name="description"
+                value={values?.description}
+                onChange={(e) => handleOnChange(e)}
+              ></textarea>
+              {errors?.description && (
+                <p className="text-xs text-red-500">{errors?.description}</p>
+              )}
+            </div>
+
+            <div className="flex sm:flex-row justify-between sm:space-x-4 w-full mt-10">
+              <div className="flex items-center space-x-2">
+                <FaArrowLeft className="text-darkblue text-sm" />
+                <button
+                  className=" text-darkblue font-semibold text-xl"
+                  onClick={() => navigate("/theme_color")}
+                >
+                  Back
+                </button>
+              </div>
+              <button
+                className="flex items-center bg-darkblue text-white font-semibold text-lg rounded-full py-1.5 px-8"
+                type="submit"
+                onClick={(e) => handleOnSubmit(e)}
+              >
+                Next <FaArrowRight className="ml-2 text-sm" />
+              </button>
+            </div>
+          </form>
         </div>
-
-        <div className="w-full mt-8">
-          <input
-            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-darkblue"
-            id="inline-full-name"
-            type="text"
-            placeholder="Enter Name"
-          />
-        </div>
-
-        <div className="w-full mt-5">
-          <input
-            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-darkblue"
-            id="inline-full-title"
-            type="text"
-            placeholder="Enter Title"
-          />
-        </div>
-
-        <div className="w-full mt-5">
-          <textarea
-            rows="4"
-            placeholder="Description"
-            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-darkblue"
-          ></textarea>
-        </div>
-
-        <div className="flex sm:flex-row justify-between sm:space-x-4 w-full mt-10">
-          <div className="flex items-center space-x-2">
-            <FaArrowLeft className="text-darkblue text-sm"/>
-            <button className=" text-darkblue font-semibold text-xl">Back</button>
-          </div>
-          <button className="flex items-center bg-darkblue text-white font-semibold text-lg rounded-full py-1.5 px-8">Next <FaArrowRight className="ml-2 text-sm"/></button>
-        </div>
-      </form>
-    </div>
+      )}
+      {model && (
+        <ProfileContent
+          values={values}
+          setValues={setValues}
+          setModel={setModel}
+          handleOnChange={handleOnChange}
+          errors={errors}
+          setErrors={setErrors}
+        />
+      )}
+    </>
   );
 }
 
