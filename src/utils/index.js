@@ -5,7 +5,7 @@ import { Navigate, Outlet } from "react-router-dom";
 export const PrivateAuthRoute = () => {
   const token = localStorage.getItem("token");
 
-  return !token ? <Outlet /> : <Navigate to={"/profile"} />;
+  return !token ? <Outlet /> : <Navigate to={"/profile_design"} />;
 };
 
 export const PrivateRoute = () => {

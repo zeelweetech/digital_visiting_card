@@ -10,17 +10,19 @@ import { decodedToken, handleNumberKeyDown } from "../utils";
 import { addProfileDetails } from "../services/ProfileServices";
 import toast from "react-hot-toast";
 import Loader from "./Loader";
+import { useNavigate } from "react-router-dom";
 
 function ProfileContent({
+  setPage,
+  handleOnChange,
   values,
   setValues,
-  setModel,
-  handleOnChange,
   errors,
   setErrors,
 }) {
   const { userId } = decodedToken();
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const validation = () => {
     const newErrors = {};
@@ -40,17 +42,17 @@ function ProfileContent({
       newErrors.address = "Please enter an address";
     }
 
-    if (!values?.instagram) {
-      newErrors.instagram = "Please enter an instagram";
-    }
+    // if (!values?.instagram) {
+    //   newErrors.instagram = "Please enter an instagram";
+    // }
 
-    if (!values?.website) {
-      newErrors.website = "Please enter a website";
-    }
+    // if (!values?.website) {
+    //   newErrors.website = "Please enter a website";
+    // }
 
-    if (!values?.facebook) {
-      newErrors.facebook = "Please enter a facebook";
-    }
+    // if (!values?.facebook) {
+    //   newErrors.facebook = "Please enter a facebook";
+    // }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -62,7 +64,7 @@ function ProfileContent({
       setLoading(true);
       var formdata = new FormData();
       formdata.append("image", values?.image);
-      formdata.append("name", values?.name);
+      formdata.append("businessName", values?.name);
       formdata.append("title", values?.title);
       formdata.append("description", values?.description);
       formdata.append("company", values?.company);
@@ -72,14 +74,15 @@ function ProfileContent({
       formdata.append("website", values?.website);
       formdata.append("facebook", values?.facebook);
       formdata.append("instagram", values?.instagram);
-      formdata.append("userId", values?.userId);
+      formdata.append("userId", userId);
 
       await addProfileDetails({ body: formdata })
         .then((res) => {
           console.log("res", res);
           toast.success(res?.message);
           setLoading(false);
-          setValues({});
+          setPage();
+          // navigate("/degital_card_preview");
         })
         .catch((err) => {
           console.log("err", err);
@@ -90,7 +93,7 @@ function ProfileContent({
   };
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen bg-sky-50 p-4">
+    <div className="flex flex-col justify-center items-center min-h-screen p-4">
       <form className="flex flex-col items-center w-full max-w-md">
         <p className="text-3xl font-semibold">Add Contact Options</p>
 
@@ -219,7 +222,7 @@ function ProfileContent({
         <div className="flex sm:flex-row justify-between sm:space-x-4 w-full pt-10">
           <div
             className="flex items-center space-x-2"
-            onClick={() => setModel(false)}
+            onClick={() => setPage(1)}
           >
             <FaArrowLeft className="text-darkblue text-sm" />
             <button className=" text-darkblue font-semibold text-xl">

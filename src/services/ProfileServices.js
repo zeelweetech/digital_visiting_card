@@ -6,7 +6,7 @@ import axios from "axios";
 export async function addProfileDetails({ body: body }) {
   try {
     const response = await axios.post(
-      `${process.env.REACT_APP_LOCAL_URL}/card/create/detail`,
+      `${process.env.REACT_APP_LOCAL_URL}/card/create/business/detail`,
       body
     );
     return response.data;
