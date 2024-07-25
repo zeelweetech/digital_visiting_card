@@ -62,7 +62,7 @@ function Login() {
           setLoading(false);
           setValues({});
           if (localStorage.getItem("token")) {
-            navigate("/theme_color");
+            navigate("/profile_design");
           }
         })
         .catch((err) => {
@@ -81,13 +81,17 @@ function Login() {
     <div className="flex h-screen">
       <div className="hidden lg:flex bg-darkblue lg:w-6/12 h-full justify-center items-center digital">
         {/* <p className="text-white text-2xl">Digital Visiting Card</p> */}
-        <img src={BrandImage} className="bg-darkblue" />
+        <img
+          src={BrandImage}
+          className="bg-darkblue"
+          style={{ backgroundColor: "#0065af" }}
+        />
       </div>
-      <div className="w-full lg:w-6/12 text-center flex justify-center items-center bg-sky-50">
+      <div className="w-full lg:w-6/12 text-center flex justify-center items-center">
         <div className="w-full max-w-md p-8">
-          <p className="text-4xl font-bold text-darkblue">
+          {/* <p className="text-4xl font-bold text-darkblue">
             Digital Visiting Card
-          </p>
+          </p> */}
           <p className="font-bold text-2xl mt-8">Login</p>
 
           <form className="mt-8">
