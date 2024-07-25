@@ -12,7 +12,7 @@ function ChooseThemeDesign() {
   };
 
   return (
-    <div>
+    <div className="pt-14">
       <Header />
       <div className="flex mt-14">
         <div className="w-1/2 overflow-y-auto">

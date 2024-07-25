@@ -4,8 +4,8 @@ import { IoIosArrowDown } from "react-icons/io";
 
 function Header() {
   return (
-    // <div className='mt-2'>
-    //     <hr></hr>
+    <div className='fixed top-0 left-0 right-0 bg-white z-50'>
+      <hr className="border-t border-gray-200 shadow-sm"/>
         <div className="relative flex justify-between items-center py-2 px-40">
             <div>
               <img src={logo} className="w-32" alt="Not Found" />
@@ -30,8 +30,8 @@ function Header() {
                 <button className="border-none text-xl ml-16 bg-neutral-700 text-white pt-1 pb-2 px-6 rounded-full">Logout</button>
             </div>
         </div>
-    //     <hr></hr>
-    //  </div>
+        <hr className="border-t border-gray-200 shadow-sm"/>
+     </div>
   );
 }
 
