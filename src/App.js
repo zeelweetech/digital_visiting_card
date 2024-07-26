@@ -1,13 +1,13 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "./pages/login";
-import { PrivateAuthRoute, PrivateRoute } from "./utils";
 import { Toaster } from "react-hot-toast";
-import Profile from "./components/Profile";
-import Preview from "./components/Preview";
-import ProfileLayOut from "./layout";
+import { PrivateAuthRoute, PrivateRoute } from "./utils";
+import Login from "./pages/login";
 import Home from "./components/homePage.js";
-import PersonalCardPreview from "./components/PersonalCardPreview.js";
+import BusinessLayOut from "./layout/businessLayout.js";
+import BusinessCardPreview from "./components/businessCardPreview.js";
+import PersonalLayOut from "./layout/personalLayout.js";
+import PersonalCardPreview from "./components/personalCardPreview.js";
 
 function App() {
   return (
@@ -19,12 +19,18 @@ function App() {
           <Route path="/" element={<Login />} />
           {/* </Route> */}
           {/* <Route element={<PrivateRoute />}> */}
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/profile_design" element={<ProfileLayOut />} />
-          <Route path="/digital_card/:name/:id" element={<Preview />} />
+          <Route path="/home_page" element={<Home />} />
+          <Route path="/business_profile_design" element={<BusinessLayOut />} />
+          <Route path="/personal_profile_design" element={<PersonalLayOut />} />
+          <Route
+            path="/business_digital_card/:name/:id"
+            element={<BusinessCardPreview />}
+          />
+          <Route
+            path="/personal_digital_card/:name/:id"
+            element={<PersonalCardPreview />}
+          />
           {/* </Route> */}
-          <Route path="/home_page" element={<Home/>} />
-          <Route path="/personal_card_preview" element={<PersonalCardPreview/>} />
         </Routes>
       </BrowserRouter>
     </div>

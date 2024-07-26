@@ -3,9 +3,9 @@ import Header from "../components/Header";
 import ThemeDesign from "../components/ThemeDesign";
 import Profile from "../components/Profile";
 import ProfileContent from "../components/ProfileContent";
-import Preview from "../components/Preview";
+import BusinessCardPreview from "../components/businessCardPreview";
 
-function ProfileLayOut() {
+function BusinessLayOut() {
   const [selectTheme, setSelectTheme] = useState();
   const [page, setPage] = useState(0);
   const [values, setValues] = useState({});
@@ -56,11 +56,11 @@ function ProfileLayOut() {
           )}
         </div>
         <div className="hidden md:block w-1/2">
-          <Preview selectTheme={selectTheme} values={values} />
+          <BusinessCardPreview selectTheme={selectTheme} values={values} />
         </div>
       </div>
     </div>
   );
 }
 
-export default ProfileLayOut;
+export default BusinessLayOut;

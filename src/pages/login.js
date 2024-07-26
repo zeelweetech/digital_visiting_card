@@ -62,7 +62,7 @@ function Login() {
           setLoading(false);
           setValues({});
           if (localStorage.getItem("token")) {
-            navigate("/profile_design");
+            navigate("/home_page");
           }
         })
         .catch((err) => {

@@ -1,59 +1,139 @@
-import React from "react";
-import logo from "../assets/image/logo.png";
+import React, { useEffect, useState } from "react";
+import phone from "../assets/image/phone.png";
 import avatar from "../assets/image/avatar.png";
-import { IoCallOutline } from "react-icons/io5";
+import preview_logo from "../assets/image/preview_logo.png";
 import { CiMail } from "react-icons/ci";
-import { HiOutlineMapPin } from "react-icons/hi2";
-import { Link } from "react-router-dom";
+import { MdLocalPhone } from "react-icons/md";
+import { FiMapPin } from "react-icons/fi";
+import { TiSocialFacebook } from "react-icons/ti";
+import { BiWorld } from "react-icons/bi";
+import { IoLogoInstagram } from "react-icons/io";
+import { useParams } from "react-router-dom";
+import { getProfileDetails } from "../services/ProfileServices";
 
-function PersonalCardPreview() {
+function PersonalCardPreview({ selectTheme, values }) {
+  const { id } = useParams();
+  const [cardData, setCardData] = useState();
+
+  const themeClasses = {
+    Light: "bg-theme",
+    Dark: "bg-black",
+    Neutral: "bg-theme1",
+    Gradient: "bg-theme2",
+    Energetic: "bg-custom-gradient",
+    Ambitious: "bg-custom1-gradient",
+  };
+
+  const themeClass = selectTheme
+    ? themeClasses[selectTheme]
+    : themeClasses[cardData?.color] || "bg-theme";
+
+  useEffect(() => {
+    const fetchProfileDetails = async () => {
+      try {
+        const res = await getProfileDetails({ id: id });
+        console.log("res", res);
+        setCardData(res?.cardDetail);
+      } catch (err) {
+        console.log("err", err);
+      }
+    };
+    if (id) {
+      fetchProfileDetails();
+    }
+  }, [id]);
+
   return (
     <div className="flex flex-col justify-center items-center min-h-screen p-4">
-      <div className="flex flex-col items-center w-full max-w-md relative">
-        <div className="rounded-3xl w-80 h-30 bg-white shadow-xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <div className="bg-indigo-800 h-64 rounded-se-3xl rounded-tl-3xl p-3">
-            {/* <img src={logo} className="w-16 h-4" alt="Not Found" /> */}
-            <div className="flex justify-center text-center pt-5">
-              <div>
-                <img
-                  src={avatar}
-                  className="w-24 h-24 rounded-full"
-                  alt="Not Found"
-                />
-                <p className="text-2xl text-white pt-2">Name</p>
-                <p className="text-white">Title</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex justify-evenly -mt-5">
-            <button className="bg-white text-2xl rounded-full p-2">
-              <IoCallOutline />
-            </button>
-            <button className="bg-white text-2xl rounded-full p-2">
-              <CiMail />
-            </button>
-            <button className="bg-white text-2xl rounded-full p-2">
-              <HiOutlineMapPin />
-            </button>
-          </div>
-
-          <div className="mt-8 px-3">
-            <p>
-              Description : Luxury Auto Dealership Over 9 years of experience in
-              auto sales.
+      <div
+        className={`flex flex-col items-center ${
+          cardData?.businessLogo ? "w-80 h-30" : "w-full"
+        } max-w-md relative ${cardData?.businessLogo && themeClass}`}
+      >
+        {!cardData?.businessLogo && (
+          <img
+            src={phone}
+            className={`rounded-2 w-80 h-30 ${themeClass} absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
+            alt="Not Found"
+          />
+        )}
+        <div className="ml-4 overflow-y-auto h-h30">
+          <div className="bg-gray-200 w-17 h-72 rounded-3xl flex flex-col justify-center relative text-center mt-24">
+            <img
+              src={
+                values?.image
+                  ? URL.createObjectURL(values?.image)
+                  : cardData?.businessLogo
+                  ? cardData?.businessLogo
+                  : avatar
+              }
+              className="rounded-full border-4 border-white w-36 h-36 -mt-40 absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+              alt="Not Found"
+            />
+            <p className="text-3xl pt-12">
+              {values?.name
+                ? values?.name
+                : cardData?.businessName
+                ? cardData?.businessName
+                : "Noah Miller"}
             </p>
-            <div className="my-4">
-              <p>Mobile</p>
-              <p>+1 87865 65480</p>
-              <p>Work</p>
-              <p>+1 67456 68565</p>
-            </div>
-            <p>Email</p>
-            <p>digitalcard@gmail.com</p>
-            <p className="mt-4">Website</p>
-            <Link className="text-blue-800">https://mcgee.com</Link>
+            <p className="text-xl pt-2">
+              {values?.title
+                ? values?.title
+                : cardData?.title
+                ? cardData?.title
+                : "Title"}
+            </p>
+            <p className="pt-3 pr-7 pl-4 w-72 break-words">
+              {values?.description
+                ? values?.description
+                : cardData?.description
+                ? cardData?.description
+                : `Luxury Auto Dealership Over 9 years of experience in auto sales,
+              dedicated to bridging the gap between sales and customers. +1
+              [345] 678 - 888`}
+            </p>
           </div>
+
+          {(values?.email || cardData?.email) && (
+            <button className="relative bg-neutral-700 text-white font-semibold mt-4 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
+              <CiMail className="ml-5 mr-20" />
+              <span>Email</span>
+            </button>
+          )}
+          {(values?.phone || cardData?.phone) && (
+            <button className="relative bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
+              <MdLocalPhone className="ml-5 mr-20" />
+              <span>Phone</span>
+            </button>
+          )}
+          {(values?.address || cardData?.address) && (
+            <button className="relative bg-neutral-700 text-white font-semibold py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
+              <FiMapPin className="ml-5 mr-20" />
+              <span>Address</span>
+            </button>
+          )}
+          {(values?.instagram || cardData) &&
+            cardData?.instagram !== "undefined" && (
+              <button className="relative bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
+                <IoLogoInstagram className="ml-5 mr-20" />
+                <span>Instagram</span>
+              </button>
+            )}
+          {(values?.website || cardData) &&
+            cardData?.website !== "undefined" && (
+              <button className="relative bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
+                <BiWorld className="ml-5 mr-20" />
+                <span>Website</span>
+              </button>
+            )}
+          {(values?.facebook || cardData) &&
+            cardData?.facebook !== "undefined" && (
+              <button className="relative bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
+                <TiSocialFacebook className="ml-5 mr-20" />
+                <span>Facebook</span>
+              </button>
+            )}
         </div>
       </div>
     </div>
@@ -61,3 +141,96 @@ function PersonalCardPreview() {
 }
 
 export default PersonalCardPreview;
+
+{
+  /* <div className="flex flex-col justify-center items-center min-h-screen p-4">
+  <div className="flex flex-col items-center w-full max-w-md relative">
+    <img
+      src={phone}
+      className="rounded-2 w-80 h-30 bg-gray-100 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+      alt="Not Found"
+    />
+    <div className="ml-4 overflow-y-auto h-h30">
+      <div className="bg-gray-200 w-17 h-72 rounded-3xl flex flex-col justify-center relative text-center mt-24">
+        <img
+          src={avatar}
+          className="rounded-full border-4 border-white w-36 h-36 -mt-40 absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          alt="Not Found"
+        />
+        <p className="text-3xl pt-12">Name Noah</p>
+        <p className="text-xl pt-2">Title</p>
+        <p className="pt-3 px-5">
+          Luxury Auto Dealership Over 9 years of experience in auto sales,
+          dedicated to bridging the gap between sales and customers. +1 [345]
+          678 - 888
+        </p>
+      </div>
+
+      <button className="relative bg-neutral-700 text-white font-semibold mt-4 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
+        <CiMail className="ml-5 mr-20" />
+        <span>Email</span>
+      </button>
+      <button className="relative bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
+        <MdLocalPhone className="ml-5 mr-20" />
+        <span>Phone</span>
+      </button>
+      <button className="relative bg-neutral-700 text-white font-semibold py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
+        <FiMapPin className="ml-5 mr-20" />
+        <span>Address</span>
+      </button>
+      <button className="relative bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
+        <MdLocalPhone className="ml-5 mr-20" />
+        <span>Phone</span>
+      </button>
+    </div>
+  </div>
+</div>; */
+}
+
+{
+  /* <div className="flex flex-col justify-center items-center min-h-screen p-4">
+  <div className="flex flex-col items-center w-full max-w-md relative">
+    <img
+      src={phone}
+      className={`rounded-2 w-80 h-30 ${themeClass} absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
+      alt="Not Found"
+    />
+    <div className="ml-4 overflow-y-auto h-h30">
+      <div className="relative bg-white rounded-3xl shadow-xl h-56 flex justify-center">
+        <img src={preview_logo} className="w-24 h-28 mt-8" alt="Not Found" />
+      </div>
+      <div className="bg-white shadow-xl w-17 h-72 rounded-3xl flex flex-col justify-center relative text-center mt-3">
+        <img
+          src={avatar}
+          className="rounded-full border-4 border-white w-36 h-36 -mt-40 absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          alt="Not Found"
+        />
+        <p className="text-3xl pt-12">Name Noah</p>
+        <p className="text-xl pt-2">Title</p>
+        <p className="pt-3 px-5">
+          Luxury Auto Dealership Over 9 years of experience in auto sales,
+          dedicated to bridging the gap between sales and customers. +1 [345]
+          678 - 888
+        </p>
+      </div>
+
+      <button className="relative bg-neutral-700 text-white font-semibold mt-4 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
+        <CiMail className="ml-5 mr-20" />
+        <span>Email</span>
+      </button>
+      <button className="relative bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
+        <MdLocalPhone className="ml-5 mr-20" />
+        <span>Phone</span>
+      </button>
+      <button className="relative bg-neutral-700 text-white font-semibold py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
+        <FiMapPin className="ml-5 mr-20" />
+        <span>Address</span>
+      </button>
+      <button className="relative bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
+        <MdLocalPhone className="ml-5 mr-20" />
+        <span>Phone</span>
+      </button>
+    </div>
+  </div>
+</div>; */
+}

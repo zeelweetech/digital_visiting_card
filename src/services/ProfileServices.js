@@ -28,3 +28,17 @@ export async function getProfileDetails({ id: id }) {
     throw error;
   }
 }
+
+/**
+ * GET All Card Details
+ */
+export async function getAllCardDetails({ id: id }) {
+  try {
+    const response = await axios.get(
+      `${process.env.REACT_APP_LOCAL_URL}/card/get/user/${id}`
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
