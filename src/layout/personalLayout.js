@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Header from "../components/Header";
 import Profile from "../components/Profile";
 import ProfileContent from "../components/ProfileContent";
-import PersonalCardPreview from "../components/PersonalCardPreview";
+import PersonalCardPreview from "../components/personalCardPreview";
 import ThemeDesign from "../components/ThemeDesign";
 
 function PersonalLayOut() {

@@ -3,10 +3,10 @@ import axios from "axios";
 /**
  * ADD Business Profile Details
  */
-export async function addProfileDetails({ body: body }) {
+export async function addPersonalDetails({ body: body }) {
   try {
     const response = await axios.post(
-      `${process.env.REACT_APP_LOCAL_URL}/card/create/business/detail`,
+      `${process.env.REACT_APP_LOCAL_URL}/card/create/personal/detail`,
       body
     );
     return response.data;

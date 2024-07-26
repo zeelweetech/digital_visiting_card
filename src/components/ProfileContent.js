@@ -7,7 +7,7 @@ import { BiWorld } from "react-icons/bi";
 import { TiSocialFacebook } from "react-icons/ti";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { decodedToken, handleNumberKeyDown } from "../utils";
-import { addProfileDetails } from "../services/ProfileServices";
+import { addPersonalDetails } from "../services/ProfileServices";
 import toast from "react-hot-toast";
 import Loader from "./Loader";
 import { useNavigate } from "react-router-dom";
@@ -65,7 +65,7 @@ function ProfileContent({
       setLoading(true);
       var formdata = new FormData();
       formdata.append("image", values?.image);
-      formdata.append("businessName", values?.name);
+      formdata.append("name", values?.name);
       formdata.append("title", values?.title);
       formdata.append("description", values?.description);
       formdata.append("company", values?.company);
@@ -77,14 +77,15 @@ function ProfileContent({
       formdata.append("instagram", values?.instagram);
       formdata.append("userId", userId);
       formdata.append("color", selectTheme);
+      formdata.append("category", "personalcard");
 
-      await addProfileDetails({ body: formdata })
+      await addPersonalDetails({ body: formdata })
         .then((res) => {
           console.log("res", res);
           toast.success(res?.message);
           setLoading(false);
           navigate(
-            `/personal_digital_card/${res?.digitalBusinessCard?.businessName}/${res?.digitalBusinessCard?.businessCardId}`
+            `/personal_digital_card/${res?.digitalPersonalCard?.name}/${res?.digitalPersonalCard?.personalCardId}`
           );
         })
         .catch((err) => {

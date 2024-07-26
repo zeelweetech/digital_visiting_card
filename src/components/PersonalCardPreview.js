@@ -10,10 +10,12 @@ import { BiWorld } from "react-icons/bi";
 import { IoLogoInstagram } from "react-icons/io";
 import { useParams } from "react-router-dom";
 import { getProfileDetails } from "../services/ProfileServices";
+import Loader from "./Loader";
 
 function PersonalCardPreview({ selectTheme, values }) {
   const { id } = useParams();
   const [cardData, setCardData] = useState();
+  const [loading, setLoading] = useState(false);
 
   const themeClasses = {
     Light: "bg-theme",
@@ -30,12 +32,15 @@ function PersonalCardPreview({ selectTheme, values }) {
 
   useEffect(() => {
     const fetchProfileDetails = async () => {
+      setLoading(true);
       try {
         const res = await getProfileDetails({ id: id });
         console.log("res", res);
         setCardData(res?.cardDetail);
+        setLoading(false);
       } catch (err) {
         console.log("err", err);
+        setLoading(false);
       }
     };
     if (id) {
@@ -43,99 +48,158 @@ function PersonalCardPreview({ selectTheme, values }) {
     }
   }, [id]);
 
+  const handleRedirect = (url) => {
+    if (url) {
+      window.open(url, "_blank");
+    }
+  };
+
+  const handleMail = (email) => {
+    if (email) {
+      window.location.href = `mailto:${email}`;
+    }
+  };
+
+  const handlePhone = (phone) => {
+    if (phone) {
+      window.location.href = `tel:${phone}`;
+    }
+  };
+
+  const handleAddress = (address) => {
+    if (address) {
+      window.open(
+        `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+          address
+        )}`,
+        "_blank"
+      );
+    }
+  };
+
   return (
     <div className="flex flex-col justify-center items-center min-h-screen p-4">
-      <div
-        className={`flex flex-col items-center ${
-          cardData?.businessLogo ? "w-80 h-30" : "w-full"
-        } max-w-md relative ${cardData?.businessLogo && themeClass}`}
-      >
-        {!cardData?.businessLogo && (
-          <img
-            src={phone}
-            className={`rounded-2 w-80 h-30 ${themeClass} absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
-            alt="Not Found"
-          />
-        )}
-        <div className="ml-4 overflow-y-auto h-h30">
-          <div className="bg-gray-200 w-17 h-72 rounded-3xl flex flex-col justify-center relative text-center mt-24">
+      {loading ? (
+        <Loader />
+      ) : (
+        <div
+          className={`flex flex-col items-center ${
+            cardData?.businessLogo ? "w-80 h-30" : "w-full"
+          } max-w-md relative ${cardData?.image && themeClass}`}
+        >
+          {!cardData?.image && (
             <img
-              src={
-                values?.image
-                  ? URL.createObjectURL(values?.image)
-                  : cardData?.businessLogo
-                  ? cardData?.businessLogo
-                  : avatar
-              }
-              className="rounded-full border-4 border-white w-36 h-36 -mt-40 absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+              src={phone}
+              className={`rounded-2 w-80 h-30 ${themeClass} absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
               alt="Not Found"
             />
-            <p className="text-3xl pt-12">
-              {values?.name
-                ? values?.name
-                : cardData?.businessName
-                ? cardData?.businessName
-                : "Noah Miller"}
-            </p>
-            <p className="text-xl pt-2">
-              {values?.title
-                ? values?.title
-                : cardData?.title
-                ? cardData?.title
-                : "Title"}
-            </p>
-            <p className="pt-3 pr-7 pl-4 w-72 break-words">
-              {values?.description
-                ? values?.description
-                : cardData?.description
-                ? cardData?.description
-                : `Luxury Auto Dealership Over 9 years of experience in auto sales,
+          )}
+          <div className="ml-4 overflow-y-auto h-h30">
+            <div className="bg-gray-200 w-17 h-72 rounded-3xl flex flex-col justify-center relative text-center mt-24">
+              <img
+                src={
+                  values?.image
+                    ? URL.createObjectURL(values?.image)
+                    : cardData?.image
+                    ? cardData?.image
+                    : avatar
+                }
+                className="rounded-full border-4 border-white w-36 h-36 -mt-40 absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                alt="Not Found"
+              />
+              <p className="text-3xl pt-12">
+                {values?.name
+                  ? values?.name
+                  : cardData?.name
+                  ? cardData?.name
+                  : "Noah Miller"}
+              </p>
+              <p className="text-xl pt-2">
+                {values?.title
+                  ? values?.title
+                  : cardData?.title
+                  ? cardData?.title
+                  : "Title"}
+              </p>
+              <p className="pt-3 pr-7 pl-4 w-72 break-words">
+                {values?.description
+                  ? values?.description
+                  : cardData?.description
+                  ? cardData?.description
+                  : `Luxury Auto Dealership Over 9 years of experience in auto sales,
               dedicated to bridging the gap between sales and customers. +1
               [345] 678 - 888`}
-            </p>
-          </div>
+              </p>
+            </div>
 
-          {(values?.email || cardData?.email) && (
-            <button className="relative bg-neutral-700 text-white font-semibold mt-4 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
-              <CiMail className="ml-5 mr-20" />
-              <span>Email</span>
-            </button>
-          )}
-          {(values?.phone || cardData?.phone) && (
-            <button className="relative bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
-              <MdLocalPhone className="ml-5 mr-20" />
-              <span>Phone</span>
-            </button>
-          )}
-          {(values?.address || cardData?.address) && (
-            <button className="relative bg-neutral-700 text-white font-semibold py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
-              <FiMapPin className="ml-5 mr-20" />
-              <span>Address</span>
-            </button>
-          )}
-          {(values?.instagram || cardData) &&
-            cardData?.instagram !== "undefined" && (
-              <button className="relative bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
-                <IoLogoInstagram className="ml-5 mr-20" />
-                <span>Instagram</span>
+            {(values?.email || cardData?.email) && (
+              <button
+                className="relative bg-neutral-700 text-white font-semibold mt-4 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto"
+                onClick={() => handleMail(values?.email || cardData?.email)}
+              >
+                <CiMail className="ml-5 mr-20" />
+                <span>Email</span>
               </button>
             )}
-          {(values?.website || cardData) &&
-            cardData?.website !== "undefined" && (
-              <button className="relative bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
-                <BiWorld className="ml-5 mr-20" />
-                <span>Website</span>
+            {(values?.phone || cardData?.phone) && (
+              <button
+                className="relative bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto"
+                onClick={() => handlePhone(values?.phone || cardData?.phone)}
+              >
+                <MdLocalPhone className="ml-5 mr-20" />
+                <span>phone</span>
               </button>
             )}
-          {(values?.facebook || cardData) &&
-            cardData?.facebook !== "undefined" && (
-              <button className="relative bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
-                <TiSocialFacebook className="ml-5 mr-20" />
-                <span>Facebook</span>
+            {(values?.address || cardData?.address) && (
+              <button
+                className="relative bg-neutral-700 text-white font-semibold py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto"
+                onClick={() =>
+                  handleAddress(values?.address || cardData?.address)
+                }
+              >
+                <FiMapPin className="ml-5 mr-20" />
+                <span>Address</span>
               </button>
             )}
+            {(values?.instagram || cardData) &&
+              cardData?.instagram !== "undefined" && (
+                <button
+                  className="relative bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto"
+                  onClick={() =>
+                    handleRedirect(values?.instagram || cardData?.instagram)
+                  }
+                >
+                  <IoLogoInstagram className="ml-5 mr-20" />
+                  <span>Instagram</span>
+                </button>
+              )}
+            {(values?.website || cardData) &&
+              cardData?.website !== "undefined" && (
+                <button
+                  className="relative bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto"
+                  onClick={() =>
+                    handleRedirect(values?.website || cardData?.website)
+                  }
+                >
+                  <BiWorld className="ml-5 mr-20" />
+                  <span>Website</span>
+                </button>
+              )}
+            {(values?.facebook || cardData) &&
+              cardData?.facebook !== "undefined" && (
+                <button
+                  className="relative bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto"
+                  onClick={() =>
+                    handleRedirect(values?.facebook || cardData?.facebook)
+                  }
+                >
+                  <TiSocialFacebook className="ml-5 mr-20" />
+                  <span>Facebook</span>
+                </button>
+              )}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

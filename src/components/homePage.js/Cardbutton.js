@@ -2,17 +2,13 @@ import React, { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
 
-function Cardbutton({handleCardTypeChange}) {
+function Cardbutton({ setCardName }) {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const handleCardTypeSelection = (type) => {
-    handleCardTypeChange(type);
-    setIsOpen(false);
+  const handleOnChange = (e) => {
+    const { value } = e.target;
+    setCardName(value);
   };
 
   return (
@@ -25,52 +21,18 @@ function Cardbutton({handleCardTypeChange}) {
             id="menu-button"
             aria-expanded={isOpen}
             aria-haspopup="true"
-            onClick={toggleDropdown}
+            onChange={(e) => handleOnChange(e)}
           >
-            <option>All Card</option>
-            <option>Business Card</option>
-            <option>Personal Card</option>
-
-            {/* <IoIosArrowDown /> */}
+            <option value="">All Card</option>
+            <option value="businesscard">Business Card</option>
+            <option value="personalcard">Personal Card</option>
           </select>
         </div>
-
-        {/* {isOpen && (
-          <div
-            className="absolute right-0 z-10 mt-2 w-56 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-            role="menu"
-            aria-orientation="vertical"
-            aria-labelledby="menu-button"
-            tabIndex="-1"
-          >
-            <div className="py-1" role="none">
-              <Link
-                href="@"
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-200"
-                onClick={() => handleCardTypeSelection('Business')}
-              >
-                All Card
-              </Link>
-              <Link
-                href="@"
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-200"
-              >
-                Business Card
-              </Link>
-              <Link
-                href="@"
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-200"
-                onClick={() => handleCardTypeSelection('Personal')}
-              >
-                Personal Card
-              </Link>
-            </div>
-          </div>
-        )} */}
       </div>
+
       <div>
         <button
-          className="bg-black py-1 px-6 rounded-full text-white"
+          className="bg-darkblue py-2 px-6 rounded-full text-white"
           onClick={() => {
             navigate("/business_profile_design");
           }}
@@ -80,7 +42,7 @@ function Cardbutton({handleCardTypeChange}) {
       </div>
       <div>
         <button
-          className="bg-black py-1 px-6 rounded-full text-white"
+          className="bg-darkblue py-2 px-6 rounded-full text-white"
           onClick={() => {
             navigate("/personal_profile_design");
           }}

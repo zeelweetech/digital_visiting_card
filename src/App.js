@@ -5,10 +5,9 @@ import { PrivateAuthRoute, PrivateRoute } from "./utils";
 import Login from "./pages/login";
 import Home from "./components/homePage.js";
 import BusinessLayOut from "./layout/businessLayout.js";
-import BusinessCardPreview from "./components/businessCardPreview.js";
 import PersonalLayOut from "./layout/personalLayout.js";
-import PersonalCardPreview from "./components/PersonalCardPreview.js";
-import BusinessThemeDesign from "./components/businessThemeDesign.js";
+import BusinessCardPreview from "./components/businessCardPreview.js";
+import PersonalCardPreview from "./components/personalCardPreview.js";
 
 function App() {
   return (
@@ -31,7 +30,6 @@ function App() {
             path="/personal_digital_card/:name/:id"
             element={<PersonalCardPreview />}
           />
-          {/* <Route path="/business_theme_design" element={<BusinessThemeDesign/>} /> */}
           {/* </Route> */}
         </Routes>
       </BrowserRouter>
