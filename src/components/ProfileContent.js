@@ -19,6 +19,7 @@ function ProfileContent({
   setValues,
   errors,
   setErrors,
+  selectTheme,
 }) {
   const { userId } = decodedToken();
   const [loading, setLoading] = useState(false);
@@ -75,14 +76,16 @@ function ProfileContent({
       formdata.append("facebook", values?.facebook);
       formdata.append("instagram", values?.instagram);
       formdata.append("userId", userId);
+      formdata.append("color", selectTheme);
 
       await addProfileDetails({ body: formdata })
         .then((res) => {
           console.log("res", res);
           toast.success(res?.message);
           setLoading(false);
-          setPage();
-          // navigate("/degital_card_preview");
+          navigate(
+            `/digital_card/${res?.digitalBusinessCard?.businessName}/${res?.digitalBusinessCard?.businessCardId}`
+          );
         })
         .catch((err) => {
           console.log("err", err);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import phone from "../assets/image/phone.png";
 import avatar from "../assets/image/avatar.png";
 import preview_logo from "../assets/image/preview_logo.png";
@@ -8,8 +8,13 @@ import { FiMapPin } from "react-icons/fi";
 import { TiSocialFacebook } from "react-icons/ti";
 import { BiWorld } from "react-icons/bi";
 import { IoLogoInstagram } from "react-icons/io";
+import { useParams } from "react-router-dom";
+import { getProfileDetails } from "../services/ProfileServices";
 
 function Preview({ selectTheme, values }) {
+  const { id } = useParams();
+  const [cardData, setCardData] = useState();
+
   const themeClasses = {
     Light: "bg-theme",
     Dark: "bg-black",
@@ -18,27 +23,56 @@ function Preview({ selectTheme, values }) {
     Energetic: "bg-custom-gradient",
     Ambitious: "bg-custom1-gradient",
   };
-  console.log("values***", values);
 
-  const themeClass = themeClasses[selectTheme] || "bg-theme";
+  const themeClass = selectTheme
+    ? themeClasses[selectTheme]
+    : themeClasses[cardData?.color] || "bg-theme";
+
+  useEffect(() => {
+    const fetchProfileDetails = async () => {
+      try {
+        const res = await getProfileDetails({ id: id });
+        console.log("res", res);
+        setCardData(res?.cardDetail);
+      } catch (err) {
+        console.log("err", err);
+      }
+    };
+
+    fetchProfileDetails();
+  }, [id]);
 
   return (
     <div className="flex flex-col justify-center items-center min-h-screen p-4">
-      <div className="flex flex-col items-center w-full max-w-md relative">
-        <img
+      <div
+        className={`flex flex-col items-center ${
+          cardData?.businessLogo ? "w-80 h-30" : "w-full"
+        } max-w-md relative ${cardData?.businessLogo && themeClass}`}
+      >
+        {/* <img
           src={phone}
           className={`rounded-2 w-80 h-30 ${themeClass} absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
           alt="Not Found"
-        />
-        <div className="ml-4 overflow-y-auto h-h30">
+        /> */}
+        <div className="overflow-y-auto h-h30">
           <div className="bg-gray-200 w-17 h-72 rounded-3xl flex flex-col justify-center relative text-center mt-24">
             <img
-              src={values?.image ? URL.createObjectURL(values?.image) : avatar}
+              src={
+                values?.image
+                  ? URL.createObjectURL(values?.image)
+                  : cardData?.businessLogo
+                  ? cardData?.businessLogo
+                  : avatar
+              }
               className="rounded-full border-4 border-white w-36 h-36 -mt-40 absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2"
               alt="Not Found"
             />
             <p className="text-3xl pt-12">
-              {values?.name ? values?.name : "Noah Miller"}
+              {values?.name
+                ? values?.name
+                : cardData?.businessName
+                ? cardData?.businessName
+                : "Noah Miller"}
             </p>
             {/* <p className="text-xl pt-2">
               {values?.title ? values?.title : "Title"}
@@ -46,43 +80,45 @@ function Preview({ selectTheme, values }) {
             <p className="pt-3 px-5">
               {values?.description
                 ? values?.description
+                : cardData?.description
+                ? cardData?.description
                 : `Luxury Auto Dealership Over 9 years of experience in auto sales,
               dedicated to bridging the gap between sales and customers. +1
               [345] 678 - 888`}
             </p>
           </div>
 
-          {values?.email && (
+          {(values?.email || cardData?.email) && (
             <button className="relative bg-neutral-700 text-white font-semibold mt-4 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
               <CiMail className="ml-5 mr-20" />
               <span>Email</span>
             </button>
           )}
-          {values?.phone && (
+          {(values?.phone || cardData?.phone) && (
             <button className="relative bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
               <MdLocalPhone className="ml-5 mr-20" />
               <span>Phone</span>
             </button>
           )}
-          {values?.address && (
+          {(values?.address || cardData?.address) && (
             <button className="relative bg-neutral-700 text-white font-semibold py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
               <FiMapPin className="ml-5 mr-20" />
               <span>Address</span>
             </button>
           )}
-          {values?.instagram && (
+          {(values?.instagram || cardData?.instagram !== "undefined") && (
             <button className="relative bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
               <IoLogoInstagram className="ml-5 mr-20" />
               <span>Instagram</span>
             </button>
           )}
-          {values?.website && (
+          {(values?.website || cardData?.website !== "undefined") && (
             <button className="relative bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
               <BiWorld className="ml-5 mr-20" />
               <span>Website</span>
             </button>
           )}
-          {values?.facebook && (
+          {(values?.facebook || cardData?.facebook !== "undefined") && (
             <button className="relative bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
               <TiSocialFacebook className="ml-5 mr-20" />
               <span>Facebook</span>

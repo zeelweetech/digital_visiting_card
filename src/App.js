@@ -19,7 +19,7 @@ function App() {
           {/* <Route element={<PrivateRoute />}> */}
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile_design" element={<ProfileLayOut />} />
-          <Route path="/degital_card_preview" element={<Preview />} />
+          <Route path="/digital_card/:name/:id" element={<Preview />} />
           {/* </Route> */}
         </Routes>
       </BrowserRouter>

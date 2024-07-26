@@ -49,6 +49,7 @@ function ProfileLayOut() {
               values={values}
               errors={errors}
               setErrors={setErrors}
+              selectTheme={selectTheme}
             />
           ) : (
             ""
