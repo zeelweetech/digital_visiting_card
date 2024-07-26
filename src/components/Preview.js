@@ -77,7 +77,7 @@ function Preview({ selectTheme, values }) {
             {/* <p className="text-xl pt-2">
               {values?.title ? values?.title : "Title"}
             </p> */}
-            <p className="pt-3 px-5">
+            <p className="pt-3 pr-7 pl-4 w-72 break-words">
               {values?.description
                 ? values?.description
                 : cardData?.description

@@ -5,33 +5,35 @@ import { IoIosArrowDown } from "react-icons/io";
 function Header() {
   return (
     <div className='fixed top-0 left-0 right-0 bg-white z-50'>
-      <hr className="border-t border-gray-200 shadow-sm"/>
-        <div className="relative flex justify-between items-center py-2 px-40">
-            <div>
-              <img src={logo} className="w-32" alt="Not Found" />
-            </div>
-            <div className="flex items-center">
-                <div className="relative group">
-                    <p className="text-xl flex items-center group-hover:text-lime-600 cursor-pointer">
-                      Categories
-                      <IoIosArrowDown className="mt-1"/>
-                    </p>
-                    <div className="absolute mt-4 w-40 bg-white border shadow-lg rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
-                        <ul className="list-none">
-                          <li className="p-2 hover:bg-gray-100 cursor-pointer">
-                            Business Card
-                          </li>
-                          <li className="p-2 hover:bg-gray-100 cursor-pointer">
-                            Personal Card
-                          </li>
-                        </ul>
-                    </div>
-                </div>
-                <button className="border-none text-xl ml-16 bg-neutral-700 text-white pt-1 pb-2 px-6 rounded-full">Logout</button>
-            </div>
+      <hr className="border-t border-gray-200 shadow-sm" />
+      <div className="relative flex flex-wrap justify-between items-center py-2 px-4 md:px-8 lg:px-16">
+        <div className="flex-shrink-0">
+          <img src={logo} className="w-24 md:w-32" alt="Not Found" />
         </div>
-        <hr className="border-t border-gray-200 shadow-sm"/>
-     </div>
+        <div className="flex items-center space-x-4 md:space-x-8">
+          <div className="relative group">
+            <p className="text-lg md:text-xl flex items-center group-hover:text-lime-600 cursor-pointer">
+              Categories
+              <IoIosArrowDown className="ml-1 mt-0.5" />
+            </p>
+            <div className="absolute mt-2 md:mt-4 w-32 md:w-40 bg-white border shadow-lg rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
+              <ul className="list-none">
+                <li className="p-2 hover:bg-gray-100 cursor-pointer">
+                  Business Card
+                </li>
+                <li className="p-2 hover:bg-gray-100 cursor-pointer">
+                  Personal Card
+                </li>
+              </ul>
+            </div>
+          </div>
+          <button className="border-none text-base md:text-xl bg-neutral-700 text-white py-1 px-4 md:py-2 md:px-6 rounded-full">
+            Logout
+          </button>
+        </div>
+      </div>
+      <hr className="border-t border-gray-200 shadow-sm" />
+    </div>
   );
 }
 

@@ -27,7 +27,7 @@ function ProfileLayOut() {
     <div>
       <Header />
       <div className="flex mt-14">
-        <div className="w-1/2 overflow-y-auto">
+        <div className="w-full md:w-1/2 overflow-y-auto">
           {page === 0 ? (
             <ThemeDesign
               setSelectTheme={setSelectTheme}
@@ -55,7 +55,7 @@ function ProfileLayOut() {
             ""
           )}
         </div>
-        <div className="w-1/2">
+        <div className="hidden md:block w-1/2">
           <Preview selectTheme={selectTheme} values={values} />
         </div>
       </div>

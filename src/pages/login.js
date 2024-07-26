@@ -85,6 +85,7 @@ function Login() {
           src={BrandImage}
           className="bg-darkblue"
           style={{ backgroundColor: "#0065af" }}
+          alt="Not Found"
         />
       </div>
       <div className="w-full lg:w-6/12 text-center flex justify-center items-center">
