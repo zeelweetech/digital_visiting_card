@@ -16,6 +16,7 @@ function PersonalCardPreview({ selectTheme, values }) {
   const { id } = useParams();
   const [cardData, setCardData] = useState();
   const [loading, setLoading] = useState(false);
+  const path = window.location.pathname.split("/").pop();
 
   const themeClasses = {
     Light: "bg-theme",
@@ -84,17 +85,20 @@ function PersonalCardPreview({ selectTheme, values }) {
       ) : (
         <div
           className={`flex flex-col items-center ${
-            cardData?.businessLogo ? "w-80" : "w-full"
+            cardData?.image ? "w-80" : "w-full"
           } max-w-md relative ${cardData?.image && themeClass}`}
+          style={{
+            minHeight: cardData?.image ? "100vh" : "w-80 h-30",
+          }}
         >
           {!cardData?.image && (
             <img
               src={phone}
-              className={`rounded-2 w-full h-auto max-w-xs ${themeClass} absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
+              className={`rounded-2 w-80 h-30 ${themeClass} absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
               alt="Not Found"
             />
           )}
-          <div className="overflow-y-auto h-h30">
+          <div className="overflow-y-auto " style={{minHeight: cardData?.image ? "100vh" : "34rem"}}>
             <div className="bg-gray-200 w-17 h-72 rounded-3xl flex flex-col justify-center relative text-center mt-24">
               <img
                 src={

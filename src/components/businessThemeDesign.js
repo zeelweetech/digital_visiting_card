@@ -200,7 +200,7 @@ function BusinessThemeDesign({ selectTheme, setSelectTheme, setPage }) {
                     <div>
                       <img
                         src={avatar}
-                        className="w-16 h-16 rounded-full"
+                        className="w-16 h-16"
                         alt="Not Found"
                       />
                       <div role="status" className="max-w-sm animate-pulse">
