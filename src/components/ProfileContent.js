@@ -84,7 +84,7 @@ function ProfileContent({
           toast.success(res?.message);
           setLoading(false);
           navigate(
-            `/digital_card/${res?.digitalBusinessCard?.businessName}/${res?.digitalBusinessCard?.businessCardId}`
+            `/personal_digital_card/${res?.digitalBusinessCard?.businessName}/${res?.digitalBusinessCard?.businessCardId}`
           );
         })
         .catch((err) => {

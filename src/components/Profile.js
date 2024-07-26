@@ -33,9 +33,9 @@ function Profile({ setPage, handleOnChange, values, errors, setErrors }) {
       newErrors.name = "Please enter a name";
     }
 
-    // if (!values?.title) {
-    //   newErrors.title = "Please enter a title";
-    // }
+    if (!values?.title) {
+      newErrors.title = "Please enter a title";
+    }
 
     // if (!values?.company) {
     //   newErrors.company = "Please enter a company name";
@@ -112,7 +112,7 @@ function Profile({ setPage, handleOnChange, values, errors, setErrors }) {
           )}
         </div>
 
-        {/* <div className="w-full mt-5">
+        <div className="w-full mt-5">
           <input
             className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-darkblue"
             id="inline-full-title"
@@ -125,7 +125,7 @@ function Profile({ setPage, handleOnChange, values, errors, setErrors }) {
           {errors?.title && (
             <p className="text-xs text-red-500">{errors?.title}</p>
           )}
-        </div> */}
+        </div>
 
         {/* <div className="w-full mt-5">
           <input
