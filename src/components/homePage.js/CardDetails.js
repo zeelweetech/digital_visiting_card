@@ -10,7 +10,7 @@ function CardDetails({ cardDetails, loading }) {
         <div className="flex justify-center">
           <Loader />
         </div>
-      ) : (
+      ) : cardDetails?.length > 0 ? (
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-7 px-4 sm:px-10 lg:px-20 py-10 cursor-pointer">
           {cardDetails?.map((item, index) => (
             <div key={index} className="text-center">
@@ -39,6 +39,10 @@ function CardDetails({ cardDetails, loading }) {
               </p>
             </div>
           ))}
+        </div>
+      ) : (
+        <div className="flex justify-center mt-10 text-xl text-black font-semibold text-center">
+          No Data Found
         </div>
       )}
     </div>
