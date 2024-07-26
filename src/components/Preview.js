@@ -38,8 +38,9 @@ function Preview({ selectTheme, values }) {
         console.log("err", err);
       }
     };
-
-    fetchProfileDetails();
+    if (id) {
+      fetchProfileDetails();
+    }
   }, [id]);
 
   return (
@@ -49,12 +50,14 @@ function Preview({ selectTheme, values }) {
           cardData?.businessLogo ? "w-80 h-30" : "w-full"
         } max-w-md relative ${cardData?.businessLogo && themeClass}`}
       >
-        {/* <img
-          src={phone}
-          className={`rounded-2 w-80 h-30 ${themeClass} absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
-          alt="Not Found"
-        /> */}
-        <div className="overflow-y-auto h-h30">
+        {!cardData?.businessLogo && (
+          <img
+            src={phone}
+            className={`rounded-2 w-80 h-30 ${themeClass} absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
+            alt="Not Found"
+          />
+        )}
+        <div className="ml-4 overflow-y-auto h-h30">
           <div className="bg-gray-200 w-17 h-72 rounded-3xl flex flex-col justify-center relative text-center mt-24">
             <img
               src={
@@ -106,24 +109,27 @@ function Preview({ selectTheme, values }) {
               <span>Address</span>
             </button>
           )}
-          {(values?.instagram || cardData?.instagram !== "undefined") && (
-            <button className="relative bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
-              <IoLogoInstagram className="ml-5 mr-20" />
-              <span>Instagram</span>
-            </button>
-          )}
-          {(values?.website || cardData?.website !== "undefined") && (
-            <button className="relative bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
-              <BiWorld className="ml-5 mr-20" />
-              <span>Website</span>
-            </button>
-          )}
-          {(values?.facebook || cardData?.facebook !== "undefined") && (
-            <button className="relative bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
-              <TiSocialFacebook className="ml-5 mr-20" />
-              <span>Facebook</span>
-            </button>
-          )}
+          {(values?.instagram || cardData) &&
+            cardData?.instagram !== "undefined" && (
+              <button className="relative bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
+                <IoLogoInstagram className="ml-5 mr-20" />
+                <span>Instagram</span>
+              </button>
+            )}
+          {(values?.website || cardData) &&
+            cardData?.website !== "undefined" && (
+              <button className="relative bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
+                <BiWorld className="ml-5 mr-20" />
+                <span>Website</span>
+              </button>
+            )}
+          {(values?.facebook || cardData) &&
+            cardData?.facebook !== "undefined" && (
+              <button className="relative bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
+                <TiSocialFacebook className="ml-5 mr-20" />
+                <span>Facebook</span>
+              </button>
+            )}
         </div>
       </div>
     </div>
