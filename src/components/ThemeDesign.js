@@ -146,14 +146,14 @@ function ThemeDesign({ setSelectTheme, selectTheme, setPage }) {
                   {data.themeBackgroundColor}
                 </p>
 
-                <div className="absolute bg-white rounded-xl shadow-xl w-p7 h-24 flex justify-center mt-5">
+                {/* <div className="absolute bg-white rounded-xl shadow-xl w-p7 h-24 flex justify-center mt-5">
                   <img
                     src={preview_logo}
                     className="w-12 h-14 mt-2"
                     alt="Not Found"
                   />
-                </div>
-                <div className="bg-white shadow-xl w-p7 h-28 rounded-xl flex flex-col justify-center absolute mt-m7">
+                </div> */}
+                <div className="bg-white shadow-xl w-p7 h-28 rounded-xl flex flex-col justify-center absolute mt-m4">
                   <div className="flex justify-center">
                     <img
                       src={avatar}
