@@ -4,10 +4,12 @@ import avatar from "../assets/image/avatar.png";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { HiOutlineMapPin } from "react-icons/hi2";
 import { IoCallOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-function BusinessThemeDesign({selectTheme, setSelectTheme, setPage}) {
+function BusinessThemeDesign({ selectTheme, setSelectTheme, setPage }) {
+  const navigate = useNavigate();
+
   const PersonalCard = [
     {
       NameSkeleton: (
@@ -182,7 +184,9 @@ function BusinessThemeDesign({selectTheme, setSelectTheme, setPage}) {
   return (
     <div className="flex justify-center">
       <div>
-        <p className="text-3xl font-semibold text-center">Choose a Design</p>
+        <p className="text-3xl font-semibold text-center">
+          Choose a Business card Design
+        </p>
         <p className="text-center">Your brand colors</p>
 
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-5">
@@ -219,7 +223,10 @@ function BusinessThemeDesign({selectTheme, setSelectTheme, setPage}) {
                   </button>
                 </div>
 
-                <div role="status" className="max-w-sm animate-pulse pt-2 pb-2 px-2">
+                <div
+                  role="status"
+                  className="max-w-sm animate-pulse pt-2 pb-2 px-2"
+                >
                   {CardData.Skeleton}
                   {CardData.Skeleton1}
                   {CardData.Skeleton2}
@@ -232,11 +239,11 @@ function BusinessThemeDesign({selectTheme, setSelectTheme, setPage}) {
                 <input
                   type="radio"
                   name="theme"
-                    value={CardData.theme_name}
-                    checked={selectTheme === CardData.theme_name}
-                    onChange={() => {
-                      setSelectTheme(CardData.theme_name);
-                    }}
+                  value={CardData.theme_name}
+                  checked={selectTheme === CardData.theme_name}
+                  onChange={() => {
+                    setSelectTheme(CardData.theme_name);
+                  }}
                   className="w-5 h-5 custom-radio"
                 />
                 <br />
@@ -253,7 +260,7 @@ function BusinessThemeDesign({selectTheme, setSelectTheme, setPage}) {
             <FaArrowLeft className="text-darkblue text-sm" />
             <button
               className=" text-darkblue font-semibold text-xl"
-              onClick={() => setPage(0)}
+              onClick={() => navigate("/home_page")}
             >
               Back
             </button>

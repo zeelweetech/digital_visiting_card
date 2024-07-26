@@ -1,12 +1,27 @@
 import axios from "axios";
 
 /**
- * ADD Business Profile Details
+ * ADD personal Profile Details
  */
 export async function addPersonalDetails({ body: body }) {
   try {
     const response = await axios.post(
       `${process.env.REACT_APP_LOCAL_URL}/card/create/personal/detail`,
+      body
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+/**
+ * ADD Business Profile Details
+ */
+export async function addBusinessDetails({ body: body }) {
+  try {
+    const response = await axios.post(
+      `${process.env.REACT_APP_LOCAL_URL}/card/create/business/detail`,
       body
     );
     return response.data;

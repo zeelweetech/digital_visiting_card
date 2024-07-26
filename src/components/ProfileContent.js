@@ -7,7 +7,10 @@ import { BiWorld } from "react-icons/bi";
 import { TiSocialFacebook } from "react-icons/ti";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { decodedToken, handleNumberKeyDown } from "../utils";
-import { addPersonalDetails } from "../services/ProfileServices";
+import {
+  addBusinessDetails,
+  addPersonalDetails,
+} from "../services/ProfileServices";
 import toast from "react-hot-toast";
 import Loader from "./Loader";
 import { useNavigate } from "react-router-dom";
@@ -24,6 +27,8 @@ function ProfileContent({
   const { userId } = decodedToken();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const path = window.location.pathname.split("/").pop();
+  console.log("path", path);
 
   const validation = () => {
     const newErrors = {};
@@ -68,7 +73,6 @@ function ProfileContent({
       formdata.append("name", values?.name);
       formdata.append("title", values?.title);
       formdata.append("description", values?.description);
-      formdata.append("company", values?.company);
       formdata.append("email", values?.email);
       formdata.append("phone", values?.phone);
       formdata.append("address", values?.address);
@@ -77,16 +81,28 @@ function ProfileContent({
       formdata.append("instagram", values?.instagram);
       formdata.append("userId", userId);
       formdata.append("color", selectTheme);
-      formdata.append("category", "personalcard");
+      formdata.append(
+        "category",
+        path === "business_profile_design" ? "businesscard" : "personalcard"
+      );
 
-      await addPersonalDetails({ body: formdata })
+      await (path === "business_profile_design"
+        ? addBusinessDetails({ body: formdata })
+        : addPersonalDetails({ body: formdata })
+      )
         .then((res) => {
           console.log("res", res);
           toast.success(res?.message);
           setLoading(false);
-          navigate(
-            `/personal_digital_card/${res?.digitalPersonalCard?.name}/${res?.digitalPersonalCard?.personalCardId}`
-          );
+          if (path === "business_profile_design") {
+            navigate(
+              `/business_digital_card/${res?.digitalBusinessCard?.name}/${res?.digitalBusinessCard?.businessCardId}`
+            );
+          } else if (path === "personal_profile_design") {
+            navigate(
+              `/personal_digital_card/${res?.digitalPersonalCard?.name}/${res?.digitalPersonalCard?.personalCardId}`
+            );
+          }
         })
         .catch((err) => {
           console.log("err", err);

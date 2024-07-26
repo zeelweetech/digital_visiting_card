@@ -5,8 +5,11 @@ import preview_logo from "../assets/image/preview_logo.png";
 import { FaArrowRight } from "react-icons/fa";
 import toast from "react-hot-toast";
 import { FaArrowLeft } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 function ThemeDesign({ setSelectTheme, selectTheme, setPage }) {
+  const navigate = useNavigate();
+
   const mobile = [
     {
       themeBackgroundColor: (
@@ -130,7 +133,9 @@ function ThemeDesign({ setSelectTheme, selectTheme, setPage }) {
   return (
     <div className="flex justify-center">
       <div>
-        <p className="text-3xl font-semibold text-center">Choose a Design</p>
+        <p className="text-3xl font-semibold text-center">
+          Choose a Pesonal Card Design
+        </p>
         <p className="text-center">Your brand colors</p>
 
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-5">
@@ -195,7 +200,7 @@ function ThemeDesign({ setSelectTheme, selectTheme, setPage }) {
             <FaArrowLeft className="text-darkblue text-sm" />
             <button
               className=" text-darkblue font-semibold text-xl"
-              // onClick={() => setPage(0)}
+              onClick={() => navigate("/home_page")}
             >
               Back
             </button>

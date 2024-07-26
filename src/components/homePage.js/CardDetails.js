@@ -23,7 +23,7 @@ function CardDetails({ cardDetails, loading }) {
                     );
                   } else if (item?.category === "personalcard") {
                     navigate(
-                      `/personal_digital_card/${item?.name}/${item?.businessCardId}`
+                      `/personal_digital_card/${item?.name}/${item?.personalCardId}`
                     );
                   }
                 }}
