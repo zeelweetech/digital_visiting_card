@@ -6,6 +6,8 @@ import { Toaster } from "react-hot-toast";
 import Profile from "./components/Profile";
 import Preview from "./components/Preview";
 import ProfileLayOut from "./layout";
+import Home from "./components/homePage.js";
+import PersonalCardPreview from "./components/PersonalCardPreview.js";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
           <Route path="/profile_design" element={<ProfileLayOut />} />
           <Route path="/degital_card_preview" element={<Preview />} />
           {/* </Route> */}
+          <Route path="/home_page" element={<Home/>} />
+          <Route path="/personal_card_preview" element={<PersonalCardPreview/>} />
         </Routes>
       </BrowserRouter>
     </div>

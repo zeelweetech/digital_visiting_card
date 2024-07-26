@@ -30,7 +30,7 @@ function Preview({ selectTheme, values }) {
           className={`rounded-2 w-80 h-30 ${themeClass} absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
           alt="Not Found"
         />
-        <div className="ml-4 overflow-y-auto h-h30">
+        <div className="overflow-y-auto h-h30">
           <div className="bg-gray-200 w-17 h-72 rounded-3xl flex flex-col justify-center relative text-center mt-24">
             <img
               src={values?.image ? URL.createObjectURL(values?.image) : avatar}
@@ -43,7 +43,7 @@ function Preview({ selectTheme, values }) {
             {/* <p className="text-xl pt-2">
               {values?.title ? values?.title : "Title"}
             </p> */}
-            <p className="pt-3 px-5">
+            <p className="pt-3 pr-7 pl-4 w-72 break-words">
               {values?.description
                 ? values?.description
                 : `Luxury Auto Dealership Over 9 years of experience in auto sales,
