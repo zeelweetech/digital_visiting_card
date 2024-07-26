@@ -85,7 +85,7 @@ function PersonalCardPreview({ selectTheme, values }) {
       ) : (
         <div
           className={`flex flex-col items-center ${
-            cardData?.image ? "w-80" : "w-full"
+            cardData?.image ? "w-full" : "w-full"
           } max-w-md relative ${cardData?.image && themeClass}`}
           style={{
             minHeight: cardData?.image ? "100vh" : "w-80 h-30",
@@ -98,7 +98,7 @@ function PersonalCardPreview({ selectTheme, values }) {
               alt="Not Found"
             />
           )}
-          <div className="overflow-y-auto " style={{minHeight: cardData?.image ? "100vh" : "34rem"}}>
+          <div className="overflow-y-auto" style={{minHeight: cardData?.image ? "100vh" : "34rem"}}>
             <div className="bg-gray-200 w-17 h-72 rounded-3xl flex flex-col justify-center relative text-center mt-24">
               <img
                 src={
