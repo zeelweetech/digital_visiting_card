@@ -79,11 +79,16 @@ function BusinessCardPreview({ selectTheme, values }) {
   return (
     <div className="flex flex-col justify-center items-center min-h-screen p-4">
       <div className="flex flex-col items-center w-full max-w-md relative">
-        <div className="rounded-3xl w-80 h-30 bg-white shadow-xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div
+          className="rounded-3xl w-80 h-30 bg-white shadow-xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          style={{
+            minHeight: cardData?.image ? "100vh" : "w-80 h-30",
+          }}
+        >
           <div
             className={`${themeClass} h-64 rounded-se-3xl rounded-tl-3xl p-3`}
           >
-            <div className="flex justify-center text-center pt-5">
+            <div className="flex justify-center items-center text-center pt-5">
               <div>
                 <img
                   src={
@@ -93,17 +98,17 @@ function BusinessCardPreview({ selectTheme, values }) {
                       ? cardData?.image
                       : avatar
                   }
-                  className="w-24 h-24 rounded-full"
+                  className="w-24 h-24"
                   alt="Not Found"
                 />
-                <p className={`text-2xl ${themeClass} pt-2`}>
+                <p className="text-2xl text-white pt-2">
                   {values?.name
                     ? values?.name
                     : cardData?.name
                     ? cardData?.name
                     : "Name"}
                 </p>
-                <p className={`${themeClass}`}>
+                <p className="text-white">
                   {" "}
                   {values?.title
                     ? values?.title
@@ -150,8 +155,8 @@ function BusinessCardPreview({ selectTheme, values }) {
               )}
           </div>
 
-          <div className="mt-8 px-3">
-            <p>
+          <div className="mt-5 px-3">
+            <p className="break-words">
               Description :{" "}
               {values?.description ? (
                 <span
