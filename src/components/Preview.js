@@ -44,7 +44,7 @@ function Preview({ selectTheme, values }) {
   }, [id]);
 
   return (
-    <div className="flex justify-center items-center min-h-screen p-4">
+    <div className="flex flex-col justify-center items-center min-h-screen p-4">
       <div
         className={`flex flex-col items-center ${
           cardData?.businessLogo ? "w-80 h-30" : "w-full"
@@ -53,12 +53,12 @@ function Preview({ selectTheme, values }) {
         {!cardData?.businessLogo && (
           <img
             src={phone}
-            className={`rounded-2 w-80 h-30 ${themeClass} absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mx-auto`}
+            className={`rounded-2 w-80 h-30 ${themeClass} absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
             alt="Not Found"
           />
         )}
-        <div className="overflow-y-auto h-h30">
-          <div className="bg-gray-200 w-17 h-72 rounded-3xl flex flex-col justify-center relative text-center mt-24">
+        <div className="flex flex-col items-center justify-center w-full h-full relative">
+          <div className="bg-gray-200 rounded-3xl">
             <img
               src={
                 values?.image

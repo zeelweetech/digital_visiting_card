@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
-import ThemeDesign from "../components/ThemeDesign";
 import Profile from "../components/Profile";
 import ProfileContent from "../components/ProfileContent";
 import BusinessCardPreview from "../components/businessCardPreview";
+import BusinessThemeDesign from "../components/businessThemeDesign";
 
 function BusinessLayOut() {
   const [selectTheme, setSelectTheme] = useState();
@@ -29,7 +29,7 @@ function BusinessLayOut() {
       <div className="flex mt-14">
         <div className="w-full md:w-1/2 overflow-y-auto">
           {page === 0 ? (
-            <ThemeDesign
+            <BusinessThemeDesign
               setSelectTheme={setSelectTheme}
               selectTheme={selectTheme}
               setPage={setPage}

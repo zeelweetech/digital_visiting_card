@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
-import ThemeDesign from "../components/ThemeDesign";
 import Profile from "../components/Profile";
 import ProfileContent from "../components/ProfileContent";
-import PersonalCardPreview from "../components/personalCardPreview";
+import PersonalCardPreview from "../components/PersonalCardPreview";
+import ThemeDesign from "../components/ThemeDesign";
 
 function PersonalLayOut() {
   const [selectTheme, setSelectTheme] = useState();
