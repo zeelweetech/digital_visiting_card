@@ -126,13 +126,19 @@ function PersonalCardPreview({ selectTheme, values }) {
                   : "Title"}
               </p>
               <p className="pt-3 pr-7 pl-4 w-72 break-words">
-                {values?.description
-                  ? values?.description
-                  : cardData?.description
-                  ? cardData?.description
-                  : `Luxury Auto Dealership Over 9 years of experience in auto sales,
+                {values?.description ? (
+                  <span
+                    dangerouslySetInnerHTML={{ __html: values.description }}
+                  />
+                ) : cardData?.description ? (
+                  <span
+                    dangerouslySetInnerHTML={{ __html: cardData.description }}
+                  />
+                ) : (
+                  `Luxury Auto Dealership Over 9 years of experience in auto sales,
               dedicated to bridging the gap between sales and customers. +1
-              [345] 678 - 888`}
+              [345] 678 - 888`
+                )}
               </p>
             </div>
 

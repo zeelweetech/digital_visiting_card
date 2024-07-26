@@ -158,11 +158,17 @@ function BusinessCardPreview({ selectTheme, values }) {
           <div className="mt-5 px-3">
             <p className="break-words">
               Description :{" "}
-              {values?.description
-                ? values?.description
-                : cardData?.description
-                ? cardData?.description
-                : "Luxury Auto Dealership Over 9 years of experience in auto sales,dedicated to bridging the gap between sales and customers."}
+              {values?.description ? (
+                <span
+                  dangerouslySetInnerHTML={{ __html: values.description }}
+                />
+              ) : cardData?.description ? (
+                <span
+                  dangerouslySetInnerHTML={{ __html: cardData.description }}
+                />
+              ) : (
+                "Luxury Auto Dealership Over 9 years of experience in auto sales, dedicated to bridging the gap between sales and customers."
+              )}
             </p>
             {(values?.phone || cardData?.phone) && (
               <div className="my-4">
