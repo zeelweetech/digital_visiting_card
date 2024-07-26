@@ -12,7 +12,7 @@ function PersonalCardPreview() {
       <div className="flex flex-col items-center w-full max-w-md relative">
         <div className="rounded-3xl w-80 h-30 bg-white shadow-xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <div className="bg-indigo-800 h-64 rounded-se-3xl rounded-tl-3xl p-3">
-            <img src={logo} className="w-16 h-4" alt="Not Found" />
+            {/* <img src={logo} className="w-16 h-4" alt="Not Found" /> */}
             <div className="flex justify-center text-center pt-5">
               <div>
                 <img
@@ -27,13 +27,13 @@ function PersonalCardPreview() {
           </div>
 
           <div className="flex justify-evenly -mt-5">
-            <button className="bg-white text-2xl rounded-full py-2 px-2">
+            <button className="bg-white text-2xl rounded-full p-2">
               <IoCallOutline />
             </button>
-            <button className="bg-white text-2xl rounded-full py-2 px-2">
+            <button className="bg-white text-2xl rounded-full p-2">
               <CiMail />
             </button>
-            <button className="bg-white text-2xl rounded-full py-2 px-2">
+            <button className="bg-white text-2xl rounded-full p-2">
               <HiOutlineMapPin />
             </button>
           </div>
@@ -50,7 +50,7 @@ function PersonalCardPreview() {
               <p>+1 67456 68565</p>
             </div>
             <p>Email</p>
-            <p>gjgjgjgj@gmail.com</p>
+            <p>digitalcard@gmail.com</p>
             <p className="mt-4">Website</p>
             <Link className="text-blue-800">https://mcgee.com</Link>
           </div>

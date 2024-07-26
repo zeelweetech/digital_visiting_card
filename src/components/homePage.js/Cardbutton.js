@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { Link } from "react-router-dom";
 
-function Cardbutton() {
+function Cardbutton({handleCardTypeChange}) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleCardTypeSelection = (type) => {
+    handleCardTypeChange(type);
+    setIsOpen(false);
   };
 
   return (
@@ -38,12 +43,14 @@ function Cardbutton() {
               <Link
                 href="@"
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-200"
+                onClick={() => handleCardTypeSelection('Business')}
               >
                 Business Card
               </Link>
               <Link
                 href="@"
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-slate-200"
+                onClick={() => handleCardTypeSelection('Personal')}
               >
                 Personal Card
               </Link>
@@ -52,12 +59,12 @@ function Cardbutton() {
         )}
       </div>
       <div>
-        <button className="bg-black py-1 px-6 rounded-full text-white">
+        <button className="bg-black py-1 px-6 rounded-full text-white" onClick={() => handleCardTypeSelection('Business')}>
           Create a Digital Business Card
         </button>
       </div>
       <div>
-        <button className="bg-black py-1 px-6 rounded-full text-white">
+        <button className="bg-black py-1 px-6 rounded-full text-white" onClick={() => handleCardTypeSelection('Personal')}>
           Create a Digital Personal Card
         </button>
       </div>

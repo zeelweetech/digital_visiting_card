@@ -44,7 +44,7 @@ function Preview({ selectTheme, values }) {
   }, [id]);
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen p-4">
+    <div className="flex justify-center items-center min-h-screen p-4">
       <div
         className={`flex flex-col items-center ${
           cardData?.businessLogo ? "w-80 h-30" : "w-full"
@@ -53,11 +53,11 @@ function Preview({ selectTheme, values }) {
         {!cardData?.businessLogo && (
           <img
             src={phone}
-            className={`rounded-2 w-80 h-30 ${themeClass} absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
+            className={`rounded-2 w-80 h-30 ${themeClass} absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mx-auto`}
             alt="Not Found"
           />
         )}
-        <div className="ml-4 overflow-y-auto h-h30">
+        <div className="overflow-y-auto h-h30">
           <div className="bg-gray-200 w-17 h-72 rounded-3xl flex flex-col justify-center relative text-center mt-24">
             <img
               src={
@@ -67,7 +67,7 @@ function Preview({ selectTheme, values }) {
                   ? cardData?.businessLogo
                   : avatar
               }
-              className="rounded-full border-4 border-white w-36 h-36 -mt-40 absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+              className="rounded-full border-4 border-white w-36 h-36 -mt-40 absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 mx-auto"
               alt="Not Found"
             />
             <p className="text-3xl pt-12">
@@ -91,6 +91,7 @@ function Preview({ selectTheme, values }) {
             </p>
           </div>
 
+        {/* <div></div> */}
           {(values?.email || cardData?.email) && (
             <button className="relative bg-neutral-700 text-white font-semibold mt-4 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto">
               <CiMail className="ml-5 mr-20" />

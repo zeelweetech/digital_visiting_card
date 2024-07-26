@@ -4,6 +4,7 @@ import avatar from "../assets/image/avatar.png";
 import preview_logo from "../assets/image/preview_logo.png";
 import { FaArrowRight } from "react-icons/fa";
 import toast from "react-hot-toast";
+import { FaArrowLeft } from "react-icons/fa";
 
 function ThemeDesign({ setSelectTheme, selectTheme, setPage }) {
   const mobile = [
@@ -189,7 +190,16 @@ function ThemeDesign({ setSelectTheme, selectTheme, setPage }) {
             </div>
           ))}
         </div>
-        <div className="flex justify-center mt-10 mb-5">
+        <div className="flex justify-between mt-10 mb-5">
+          <div className="flex items-center space-x-2">
+            <FaArrowLeft className="text-darkblue text-sm" />
+            <button
+              className=" text-darkblue font-semibold text-xl"
+              // onClick={() => setPage(0)}
+            >
+              Back
+            </button>
+          </div>
           <button
             className="flex items-center bg-blue-500 text-white font-semibold px-14 py-2 rounded-full"
             onClick={() => {
