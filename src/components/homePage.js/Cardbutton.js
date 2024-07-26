@@ -12,7 +12,11 @@ function Cardbutton({ setCardName }) {
   };
 
   return (
-    <div className="flex space-x-4 px-20 py-4">
+    <div
+      className={`flex space-x-4 px-20 py-4 
+      ${window.innerWidth < 768 ? "flex-col" : ""}
+    `}
+    >
       <div className="relative inline-block text-left">
         <div>
           <select
