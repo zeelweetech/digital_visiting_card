@@ -7,6 +7,8 @@ import Home from "./components/homePage.js";
 import BusinessLayOut from "./layout/businessLayout.js";
 import BusinessCardPreview from "./components/businessCardPreview.js";
 import PersonalCardPreview from "./components/PersonalCardPreview.js";
+import PersonalLayOut from "./layout/personalLayout.js";
+import BusinessThemeDesign from "./components/businessThemeDesign.js";
 
 function App() {
   return (

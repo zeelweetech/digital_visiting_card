@@ -98,7 +98,10 @@ function PersonalCardPreview({ selectTheme, values }) {
               alt="Not Found"
             />
           )}
-          <div className="overflow-y-auto" style={{minHeight: cardData?.image ? "100vh" : "34rem"}}>
+          <div
+            className="overflow-y-auto"
+            style={{ minHeight: cardData?.image ? "100vh" : "34rem" }}
+          >
             <div className="bg-gray-200 w-17 h-72 rounded-3xl flex flex-col justify-center relative text-center mt-24">
               <img
                 src={
@@ -111,35 +114,37 @@ function PersonalCardPreview({ selectTheme, values }) {
                 className="rounded-full border-4 border-white w-36 h-36 -mt-40 absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                 alt="Not Found"
               />
-              <p className="text-3xl pt-12">
-                {values?.name
-                  ? values?.name
-                  : cardData?.name
-                  ? cardData?.name
-                  : "Noah Miller"}
-              </p>
-              <p className="text-xl pt-2">
-                {values?.title
-                  ? values?.title
-                  : cardData?.title
-                  ? cardData?.title
-                  : "Title"}
-              </p>
-              <p className="pt-3 pr-7 pl-4 w-72 break-words">
-                {values?.description ? (
-                  <span
-                    dangerouslySetInnerHTML={{ __html: values.description }}
-                  />
-                ) : cardData?.description ? (
-                  <span
-                    dangerouslySetInnerHTML={{ __html: cardData.description }}
-                  />
-                ) : (
-                  `Luxury Auto Dealership Over 9 years of experience in auto sales,
+              <div className="overflow-y-auto overflow-x-hidden overscroll-y-hidden"> 
+                <p className="text-3xl pt-12 mt-5">
+                  {values?.name
+                    ? values?.name
+                    : cardData?.name
+                    ? cardData?.name
+                    : "Noah Miller"}
+                </p>
+                <p className="text-xl pt-2">
+                  {values?.title
+                    ? values?.title
+                    : cardData?.title
+                    ? cardData?.title
+                    : "Title"}
+                </p>
+                <p className="pt-3 pr-7 pl-4 w-72 break-words">
+                  {values?.description ? (
+                    <span
+                      dangerouslySetInnerHTML={{ __html: values.description }}
+                    />
+                  ) : cardData?.description ? (
+                    <span
+                      dangerouslySetInnerHTML={{ __html: cardData.description }}
+                    />
+                  ) : (
+                    `Luxury Auto Dealership Over 9 years of experience in auto sales,
               dedicated to bridging the gap between sales and customers. +1
               [345] 678 - 888`
-                )}
-              </p>
+                  )}
+                </p>
+              </div>
             </div>
 
             {(values?.email || cardData?.email) && (
