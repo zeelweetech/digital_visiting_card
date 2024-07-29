@@ -52,7 +52,7 @@ function Profile({ setPage, handleOnChange, values, errors, setErrors }) {
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     if (validation()) {
-      setPage(2);
+      setPage(3);
     }
   };
 
@@ -183,7 +183,7 @@ function Profile({ setPage, handleOnChange, values, errors, setErrors }) {
             <FaArrowLeft className="text-darkblue text-sm" />
             <button
               className=" text-darkblue font-semibold text-xl"
-              onClick={() => setPage(0)}
+              onClick={() => setPage(1)}
             >
               Back
             </button>

@@ -1,15 +1,10 @@
 import React from "react";
-import phone from "../assets/image/phone.png";
-import avatar from "../assets/image/avatar.png";
-import preview_logo from "../assets/image/preview_logo.png";
-import { FaArrowRight } from "react-icons/fa";
 import toast from "react-hot-toast";
-import { FaArrowLeft } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import avatar from "../../../assets/image/avatar.png";
+import phone from "../../../assets/image/phone.png";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
-function ThemeDesign({ setSelectTheme, selectTheme, setPage }) {
-  const navigate = useNavigate();
-
+function PersonalPreviewColorDesign({ setSelectTheme, selectTheme, setPage }) {
   const mobile = [
     {
       themeBackgroundColor: (
@@ -139,7 +134,7 @@ function ThemeDesign({ setSelectTheme, selectTheme, setPage }) {
         <p className="text-center">Your brand colors</p>
 
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-5">
-          {mobile.map((data) => (
+          {mobile?.map((data) => (
             <div>
               <div className="flex flex-col items-center w-full max-w-md mt-4">
                 <p className={`${data.themeBackgroundColor}`}>
@@ -147,12 +142,12 @@ function ThemeDesign({ setSelectTheme, selectTheme, setPage }) {
                 </p>
 
                 {/* <div className="absolute bg-white rounded-xl shadow-xl w-p7 h-24 flex justify-center mt-5">
-                  <img
-                    src={preview_logo}
-                    className="w-12 h-14 mt-2"
-                    alt="Not Found"
-                  />
-                </div> */}
+                <img
+                  src={preview_logo}
+                  className="w-12 h-14 mt-2"
+                  alt="Not Found"
+                />
+              </div> */}
                 <div className="bg-white shadow-xl w-p7 h-28 rounded-xl flex flex-col justify-center absolute mt-m4">
                   <div className="flex justify-center">
                     <img
@@ -200,7 +195,7 @@ function ThemeDesign({ setSelectTheme, selectTheme, setPage }) {
             <FaArrowLeft className="text-darkblue text-sm" />
             <button
               className=" text-darkblue font-semibold text-xl"
-              onClick={() => navigate("/home_page")}
+              onClick={() => setPage(0)}
             >
               Back
             </button>
@@ -209,7 +204,7 @@ function ThemeDesign({ setSelectTheme, selectTheme, setPage }) {
             className="flex items-center bg-blue-500 text-white font-semibold px-14 py-2 rounded-full"
             onClick={() => {
               selectTheme
-                ? setPage(1)
+                ? setPage(2)
                 : toast.error("please select theme color");
             }}
           >
@@ -221,4 +216,4 @@ function ThemeDesign({ setSelectTheme, selectTheme, setPage }) {
   );
 }
 
-export default ThemeDesign;
+export default PersonalPreviewColorDesign;

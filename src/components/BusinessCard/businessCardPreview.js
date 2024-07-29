@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import avatar from "../assets/image/avatar.png";
+import avatar from "../../assets/image/avatar.png";
 import { HiOutlineMapPin } from "react-icons/hi2";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { getProfileDetails } from "../services/ProfileServices";
+import { getProfileDetails } from "../../services/ProfileServices";
 import { IoLogoInstagram } from "react-icons/io";
 import { TiSocialFacebook } from "react-icons/ti";
 
@@ -77,11 +77,10 @@ function BusinessCardPreview({ selectTheme, values }) {
       <div className="flex flex-col items-center w-full max-w-md relative">
         <div
           className={`rounded-3xl w-full md:w-80 h-30 bg-white shadow-xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${
-            cardData?.image ? "min-h-screen" : "auto"}`}
+            cardData?.image ? "min-h-screen" : "auto"
+          }`}
         >
-          <div
-            className={`${themeClass} h-64 rounded-se-3xl rounded-tl-3xl`}
-          >
+          <div className={`${themeClass} h-64 rounded-se-3xl rounded-tl-3xl`}>
             <div className="flex justify-center items-center text-center pt-5">
               <div>
                 <img

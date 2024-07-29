@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Header from "../components/Header";
 import Profile from "../components/Profile";
 import ProfileContent from "../components/ProfileContent";
-import BusinessCardPreview from "../components/businessCardPreview";
-import BusinessThemeDesign from "../components/businessThemeDesign";
+import BusinessCardPreview from "../components/BusinessCard/businessCardPreview";
+import BusinessThemeDesign from "../components/BusinessCard/businessThemeDesign";
 
 function BusinessLayOut() {
   const [selectTheme, setSelectTheme] = useState();

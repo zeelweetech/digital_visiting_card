@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import Header from "../components/Header";
 import Profile from "../components/Profile";
 import ProfileContent from "../components/ProfileContent";
-import PersonalCardPreview from "../components/PersonalCardPreview";
-import ThemeDesign from "../components/ThemeDesign";
+import PersonalCard from "../components/PersonalCard";
+import PersonalPreviewColorDesign from "../components/PersonalCard/PersonalPreviewCard/PersonalPreviewColorDesign";
+import PersonalPreviewCard from "../components/PersonalCard/PersonalPreviewCard";
 
 function PersonalLayOut() {
   const [selectTheme, setSelectTheme] = useState();
@@ -29,12 +30,14 @@ function PersonalLayOut() {
       <div className="flex mt-14">
         <div className="w-full md:w-1/2 overflow-y-auto">
           {page === 0 ? (
-            <ThemeDesign
+            <PersonalCard />
+          ) : page === 1 ? (
+            <PersonalPreviewColorDesign
               setSelectTheme={setSelectTheme}
               selectTheme={selectTheme}
               setPage={setPage}
             />
-          ) : page === 1 ? (
+          ) : page === 2 ? (
             <Profile
               setPage={setPage}
               handleOnChange={handleOnChange}
@@ -42,7 +45,7 @@ function PersonalLayOut() {
               errors={errors}
               setErrors={setErrors}
             />
-          ) : page === 2 ? (
+          ) : page === 3 ? (
             <ProfileContent
               setPage={setPage}
               handleOnChange={handleOnChange}
@@ -55,9 +58,11 @@ function PersonalLayOut() {
             ""
           )}
         </div>
-        <div className="hidden md:block w-1/2">
-          <PersonalCardPreview selectTheme={selectTheme} values={values} />
-        </div>
+        {page !== 0 && (
+          <div className="hidden md:block w-1/2">
+            <PersonalPreviewCard selectTheme={selectTheme} values={values} />
+          </div>
+        )}
       </div>
     </div>
   );

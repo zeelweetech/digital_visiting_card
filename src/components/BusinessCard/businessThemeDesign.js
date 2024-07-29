@@ -1,6 +1,6 @@
 import React from "react";
 import { CiMail } from "react-icons/ci";
-import avatar from "../assets/image/avatar.png";
+import avatar from "../../assets/image/avatar.png";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { HiOutlineMapPin } from "react-icons/hi2";
 import { IoCallOutline } from "react-icons/io5";
@@ -198,11 +198,7 @@ function BusinessThemeDesign({ selectTheme, setSelectTheme, setPage }) {
                 >
                   <div className="flex justify-center text-center pt-1">
                     <div>
-                      <img
-                        src={avatar}
-                        className="w-16 h-16"
-                        alt="Not Found"
-                      />
+                      <img src={avatar} className="w-16 h-16" alt="Not Found" />
                       <div role="status" className="max-w-sm animate-pulse">
                         {CardData.NameSkeleton}
                         {CardData.TitleSkeleton}
