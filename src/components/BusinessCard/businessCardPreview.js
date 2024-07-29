@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import avatar from "../assets/image/avatar.png";
+import avatar from "../../assets/image/avatar.png";
 import { HiOutlineMapPin } from "react-icons/hi2";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { getProfileDetails } from "../services/ProfileServices";
+import { getProfileDetails } from "../../services/ProfileServices";
 import { IoLogoInstagram } from "react-icons/io";
 import { TiSocialFacebook } from "react-icons/ti";
 

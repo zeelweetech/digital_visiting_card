@@ -1,11 +1,11 @@
 import React from "react";
-import phone from "../../assets/image/phone.png";
-import avatar from "../../assets/image/avatar.png";
-import { IoMdMail, IoMdDownload } from "react-icons/io";
-import { FaWhatsapp, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 import { BiWorld } from "react-icons/bi";
+import { FaMapMarkerAlt, FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
+import { IoMdDownload, IoMdMail } from "react-icons/io";
+import avatar from "../../../assets/image/avatar.png";
+import phone from "../../../assets/image/phone.png";
 
-function PersonalPreview() {
+function PersonalDetailsCrad() {
   const CardDetails = [
     {
       Icon: <FaPhoneAlt />,
@@ -42,7 +42,9 @@ function PersonalPreview() {
           className="hidden md:block absolute rounded-2 w-80 h-42"
           alt="Not Found"
         />
-        <div className={`relative flex justify-center text-center h-42 items-center px-9`}>
+        <div
+          className={`relative flex justify-center text-center h-42 items-center px-9`}
+        >
           <div>
             <div className="flex justify-center text-center">
               <img src={avatar} className="w-40 h-40 mt-6" alt="Not Found" />
@@ -70,7 +72,7 @@ function PersonalPreview() {
             </div>
 
             <div className="bg-slate-200 p-1 mt-5 w-full sm:w-auto">
-              {CardDetails.map((data) => (
+              {CardDetails?.map((data) => (
                 <div
                   key={data.Filed}
                   className="flex items-center bg-theme pb-2 px-2 text-start space-x-2 w-full sm:w-60 mt-1"
@@ -96,4 +98,4 @@ function PersonalPreview() {
   );
 }
 
-export default PersonalPreview;
+export default PersonalDetailsCrad;
