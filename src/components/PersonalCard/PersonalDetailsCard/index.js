@@ -39,7 +39,7 @@ function PersonalDetailsCrad() {
       <div>
         <img
           src={phone}
-          className="hidden md:block absolute rounded-2 w-80 h-42"
+          className={`hidden md:block absolute rounded-2 w-80 h-42`}
           alt="Not Found"
         />
         <div

@@ -27,11 +27,10 @@ function PersonalLayOut() {
   return (
     <div>
       <Header />
+      {page === 0 && <PersonalCard />}
       <div className="flex mt-14">
         <div className="w-full md:w-1/2 overflow-y-auto">
-          {page === 0 ? (
-            <PersonalCard />
-          ) : page === 1 ? (
+          {page === 1 ? (
             <PersonalPreviewColorDesign
               setSelectTheme={setSelectTheme}
               selectTheme={selectTheme}
