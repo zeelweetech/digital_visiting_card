@@ -73,14 +73,14 @@ function BusinessCardPreview({ selectTheme, values }) {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen">
+    <div className={`flex flex-col justify-center items-center min-h-screen`}>
       <div className="flex flex-col items-center w-full max-w-md relative">
         <div
-          className={`rounded-3xl w-full md:w-80 h-30 bg-white shadow-xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${
+          className={`${cardData?.image ? "rounded-none" : "rounded-3xl"} w-full md:w-80 h-30 bg-white shadow-xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${
             cardData?.image ? "min-h-screen" : "auto"}`}
         >
           <div
-            className={`${themeClass} h-64 rounded-se-3xl rounded-tl-3xl`}
+            className={`${themeClass} h-64 ${cardData?.image ? "rounded-none" : "rounded-se-3xl"} ${cardData?.image ? "rounded-none" : "rounded-tl-3xl"}`}
           >
             <div className="flex justify-center items-center text-center pt-5">
               <div>
@@ -168,7 +168,7 @@ function BusinessCardPreview({ selectTheme, values }) {
               <div className="my-4">
                 <p>Mobile</p>
                 <Link
-                  className="cursor-pointer text-blue-800"
+                  className="cursor-pointer text-blue-800 break-words"
                   onClick={() => handlePhone(values?.phone || cardData?.phone)}
                 >
                   {values?.phone || cardData?.phone}

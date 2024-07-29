@@ -13,15 +13,13 @@ function Cardbutton({ setCardName }) {
 
   return (
     <div
-      className={`flex space-x-4 px-20 py-4 
-      ${window.innerWidth < 768 ? "flex-col" : ""}
-    `}
+      className="flex flex-col md:flex-row md:space-x-4 px-4 py-4 md:px-20"
     >
-      <div className="relative inline-block text-left">
+      <div className="relative inline-block text-left w-full md:w-auto">
         <div>
           <select
             type="button"
-            className="mr-14 items-center inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+            className="w-full md:w-auto mr-0 md:mr-14 items-center inline-flex justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
             id="menu-button"
             aria-expanded={isOpen}
             aria-haspopup="true"
@@ -34,9 +32,9 @@ function Cardbutton({ setCardName }) {
         </div>
       </div>
 
-      <div>
+      <div className="mt-4 md:mt-0 flex flex-col md:flex-row md:space-x-4">
         <button
-          className="bg-darkblue py-2 px-6 rounded-full text-white"
+          className="bg-darkblue py-2 px-6 rounded-full text-white mb-2 md:mb-0"
           onClick={() => {
             navigate("/business_profile_design");
           }}
@@ -44,7 +42,7 @@ function Cardbutton({ setCardName }) {
           Create a Digital Business Card
         </button>
       </div>
-      <div>
+      <div className="md:mt-0 flex flex-col md:flex-row md:space-x-4">
         <button
           className="bg-darkblue py-2 px-6 rounded-full text-white"
           onClick={() => {
