@@ -22,6 +22,7 @@ module.exports = {
       height: {
         100: '100vh',
         30: '40rem',
+        42: '42.5rem',
         h30: '34rem',
         19: '19rem'
       },
@@ -35,7 +36,7 @@ module.exports = {
       borderRadius: {
         2: '2.5rem',
         b1: '1.2rem',
-      }
+      },
     },
   },
   plugins: [],

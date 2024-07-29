@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from "react";
-import logo from "../assets/image/logo.png";
 import avatar from "../assets/image/avatar.png";
-import { IoCallOutline } from "react-icons/io5";
-import { CiMail } from "react-icons/ci";
 import { HiOutlineMapPin } from "react-icons/hi2";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { getProfileDetails } from "../services/ProfileServices";
 import { IoLogoInstagram } from "react-icons/io";
 import { TiSocialFacebook } from "react-icons/ti";
-import { FaArrowLeft } from "react-icons/fa";
 
 function BusinessCardPreview({ selectTheme, values }) {
   const { id } = useParams();
@@ -77,17 +73,14 @@ function BusinessCardPreview({ selectTheme, values }) {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen p-4">
+    <div className="flex flex-col justify-center items-center min-h-screen">
       <div className="flex flex-col items-center w-full max-w-md relative">
         <div
-          className="rounded-3xl w-80 h-30 bg-white shadow-xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          style={{
-            minHeight: cardData?.image ? "100vh" : "w-80 h-30",
-            width: cardData?.image ? "100%" : "w-80"
-          }}
+          className={`rounded-3xl w-full md:w-80 h-30 bg-white shadow-xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${
+            cardData?.image ? "min-h-screen" : "auto"}`}
         >
           <div
-            className={`${themeClass} h-64 rounded-se-3xl rounded-tl-3xl p-3`}
+            className={`${themeClass} h-64 rounded-se-3xl rounded-tl-3xl`}
           >
             <div className="flex justify-center items-center text-center pt-5">
               <div>

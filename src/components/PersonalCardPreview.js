@@ -79,7 +79,7 @@ function PersonalCardPreview({ selectTheme, values }) {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen p-4">
+    <div className="flex flex-col justify-center items-center min-h-screen overflow-hidden">
       {loading ? (
         <Loader />
       ) : (
@@ -88,7 +88,7 @@ function PersonalCardPreview({ selectTheme, values }) {
             cardData?.image ? "w-full" : "w-full"
           } max-w-md relative ${cardData?.image && themeClass}`}
           style={{
-            minHeight: cardData?.image ? "100vh" : "w-80 h-30",
+            minHeight: cardData?.image ? "100vh" : "auto",
           }}
         >
           {!cardData?.image && (
@@ -99,7 +99,7 @@ function PersonalCardPreview({ selectTheme, values }) {
             />
           )}
           <div
-            className="overflow-y-auto"
+            className="overflow-y-auto h-h30"
             style={{ minHeight: cardData?.image ? "100vh" : "34rem" }}
           >
             <div className="bg-gray-200 w-17 h-72 rounded-3xl flex flex-col justify-center relative text-center mt-24">
