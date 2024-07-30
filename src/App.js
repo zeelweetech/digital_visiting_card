@@ -9,6 +9,7 @@ import BusinessCardPreview from "./components/BusinessCard/businessCardPreview.j
 import PersonalLayOut from "./layout/personalLayout.js";
 import BusinessThemeDesign from "./components/BusinessCard/businessThemeDesign.js";
 import PersonalPreviewCard from "./components/PersonalCard/PersonalPreviewCard/index.js";
+import PersonalLinksCard from "./components/PersonalCard/PersonalLinksCard/index.js";
 
 function App() {
   const { id, name } = useParams();

@@ -1,5 +1,8 @@
 import React from "react";
 import phone from "../../assets/image/Screenshot 2024-07-29 142859.png";
+import Personalbusinesscard from "../../assets/image/Personalbusinesscard.png"
+import personallinkscard from "../../assets/image/personallinkscard.png"
+// import Personaldetailscard from "../../assets/image/Screenshot 2024-07-29 142859.png"
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -9,8 +12,7 @@ function PersonalCard({ setSelectCard, selectCard, setPage }) {
 
   const CardImage = [
     {
-      image: <img src={phone} className=" w-52 h-96" alt="Not Found" />,
-      cardname: "PersonalBusinessCard",
+      image: <img src={Personalbusinesscard} className=" w-52 h-80" alt="Not Found" />,
     },
     {
       image: <img src={phone} className=" w-52 h-96" alt="Not Found" />,
@@ -21,8 +23,7 @@ function PersonalCard({ setSelectCard, selectCard, setPage }) {
       cardname: "PersonalDetailsCard",
     },
     {
-      image: <img src={phone} className=" w-52 h-96" alt="Not Found" />,
-      cardname: "PersonalLinksCard",
+      image: <img src={personallinkscard} className=" w-52 h-80" alt="Not Found" />,
     },
     {
       image: <img src={phone} className=" w-52 h-96" alt="Not Found" />,
