@@ -242,7 +242,10 @@ function ProfileContent({
         <div className="flex sm:flex-row justify-between sm:space-x-4 w-full pt-10">
           <div
             className="flex items-center space-x-2"
-            onClick={() => setPage(2)}
+            onClick={() => {
+              setPage(2);
+              setErrors("");
+            }}
           >
             <FaArrowLeft className="text-darkblue text-sm" />
             <button className=" text-darkblue font-semibold text-xl">

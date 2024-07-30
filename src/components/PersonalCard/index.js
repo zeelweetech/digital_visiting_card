@@ -1,61 +1,85 @@
 import React from "react";
 import phone from "../../assets/image/Screenshot 2024-07-29 142859.png";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
-function PersonalCard() {
+function PersonalCard({ setSelectCard, selectCard, setPage }) {
+  const navigate = useNavigate();
+
   const CardImage = [
     {
-      image: <img src={phone} className=" w-52 h-80" alt="Not Found" />,
+      image: <img src={phone} className=" w-52 h-96" alt="Not Found" />,
+      cardname: "PersonalBusinessCard",
     },
     {
-      image: <img src={phone} className=" w-52 h-80" alt="Not Found" />,
+      image: <img src={phone} className=" w-52 h-96" alt="Not Found" />,
+      cardname: "PersonalContactCard",
     },
     {
-      image: <img src={phone} className=" w-52 h-80" alt="Not Found" />,
+      image: <img src={phone} className=" w-52 h-96" alt="Not Found" />,
+      cardname: "PersonalDetailsCard",
     },
     {
-      image: <img src={phone} className=" w-52 h-80" alt="Not Found" />,
+      image: <img src={phone} className=" w-52 h-96" alt="Not Found" />,
+      cardname: "PersonalLinksCard",
     },
     {
-      image: <img src={phone} className=" w-52 h-80" alt="Not Found" />,
+      image: <img src={phone} className=" w-52 h-96" alt="Not Found" />,
+      cardname: "PersonalPreviewCard",
     },
     {
-      image: <img src={phone} className=" w-52 h-80" alt="Not Found" />,
+      image: <img src={phone} className=" w-52 h-96" alt="Not Found" />,
+      cardname: "PersonalThemeCard",
     },
   ];
 
   return (
     <div>
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 mt-24 gap-y-10">
-        {CardImage.map((data) => (
+        {CardImage?.map((item) => (
           <div className="text-center">
-            <div className="flex justify-center">{data.image}</div>
-            <input type="radio" name="design" className="w-7 h-7 mt-3" />
+            <div className="flex justify-center">{item?.image}</div>
+            <input
+              className="w-7 h-7 mt-3 cursor-pointer"
+              type="radio"
+              name="card"
+              value={item?.cardname}
+              checked={selectCard === item?.cardname}
+              onChange={() => {
+                setSelectCard(item?.cardname);
+              }}
+            />
           </div>
         ))}
       </div>
-
       <div className="flex justify-around mt-16">
-          <div className="flex items-center space-x-2">
-            <FaArrowLeft className="text-darkblue text-sm" />
-            <button
-              className=" text-darkblue font-semibold text-xl"
-              // onClick={() => setPage(0)}
-            >
-              Back
-            </button>
-          </div>
+        <div className="flex items-center space-x-2">
+          <FaArrowLeft className="text-darkblue text-sm" />
           <button
-            className="flex items-center bg-blue-500 text-white font-semibold px-14 py-2 rounded-full"
-            // onClick={() => {
-            //   selectTheme
-            //     ? setPage(2)
-            //     : toast.error("please select theme color");
-            // }}
+            className=" text-darkblue font-semibold text-xl"
+            onClick={() => navigate("/home_page")}
           >
-            NEXT <FaArrowRight className="ml-3" />
+            BACK
           </button>
         </div>
+        <button
+          className="flex items-center bg-blue-500 text-white font-semibold px-14 py-2 rounded-full"
+          onClick={() => {
+            if (selectCard) {
+              if (selectCard === "PersonalPreviewCard") {
+                setPage(1);
+              } else {
+                setPage(2);
+              }
+            } else {
+              toast.error("please select personal card");
+            }
+          }}
+        >
+          NEXT <FaArrowRight className="ml-3" />
+        </button>
+      </div>
     </div>
   );
 }
