@@ -15,26 +15,18 @@ import { AiOutlineQrcode } from "react-icons/ai";
 
 function PersonalLinksCard() {
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen overflow-hidden">
+    <div className={`flex flex-col justify-center items-center min-h-screen overflow-hidden`}>
       {/* {loading ? (
         <Loader />
       ) : ( */}
-      <div
-        // className={`flex flex-col items-center ${
-        //   cardData?.image ? "w-full" : "w-full"
-        // } max-w-md relative`}
-        className={`flex flex-col items-center w-full max-w-md relative}`}
-        // style={{
-        //   minHeight: cardData?.image ? "100vh" : "auto",
-        // }}
-      >
+      <div className={`${phone ? "100vh" : ""}`}>
         <img
           src={phone}
           className="hidden md:block rounded-2 w-80 h-30 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
           alt="Not Found"
         />
         <div>
-          <div className="bg-violet-500 w-17 h-52 rounded-3xl flex flex-col justify-center relative text-center mt-24">
+          <div className={`bg-violet-500 w-17 rounded-3xl text-center mt-24 mb-2 py-8`}>
             <img
               src={businesswomen}
               //   values?.image
@@ -43,7 +35,7 @@ function PersonalLinksCard() {
               //     ? cardData?.image
               //     : avatar
               // }
-              className="rounded-full border-4 border-white w-36 h-36 -mt-20 absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+              className="rounded-full border-4 border-white w-36 h-36 absolute left-1/2 -mt-10 transform -translate-x-1/2 -translate-y-1/2"
               style={{boxShadow: "0 1px 2px 0 #ffffff, 0 1px 5px 0 #ffffff"}}
               alt="Not Found"
             />

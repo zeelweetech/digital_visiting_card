@@ -76,6 +76,8 @@ function PersonalPreviewCard({ selectTheme, values }) {
       );
     }
   };
+
+  // console.log("valus ********** :", values);
   return (
     <div className="flex flex-col justify-center items-center min-h-screen overflow-hidden">
       {loading ? (
@@ -100,7 +102,7 @@ function PersonalPreviewCard({ selectTheme, values }) {
             className="overflow-y-auto h-h30"
             style={{ minHeight: cardData?.image ? "100vh" : "34rem" }}
           >
-            <div className="bg-gray-200 w-17 h-72 rounded-3xl flex flex-col justify-center relative text-center mt-24">
+            <div className="bg-gray-200 w-17 h-80 rounded-3xl flex flex-col justify-center relative text-center mt-20">
               <img
                 src={
                   values?.image
@@ -109,7 +111,7 @@ function PersonalPreviewCard({ selectTheme, values }) {
                     ? cardData?.image
                     : avatar
                 }
-                className="rounded-full border-4 border-white w-36 h-36 -mt-40 absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                className="rounded-full border-4 border-white w-36 h-36 -mt-44 absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                 alt="Not Found"
               />
               <div className="overflow-y-auto overflow-x-hidden overscroll-y-hidden">
@@ -126,6 +128,13 @@ function PersonalPreviewCard({ selectTheme, values }) {
                     : cardData?.title
                     ? cardData?.title
                     : "Title"}
+                </p>
+                <p className="text-xl pt-2">
+                  {values?.company
+                    ? values?.company
+                    : cardData?.company
+                    ? cardData?.company
+                    : "Company Name"}
                 </p>
                 <p className="pt-3 pr-7 pl-4 w-72 break-words">
                   {values?.description ? (
