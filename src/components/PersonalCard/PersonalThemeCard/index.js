@@ -4,11 +4,11 @@ import phone from "../../../assets/image/phone.png";
 function PersonalThemeCard() {
   return (
     <div>
-      <img
-        src={phone}
-        className="rounded-2 w-44 h-80"
-        alt="Not Found"
-      />
+      <div className="flex justify-center items-center min-h-screen">
+        <div>
+          <img src={phone} className="w-80 h-30" alt="Not Found" />
+        </div>
+      </div>
     </div>
   );
 }

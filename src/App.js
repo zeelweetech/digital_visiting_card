@@ -9,6 +9,7 @@ import BusinessCardPreview from "./components/BusinessCard/businessCardPreview.j
 import PersonalLayOut from "./layout/personalLayout.js";
 import BusinessThemeDesign from "./components/BusinessCard/businessThemeDesign.js";
 import PersonalPreviewCard from "./components/PersonalCard/PersonalPreviewCard/index.js";
+import PersonalLinksCard from "./components/PersonalCard/PersonalLinksCard/index.js";
 
 function App() {
   return (
@@ -36,8 +37,8 @@ function App() {
             path="/business_theme_design"
             element={<BusinessThemeDesign />}
           />
-
           {/* </Route> */}
+          <Route path="/PersonalLinksCard" element={<PersonalLinksCard/>} />
         </Routes>
       </BrowserRouter>
     </div>

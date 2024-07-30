@@ -11,6 +11,7 @@ module.exports = {
         theme: '#f0f0f0',
         theme1: '#333',
         theme2: '#525252',
+        personalcontactcard: '#25e6d9'
       },
       colors: {
         darkblue: "#0065AF",
@@ -36,6 +37,7 @@ module.exports = {
       borderRadius: {
         2: '2.5rem',
         b1: '1.2rem',
+        b5: '5rem',
       },
     },
   },

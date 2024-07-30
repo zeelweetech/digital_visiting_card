@@ -1,11 +1,14 @@
 import React from "react";
 import phone from "../../assets/image/Screenshot 2024-07-29 142859.png";
+import Personalbusinesscard from "../../assets/image/Personalbusinesscard.png"
+import personallinkscard from "../../assets/image/personallinkscard.png"
+// import Personaldetailscard from "../../assets/image/Screenshot 2024-07-29 142859.png"
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 function PersonalCard() {
   const CardImage = [
     {
-      image: <img src={phone} className=" w-52 h-80" alt="Not Found" />,
+      image: <img src={Personalbusinesscard} className=" w-52 h-80" alt="Not Found" />,
     },
     {
       image: <img src={phone} className=" w-52 h-80" alt="Not Found" />,
@@ -14,7 +17,7 @@ function PersonalCard() {
       image: <img src={phone} className=" w-52 h-80" alt="Not Found" />,
     },
     {
-      image: <img src={phone} className=" w-52 h-80" alt="Not Found" />,
+      image: <img src={personallinkscard} className=" w-52 h-80" alt="Not Found" />,
     },
     {
       image: <img src={phone} className=" w-52 h-80" alt="Not Found" />,

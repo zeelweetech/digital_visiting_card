@@ -12,7 +12,19 @@ code {
     monospace;
 }
 
+.curve {
+  position: relative;
+  width: 20rem;
+  overflow: hidden;
+  line-height: 0;
+}
 
+.curve svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 150px;
+}
 
 @tailwind base;
 @tailwind components;
