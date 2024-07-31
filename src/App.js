@@ -11,6 +11,7 @@ import BusinessThemeDesign from "./components/BusinessCard/businessThemeDesign.j
 import PersonalPreviewCard from "./components/PersonalCard/PersonalPreviewCard/index.js";
 import PersonalLinksCard from "./components/PersonalCard/PersonalLinksCard/index.js";
 import PersonalBusinessCard from "./components/PersonalCard/PersonalBusinessCard/index.js";
+import PersonalThemeCard from "./components/PersonalCard/PersonalThemeCard/index.js";
 
 function App() {
   const { id, name } = useParams();
@@ -45,6 +46,7 @@ function App() {
               path="/PersonalBusinessCard/:name/:id"
               element={<PersonalBusinessCard />}
             />
+            <Route path="/PersonalThemeCard" element={<PersonalThemeCard/>} />
           </Route>
         </Routes>
       </BrowserRouter>

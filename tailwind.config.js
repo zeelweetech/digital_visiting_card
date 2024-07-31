@@ -18,7 +18,8 @@ module.exports = {
       },
       width: {
         17: '17.3rem',
-        p7: '7.5rem'
+        p7: '7.5rem',
+        20: '20rem'
       },
       height: {
         100: '100vh',
@@ -32,7 +33,9 @@ module.exports = {
         m7: '7.7rem'
       },
       padding: {
-        p3: '3.7rem'
+        p3: '3.7rem',
+        p8: '0.69rem',
+        p5: '1.38rem',
       },
       borderRadius: {
         2: '2.5rem',
