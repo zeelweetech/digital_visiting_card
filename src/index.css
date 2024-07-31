@@ -12,7 +12,7 @@ code {
     monospace;
 }
 
-.curve {
+/* .curve {
   position: relative;
   width: 20rem;
   overflow: hidden;
@@ -24,6 +24,15 @@ code {
   display: block;
   width: calc(100% + 1.3px);
   height: 150px;
+} */
+
+.scrollable-container {
+  -ms-overflow-style: none; 
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollable-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
 }
 
 @tailwind base;

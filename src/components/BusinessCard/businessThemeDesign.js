@@ -28,10 +28,10 @@ function BusinessThemeDesign({ selectTheme, setSelectTheme, setPage }) {
         <div className="h-1.5 bg-gray-500 rounded-full dark:bg-gray-700 w-28 mt-5 my-2"></div>
       ),
       Skeleton3: (
-        <div className="h-2 bg-gray-500 rounded-full dark:bg-gray-700 w-20"></div>
+        <div className="h-2 bg-gray-500 rounded-full dark:bg-gray-700"></div>
       ),
       Skeleton4: (
-        <div className="h-2 bg-gray-500 rounded-full dark:bg-gray-700 w-20 mt-5 my-2"></div>
+        <div className="h-2 bg-gray-500 rounded-full dark:bg-gray-700 mt-5 my-2"></div>
       ),
       Skeleton5: (
         <div className="h-1.5 bg-gray-500 rounded-full dark:bg-gray-700 w-28"></div>
@@ -56,10 +56,10 @@ function BusinessThemeDesign({ selectTheme, setSelectTheme, setPage }) {
         <div className="h-1.5 bg-gray-500 rounded-full dark:bg-gray-700 w-28 mt-5 my-2"></div>
       ),
       Skeleton3: (
-        <div className="h-2 bg-gray-500 rounded-full dark:bg-gray-700 w-20"></div>
+        <div className="h-2 bg-gray-500 rounded-full dark:bg-gray-700"></div>
       ),
       Skeleton4: (
-        <div className="h-2 bg-gray-500 rounded-full dark:bg-gray-700 w-20 mt-5 my-2"></div>
+        <div className="h-2 bg-gray-500 rounded-full dark:bg-gray-700 mt-5 my-2"></div>
       ),
       Skeleton5: (
         <div className="h-1.5 bg-gray-500 rounded-full dark:bg-gray-700 w-28"></div>
@@ -84,10 +84,10 @@ function BusinessThemeDesign({ selectTheme, setSelectTheme, setPage }) {
         <div className="h-1.5 bg-gray-500 rounded-full dark:bg-gray-700 w-28 mt-5 my-2"></div>
       ),
       Skeleton3: (
-        <div className="h-2 bg-gray-500 rounded-full dark:bg-gray-700 w-20"></div>
+        <div className="h-2 bg-gray-500 rounded-full dark:bg-gray-700"></div>
       ),
       Skeleton4: (
-        <div className="h-2 bg-gray-500 rounded-full dark:bg-gray-700 w-20 mt-5 my-2"></div>
+        <div className="h-2 bg-gray-500 rounded-full dark:bg-gray-700 mt-5 my-2"></div>
       ),
       Skeleton5: (
         <div className="h-1.5 bg-gray-500 rounded-full dark:bg-gray-700 w-28"></div>
@@ -112,10 +112,10 @@ function BusinessThemeDesign({ selectTheme, setSelectTheme, setPage }) {
         <div className="h-1.5 bg-gray-500 rounded-full dark:bg-gray-700 w-28 mt-5 my-2"></div>
       ),
       Skeleton3: (
-        <div className="h-2 bg-gray-500 rounded-full dark:bg-gray-700 w-20"></div>
+        <div className="h-2 bg-gray-500 rounded-full dark:bg-gray-700"></div>
       ),
       Skeleton4: (
-        <div className="h-2 bg-gray-500 rounded-full dark:bg-gray-700 w-20 mt-5 my-2"></div>
+        <div className="h-2 bg-gray-500 rounded-full dark:bg-gray-700 mt-5 my-2"></div>
       ),
       Skeleton5: (
         <div className="h-1.5 bg-gray-500 rounded-full dark:bg-gray-700 w-28"></div>
@@ -140,10 +140,10 @@ function BusinessThemeDesign({ selectTheme, setSelectTheme, setPage }) {
         <div className="h-1.5 bg-gray-500 rounded-full dark:bg-gray-700 w-28 mt-5 my-2"></div>
       ),
       Skeleton3: (
-        <div className="h-2 bg-gray-500 rounded-full dark:bg-gray-700 w-20"></div>
+        <div className="h-2 bg-gray-500 rounded-full dark:bg-gray-700"></div>
       ),
       Skeleton4: (
-        <div className="h-2 bg-gray-500 rounded-full dark:bg-gray-700 w-20 mt-5 my-2"></div>
+        <div className="h-2 bg-gray-500 rounded-full dark:bg-gray-700 mt-5 my-2"></div>
       ),
       Skeleton5: (
         <div className="h-1.5 bg-gray-500 rounded-full dark:bg-gray-700 w-28"></div>
@@ -168,10 +168,10 @@ function BusinessThemeDesign({ selectTheme, setSelectTheme, setPage }) {
         <div className="h-1.5 bg-gray-500 rounded-full dark:bg-gray-700 w-28 mt-5 my-2"></div>
       ),
       Skeleton3: (
-        <div className="h-2 bg-gray-500 rounded-full dark:bg-gray-700 w-20"></div>
+        <div className="h-2 bg-gray-500 rounded-full dark:bg-gray-700"></div>
       ),
       Skeleton4: (
-        <div className="h-2 bg-gray-500 rounded-full dark:bg-gray-700 w-20 mt-5 my-2"></div>
+        <div className="h-2 bg-gray-500 rounded-full dark:bg-gray-700 mt-5 my-2"></div>
       ),
       Skeleton5: (
         <div className="h-1.5 bg-gray-500 rounded-full dark:bg-gray-700 w-28"></div>

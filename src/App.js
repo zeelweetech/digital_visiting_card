@@ -9,8 +9,7 @@ import BusinessCardPreview from "./components/BusinessCard/businessCardPreview.j
 import PersonalLayOut from "./layout/personalLayout.js";
 import BusinessThemeDesign from "./components/BusinessCard/businessThemeDesign.js";
 import PersonalPreviewCard from "./components/PersonalCard/PersonalPreviewCard/index.js";
-import PersonalLinksCard from "./components/PersonalCard/PersonalLinksCard/index.js";
-import PersonalThemeCard from "./components/PersonalCard/PersonalThemeCard/index.js";
+import PersonalContactCard from "./components/PersonalCard/PersonalContactCard/index.js";
 
 function App() {
   const { id, name } = useParams();
@@ -45,7 +44,7 @@ function App() {
               path="/business_theme_design"
               element={<BusinessThemeDesign />}
             />
-            <Route path="/PersonalThemeCard" element={<PersonalThemeCard/>} />
+            <Route path="/PersonalContactCard" element={<PersonalContactCard/>} />
           </Route>
         </Routes>
       </BrowserRouter>

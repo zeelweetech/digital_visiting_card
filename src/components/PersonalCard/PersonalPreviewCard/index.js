@@ -99,10 +99,10 @@ function PersonalPreviewCard({ selectTheme, values }) {
             />
           )}
           <div
-            className="overflow-y-auto h-h30"
-            style={{ minHeight: cardData?.image ? "100vh" : "34rem" }}
+            className="scrollable-container h-h30 overflow-x-hidden relative"
+            style={{ minHeight: cardData?.image ? "100vh" : "34rem",}}
           >
-            <div className="bg-gray-200 w-17 h-80 rounded-3xl flex flex-col justify-center relative text-center mt-20">
+            <div className="bg-gray-200 w-17 h-80 rounded-3xl flex flex-col justify-center text-center mt-20">
               <img
                 src={
                   values?.image
@@ -156,7 +156,7 @@ function PersonalPreviewCard({ selectTheme, values }) {
 
             {(values?.email || cardData?.email) && (
               <button
-                className="relative bg-neutral-700 text-white font-semibold mt-4 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto"
+                className="bg-neutral-700 text-white font-semibold mt-4 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto"
                 onClick={() => handleMail(values?.email || cardData?.email)}
               >
                 <CiMail className="ml-5 mr-20" />
@@ -165,7 +165,7 @@ function PersonalPreviewCard({ selectTheme, values }) {
             )}
             {(values?.phone || cardData?.phone) && (
               <button
-                className="relative bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto"
+                className="bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto"
                 onClick={() => handlePhone(values?.phone || cardData?.phone)}
               >
                 <MdLocalPhone className="ml-5 mr-20" />
@@ -174,7 +174,7 @@ function PersonalPreviewCard({ selectTheme, values }) {
             )}
             {(values?.address || cardData?.address) && (
               <button
-                className="relative bg-neutral-700 text-white font-semibold py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto"
+                className="bg-neutral-700 text-white font-semibold py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto"
                 onClick={() =>
                   handleAddress(values?.address || cardData?.address)
                 }
@@ -186,7 +186,7 @@ function PersonalPreviewCard({ selectTheme, values }) {
             {(values?.instagram || cardData) &&
               cardData?.instagram !== "undefined" && (
                 <button
-                  className="relative bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto"
+                  className="bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto"
                   onClick={() =>
                     handleRedirect(values?.instagram || cardData?.instagram)
                   }
@@ -198,7 +198,7 @@ function PersonalPreviewCard({ selectTheme, values }) {
             {(values?.website || cardData) &&
               cardData?.website !== "undefined" && (
                 <button
-                  className="relative bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto"
+                  className="bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto"
                   onClick={() =>
                     handleRedirect(values?.website || cardData?.website)
                   }
@@ -210,7 +210,7 @@ function PersonalPreviewCard({ selectTheme, values }) {
             {(values?.facebook || cardData) &&
               cardData?.facebook !== "undefined" && (
                 <button
-                  className="relative bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto"
+                  className="bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto"
                   onClick={() =>
                     handleRedirect(values?.facebook || cardData?.facebook)
                   }
