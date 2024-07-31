@@ -40,7 +40,10 @@ function PersonalLinksCard() {
               alt="Not Found"
             />
             <div className="relative">
-              <button type="button" className="bg-white rounded-full p-1 ml-24 -mt-40">
+              <button
+                type="button"
+                className="bg-white rounded-full p-1 ml-24 -mt-40"
+              >
                 <IoShareSocialOutline />
               </button>
             </div>

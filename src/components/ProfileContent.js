@@ -4,8 +4,8 @@ import { MdLocalPhone } from "react-icons/md";
 import { FiMapPin } from "react-icons/fi";
 import { IoLogoInstagram } from "react-icons/io";
 import { BiWorld } from "react-icons/bi";
-import { TiSocialFacebook } from "react-icons/ti";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { TiSocialFacebook, TiSocialLinkedin } from "react-icons/ti";
+import { FaArrowLeft, FaArrowRight, FaPaypal } from "react-icons/fa";
 import { decodedToken, handleNumberKeyDown } from "../utils";
 import {
   addBusinessDetails,
@@ -23,12 +23,13 @@ function ProfileContent({
   errors,
   setErrors,
   selectTheme,
+  selectCard,
 }) {
   const { userId } = decodedToken();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const path = window.location.pathname.split("/").pop();
-  console.log("path", path);
+  console.log("selectCard", selectCard);
 
   const validation = () => {
     const newErrors = {};
@@ -48,17 +49,25 @@ function ProfileContent({
       newErrors.address = "Please enter an address";
     }
 
-    // if (!values?.instagram) {
-    //   newErrors.instagram = "Please enter an instagram";
-    // }
+    if (!values?.instagram) {
+      newErrors.instagram = "Please enter an instagram";
+    }
 
-    // if (!values?.website) {
-    //   newErrors.website = "Please enter a website";
-    // }
+    if (!values?.website) {
+      newErrors.website = "Please enter a website";
+    }
 
-    // if (!values?.facebook) {
-    //   newErrors.facebook = "Please enter a facebook";
-    // }
+    if (!values?.facebook) {
+      newErrors.facebook = "Please enter a facebook";
+    }
+
+    if (!values?.linkedin) {
+      newErrors.linkedin = "Please enter a linkedin";
+    }
+
+    if (!values?.paypal) {
+      newErrors.paypal = "Please enter a paypal";
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -68,23 +77,57 @@ function ProfileContent({
     e.preventDefault();
     if (validation()) {
       setLoading(true);
-      var formdata = new FormData();
-      formdata.append("image", values?.image);
-      formdata.append("name", values?.name);
-      formdata.append("title", values?.title);
-      formdata.append("description", values?.description);
-      formdata.append("email", values?.email);
-      formdata.append("phone", values?.phone);
-      formdata.append("address", values?.address);
-      formdata.append("website", values?.website);
-      formdata.append("facebook", values?.facebook);
-      formdata.append("instagram", values?.instagram);
-      formdata.append("userId", userId);
-      formdata.append("color", selectTheme);
-      formdata.append(
-        "category",
-        path === "business_profile_design" ? "businesscard" : "personalcard"
-      );
+      if (path === "business_profile_design") {
+        var formdata = new FormData();
+        formdata.append("image", values?.image);
+        formdata.append("name", values?.name);
+        formdata.append("title", values?.title);
+        formdata.append("description", values?.description);
+        formdata.append("email", values?.email);
+        formdata.append("phone", values?.phone);
+        formdata.append("address", values?.address);
+        formdata.append("website", values?.website);
+        formdata.append("facebook", values?.facebook);
+        formdata.append("instagram", values?.instagram);
+        formdata.append("userId", userId);
+        formdata.append("color", selectTheme);
+        formdata.append("category", "businesscard");
+      } else {
+        var formdata = new FormData();
+        formdata.append("image", values?.image);
+        formdata.append("name", values?.name);
+        formdata.append("title", values?.title);
+        formdata.append("description", values?.description);
+        formdata.append("backgroundcolor", values?.backgroundcolor);
+        formdata.append("fontcolor", values?.fontcolor);
+        formdata.append("email", values?.email);
+        formdata.append("phone", values?.phone);
+        formdata.append("address", values?.address);
+        formdata.append("website", values?.website);
+        formdata.append("facebook", values?.facebook);
+        formdata.append("instagram", values?.instagram);
+        formdata.append("linkedin", values?.linkedin);
+        formdata.append("paypal", values?.paypal);
+        formdata.append("userId", userId);
+        formdata.append("color", selectTheme);
+        formdata.append("category", "personalcard");
+        formdata.append(
+          "cardName",
+          selectCard === "PersonalBusinessCard"
+            ? "PersonalBusinessCard"
+            : selectCard === "PersonalBusinessCard"
+            ? "PersonalBusinessCard"
+            : selectCard === "PersonalDetailsCard"
+            ? "PersonalDetailsCard"
+            : selectCard === "PersonalLinksCard"
+            ? "PersonalLinksCard"
+            : selectCard === "PersonalPreviewCard"
+            ? "PersonalPreviewCard"
+            : selectCard === "PersonalThemeCard"
+            ? "PersonalThemeCard"
+            : ""
+        );
+      }
 
       await (path === "business_profile_design"
         ? addBusinessDetails({ body: formdata })
@@ -95,13 +138,15 @@ function ProfileContent({
           toast.success(res?.message);
           setLoading(false);
           if (path === "business_profile_design") {
-            navigate(
-              `/business_digital_card/${res?.digitalBusinessCard?.name}/${res?.digitalBusinessCard?.businessCardId}`
-            );
+            navigate(res?.digitalBusinessCard?.link);
+            // navigate(
+            //   `/business_digital_card/${res?.digitalBusinessCard?.name}/${res?.digitalBusinessCard?.businessCardId}`
+            // );
           } else if (path === "personal_profile_design") {
-            navigate(
-              `/personal_digital_card/${res?.digitalPersonalCard?.name}/${res?.digitalPersonalCard?.personalCardId}`
-            );
+            navigate(res?.digitalPersonalCard?.link);
+            // navigate(
+            //   `/personal_digital_card/${res?.digitalPersonalCard?.name}/${res?.digitalPersonalCard?.personalCardId}`
+            // );
           }
         })
         .catch((err) => {
@@ -236,6 +281,46 @@ function ProfileContent({
           </div>
           {errors?.facebook && (
             <p className="text-xs text-red-500">{errors?.facebook}</p>
+          )}
+        </div>
+
+        <div className="flex flex-col items-center w-full max-w-lg py-3">
+          <div className="flex w-full max-w-md border-x border-y rounded-md hover:border-blue-700">
+            <span className="inline-flex items-center px-3 text-xl text-gray-900 bg-white border border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+              <TiSocialLinkedin />
+            </span>
+            <input
+              type="text"
+              id="website-admin"
+              className="rounded-e-md bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0 w-full text-sm p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="+ Linkedin"
+              name="linkedin"
+              value={values?.linkedin}
+              onChange={(e) => handleOnChange(e)}
+            />
+          </div>
+          {errors?.linkedin && (
+            <p className="text-xs text-red-500">{errors?.linkedin}</p>
+          )}
+        </div>
+
+        <div className="flex flex-col items-center w-full max-w-lg py-3">
+          <div className="flex w-full max-w-md border-x border-y rounded-md hover:border-blue-700">
+            <span className="inline-flex items-center px-3 text-xl text-gray-900 bg-white border border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+              <FaPaypal />
+            </span>
+            <input
+              type="text"
+              id="website-admin"
+              className="rounded-e-md bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0 w-full text-sm p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="+ PayPal"
+              name="paypal"
+              value={values?.paypal}
+              onChange={(e) => handleOnChange(e)}
+            />
+          </div>
+          {errors?.paypal && (
+            <p className="text-xs text-red-500">{errors?.paypal}</p>
           )}
         </div>
 
