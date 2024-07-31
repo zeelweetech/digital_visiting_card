@@ -23,7 +23,7 @@ function PersonalLinksCard() {
         // className={`flex flex-col items-center ${
         //   cardData?.image ? "w-full" : "w-full"
         // } max-w-md relative`}
-        className={`flex flex-col items-center w-full max-w-md relative}`}
+        className={`flex flex-col items-center w-full max-w-md relative`}
         // style={{
         //   minHeight: cardData?.image ? "100vh" : "auto",
         // }}
@@ -44,11 +44,14 @@ function PersonalLinksCard() {
               //     : avatar
               // }
               className="rounded-full border-4 border-white w-36 h-36 -mt-20 absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-              style={{boxShadow: "0 1px 2px 0 #ffffff, 0 1px 5px 0 #ffffff"}}
+              style={{ boxShadow: "0 1px 2px 0 #ffffff, 0 1px 5px 0 #ffffff" }}
               alt="Not Found"
             />
             <div className="relative">
-              <button type="button" className="bg-white rounded-full p-1 ml-24 -mt-40">
+              <button
+                type="button"
+                className="bg-white rounded-full p-1 ml-24 -mt-40"
+              >
                 <IoShareSocialOutline />
               </button>
             </div>

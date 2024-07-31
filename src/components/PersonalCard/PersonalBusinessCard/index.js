@@ -10,24 +10,11 @@ import { HiOutlineMapPin } from "react-icons/hi2";
 import { FiPhone } from "react-icons/fi";
 import { CiMail } from "react-icons/ci";
 
-function PersonalBusinessCard({ selectTheme, values }) {
+function PersonalBusinessCard({ values }) {
   const { id } = useParams();
   const [cardData, setCardData] = useState();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
-  const themeClasses = {
-    Light: "bg-theme",
-    Dark: "bg-black text-white",
-    Neutral: "bg-theme1 text-white",
-    Gradient: "bg-theme2 text-white",
-    Energetic: "bg-custom-gradient text-black",
-    Ambitious: "bg-custom1-gradient",
-  };
-  console.log("values", values);
-  const themeClass = selectTheme
-    ? themeClasses[selectTheme]
-    : themeClasses[cardData?.color] || "bg-theme";
 
   useEffect(() => {
     const fetchProfileDetails = async () => {
@@ -87,9 +74,14 @@ function PersonalBusinessCard({ selectTheme, values }) {
           }`}
         >
           <div
-            className={`bg-blue-950 h-72 ${
+            className={`h-72 ${
               cardData?.image ? "rounded-none" : "rounded-se-3xl"
             } ${cardData?.image ? "rounded-none" : "rounded-tl-3xl"}`}
+            style={{
+              backgroundColor: values?.backgroundcolor
+                ? values?.backgroundcolor
+                : "rgb(23 37 84)",
+            }}
           >
             <div className="flex justify-center items-center text-center pt-10">
               <div>
@@ -106,112 +98,138 @@ function PersonalBusinessCard({ selectTheme, values }) {
                     alt="Not Found"
                   />
                 </div>
-                <p className="text-2xl text-yellow-500 pt-2">
+                <p
+                  className="text-2xl pt-2"
+                  style={{
+                    color: values?.fontcolor
+                      ? values?.fontcolor
+                      : "rgb(234 179 8",
+                  }}
+                >
                   {values?.name
                     ? values?.name
                     : cardData?.name
                     ? cardData?.name
                     : "Aaron Hotchner"}
                 </p>
-                <p className="text-yellow-500 w-40">
-                  {" "}
-                  {values?.title
-                    ? values?.title
-                    : cardData?.title
-                    ? cardData?.title
-                    : "Manager, Logstics Mackwater pvt Ltd."}
-                </p>
+                <div className="overflow-y-auto h-20 overscroll-y-hidden overscroll-x-hidden">
+                  <p
+                    className="w-40 "
+                    style={{
+                      color: values?.fontcolor
+                        ? values?.fontcolor
+                        : "rgb(234 179 8",
+                    }}
+                  >
+                    {values?.title
+                      ? values?.title
+                      : cardData?.title
+                      ? cardData?.title
+                      : "Manager, Logstics Mackwater pvt Ltd."}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
 
           <div className="flex justify-evenly -mt-5">
-            {/* {(values?.address || cardData?.address) && ( */}
+            <button
+              className="bg-white text-2xl rounded-full py-2 px-2"
+              onClick={() => handlePhone(values?.phone || cardData?.phone)}
+            >
+              <FiPhone />
+            </button>
+            <button
+              className="bg-white text-2xl rounded-full py-2 px-2"
+              onClick={() => handleMail(values?.email || cardData?.email)}
+            >
+              <CiMail />
+            </button>
             <button
               className="bg-white text-2xl rounded-full py-2 px-2"
               onClick={() =>
                 handleAddress(values?.address || cardData?.address)
               }
             >
-              <FiPhone />
-            </button>
-            {/* )} */}
-            {/* {(values?.instagram || cardData) &&
-              cardData?.instagram !== "undefined" && ( */}
-            <button
-              className="bg-white text-2xl rounded-full py-2 px-2"
-              onClick={() =>
-                handleRedirect(values?.instagram || cardData?.instagram)
-              }
-            >
-              <CiMail />
-            </button>
-            {/* )} */}
-            {/* {(values?.facebook || cardData) &&
-              cardData?.facebook !== "undefined" && ( */}
-            <button
-              className="bg-white text-2xl rounded-full py-2 px-2"
-              onClick={() =>
-                handleRedirect(values?.facebook || cardData?.facebook)
-              }
-            >
               <HiOutlineMapPin />
             </button>
-            {/* )} */}
           </div>
 
           <div className="mt-5 px-3">
-            {/* {(values?.phone || cardData?.phone) && ( */}
             <div className="my-5">
               <p>Mobile</p>
-              <p>+1 87957 89786</p>
               <Link
                 className="cursor-pointer text-blue-800 break-words"
                 onClick={() => handlePhone(values?.phone || cardData?.phone)}
               >
-                {values?.phone || cardData?.phone}
+                {values?.phone || cardData?.phone
+                  ? values?.phone || cardData?.phone
+                  : "+1 87957 89786"}
               </Link>
             </div>
-            {/* )} */}
-            {/* {(values?.email || cardData?.email) && ( */}
+
             <div className="mt-8 mb-6">
               <p>Email</p>
-              <p>digitalcard@gmail.com</p>
               <Link
                 className="cursor-pointer text-blue-800"
                 onClick={() => handleMail(values?.email || cardData?.email)}
               >
-                {values?.email || cardData?.email}
+                {values?.email || cardData?.email
+                  ? values?.email || cardData?.email
+                  : "digitalcard@gmail.com"}
               </Link>
             </div>
-            {/* )} */}
-            {/* {(values?.website || cardData) &&
-              cardData?.website !== "undefined" && ( */}
-            <>
+
+            <div>
               <p className="mt-4">Website</p>
-              <p className="text-blue-800 font-semibold cursor-pointer">
-                https://blackwater.com
-              </p>
               <Link
                 className="text-blue-800 font-semibold cursor-pointer"
                 onClick={() =>
                   handleRedirect(values?.website || cardData?.website)
                 }
               >
-                {values?.website || cardData?.website}
+                {values?.website || cardData?.website
+                  ? values?.website || cardData?.website
+                  : "https://blackwater.com"}
               </Link>
-            </>
-            {/* )} */}
+            </div>
           </div>
+
           <p className="text-center mt-5 font-semibold text-lg">
             Connect with me on
           </p>
 
           <div className="flex items-center justify-evenly px-6 mt-3">
-            <img src={facebook} className="w-10 h-10" alt="Not Foung" />
-            <img src={instagram} className="w-10 h-10" alt="Not Foung" />
-            <img src={linkedin} className="w-10 h-10" alt="Not Foung" />
-            <img src={paypal} className="w-12 h-12" alt="Not Foung" />
+            <img
+              src={facebook}
+              className="w-10 h-10"
+              alt="Not Foung"
+              onClick={() => {
+                handleRedirect(values?.facebook || cardData?.facebook);
+              }}
+            />
+            <img
+              src={instagram}
+              className="w-10 h-10"
+              alt="Not Foung"
+              onClick={() =>
+                handleRedirect(values?.instagram || cardData?.instagram)
+              }
+            />
+            <img
+              src={linkedin}
+              className="w-10 h-10"
+              alt="Not Foung"
+              onClick={() =>
+                handleRedirect(values?.linkedin || cardData?.linkedin)
+              }
+            />
+            <img
+              src={paypal}
+              className="w-12 h-12"
+              alt="Not Foung"
+              onClick={() => handleRedirect(values?.paypal || cardData?.paypal)}
+            />
           </div>
         </div>
       </div>

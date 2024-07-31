@@ -68,12 +68,15 @@ function PersonalLayOut() {
               errors={errors}
               setErrors={setErrors}
               selectTheme={selectTheme}
+              selectCard={selectCard}
             />
           )}
         </div>
         {page !== 0 && (
           <div className="hidden md:block w-1/2">
-            {selectCard === "PersonalBusinessCard" && <PersonalBusinessCard />}
+            {selectCard === "PersonalBusinessCard" && (
+              <PersonalBusinessCard values={values} />
+            )}
 
             {selectCard === "PersonalContactCard" && <PersonalContactCard />}
 
