@@ -30,7 +30,8 @@ module.exports = {
       },
       margin: {
         m4: '4.5rem',
-        m7: '7.7rem'
+        m7: '7.7rem',
+        17: '17.2rem',
       },
       padding: {
         p3: '3.7rem',
