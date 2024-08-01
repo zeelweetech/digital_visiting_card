@@ -17,10 +17,11 @@ function PersonalLayOut() {
   const [page, setPage] = useState(0);
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
+  console.log("values", values);
 
   const handleOnChange = (e) => {
     const { name, value, files } = e.target;
-    if (name === "image") {
+    if (name === "image" || name === "backgroundimage") {
       setValues({ ...values, [name]: files[0] });
       setErrors({ ...errors, [name]: "" });
     } else {
@@ -82,13 +83,17 @@ function PersonalLayOut() {
 
             {selectCard === "PersonalDetailsCard" && <PersonalDetailsCrad />}
 
-            {selectCard === "PersonalLinksCard" && <PersonalLinksCard />}
+            {selectCard === "PersonalLinksCard" && (
+              <PersonalLinksCard values={values} />
+            )}
 
             {selectCard === "PersonalPreviewCard" && (
               <PersonalPreviewCard selectTheme={selectTheme} values={values} />
             )}
 
-            {selectCard === "PersonalThemeCard" && <PersonalThemeCard />}
+            {selectCard === "PersonalThemeCard" && (
+              <PersonalThemeCard values={values} />
+            )}
           </div>
         )}
       </div>

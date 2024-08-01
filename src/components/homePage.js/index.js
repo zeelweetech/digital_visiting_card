@@ -11,6 +11,7 @@ function Home() {
   const [cardDetails, setCardDetails] = useState();
   const [loading, setLoading] = useState(false);
   console.log("cardName", cardName, cardDetails);
+  console.log("*************", cardName);
 
   useEffect(() => {
     GetAllCardDetails();
