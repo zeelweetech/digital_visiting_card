@@ -47,7 +47,7 @@ function App() {
               path="/PersonalBusinessCard/:name/:id"
               element={<PersonalBusinessCard />}
             />
-            <Route path="/PersonalContactCard" element={<PersonalContactCard/>} />
+            <Route path="/PersonalDetailsCrad" element={<PersonalContactCard/>} />
           </Route>
         </Routes>
       </BrowserRouter>

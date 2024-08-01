@@ -12,19 +12,21 @@ code {
     monospace;
 }
 
-/* .curve {
-  position: relative;
-  width: 20rem;
-  overflow: hidden;
-  line-height: 0;
+@media (max-width: 426px){
+  .responsive{
+    width: 100%;
+    margin-top: -1rem;
+  }
+  .women{
+    margin-top: -3.5rem;
+    width: 10rem;
+  }
+  /* .addcontact{margin-top: 6rem;} */
+  /* .addcontact1{border-bottom-left-radius: 0; border-bottom-right-radius: 0;} */
+  #wave{
+    border-radius: 0%;
+  }
 }
-
-.curve svg {
-  position: relative;
-  display: block;
-  width: calc(100% + 1.3px);
-  height: 150px;
-} */
 
 .scrollable-container {
   -ms-overflow-style: none; 
