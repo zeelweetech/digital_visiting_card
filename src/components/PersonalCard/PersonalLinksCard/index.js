@@ -2,32 +2,20 @@ import React, { useEffect, useState } from "react";
 import phone from "../../../assets/image/phone.png";
 import businesswomen from "../../../assets/image/businesswomen.webp";
 import {
-  FaFacebook,
   FaInstagram,
-  FaLinkedin,
-  FaPaypal,
   FaRegAddressCard,
 } from "react-icons/fa";
 import {
   IoCallOutline,
   IoMailOutline,
-  IoShareSocialOutline,
 } from "react-icons/io5";
-import { LuTable } from "react-icons/lu";
-import { MdAlternateEmail } from "react-icons/md";
 import {
-  PiDevicesLight,
   PiFacebookLogoBold,
   PiLinkedinLogo,
 } from "react-icons/pi";
-import { CiMobile4 } from "react-icons/ci";
-import { AiOutlineQrcode } from "react-icons/ai";
 import { useNavigate, useParams } from "react-router-dom";
 import { getProfileDetails } from "../../../services/ProfileServices";
 import Loader from "../../Loader";
-import { TiSocialLinkedin } from "react-icons/ti";
-import { TbWorld } from "react-icons/tb";
-import { LiaFacebook } from "react-icons/lia";
 import { TfiWorld } from "react-icons/tfi";
 import { SlPaypal } from "react-icons/sl";
 

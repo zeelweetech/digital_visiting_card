@@ -2,7 +2,7 @@ import React from "react";
 import { BiWorld } from "react-icons/bi";
 import { FaMapMarkerAlt, FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 import { IoMdDownload, IoMdMail } from "react-icons/io";
-import avatar from "../../../assets/image/avatar.png";
+import businessmen from "../../../assets/image/businessmen.jpg";
 import phone from "../../../assets/image/phone.png";
 
 function PersonalDetailsCrad() {
@@ -47,11 +47,11 @@ function PersonalDetailsCrad() {
         >
           <div>
             <div className="flex justify-center text-center">
-              <img src={avatar} className="w-40 h-40 mt-6" alt="Not Found" />
+              <img src={businessmen} className="w-40 h-40 mt-6" alt="Not Found" />
             </div>
-            <p className="text-xl font-semibold">Name: John Doe</p>
+            <p className="text-xl font-semibold">Mark Zuckerberg</p>
             {/* <p>Proprietor</p> */}
-            <p className="font-semibold">Title</p>
+            <p className="font-semibold">Directore</p>
 
             <div className="space-x-2 mt-3">
               <button className="bg-theme p-2 text-xl">
