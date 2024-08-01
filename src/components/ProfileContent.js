@@ -49,7 +49,12 @@ function ProfileContent({
       newErrors.address = "Please enter an address";
     }
 
-    if (selectCard !== "PersonalThemeCard") {
+    if (
+      selectCard === "PersonalContactCard" ||
+      selectCard === "PersonalLinksCard" ||
+      selectCard === "PersonalBusinessCard" ||
+      selectCard === "PersonalPreviewCard"
+    ) {
       if (!values?.instagram) {
         newErrors.instagram = "Please enter an instagram";
       }
@@ -59,7 +64,12 @@ function ProfileContent({
       newErrors.website = "Please enter a website";
     }
 
-    if (selectCard !== "PersonalThemeCard") {
+    if (
+      selectCard === "PersonalContactCard" ||
+      selectCard === "PersonalLinksCard" ||
+      selectCard === "PersonalBusinessCard" ||
+      selectCard === "PersonalPreviewCard"
+    ) {
       if (!values?.facebook) {
         newErrors.facebook = "Please enter a facebook";
       }
@@ -253,7 +263,10 @@ function ProfileContent({
           )}
         </div>
 
-        {selectCard !== "PersonalThemeCard" && (
+        {(selectCard === "PersonalContactCard" ||
+          selectCard === "PersonalLinksCard" ||
+          selectCard === "PersonalBusinessCard" ||
+          selectCard === "PersonalPreviewCard") && (
           <div className="flex flex-col items-center w-full max-w-lg py-3">
             <div className="flex w-full max-w-md border-x border-y rounded-md hover:border-blue-700">
               <span className="inline-flex items-center px-3 text-xl text-gray-900 bg-white border border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
@@ -295,7 +308,10 @@ function ProfileContent({
           )}
         </div>
 
-        {selectCard !== "PersonalThemeCard" && (
+        {(selectCard === "PersonalContactCard" ||
+          selectCard === "PersonalLinksCard" ||
+          selectCard === "PersonalBusinessCard" ||
+          selectCard === "PersonalPreviewCard") && (
           <div className="flex flex-col items-center w-full max-w-lg py-3">
             <div className="flex w-full max-w-md border-x border-y rounded-md hover:border-blue-700">
               <span className="inline-flex items-center px-3 text-xl text-gray-900 bg-white border border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">

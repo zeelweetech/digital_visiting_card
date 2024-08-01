@@ -126,7 +126,7 @@ function PersonalPreviewCard({ selectTheme, values }) {
                     ? values?.title
                     : cardData?.title
                     ? cardData?.title
-                    : "Title"}
+                    : "Directore"}
                 </p>
                 <p className="text-xl pt-2">
                   {values?.company

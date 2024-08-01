@@ -5,6 +5,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { getProfileDetails } from "../../services/ProfileServices";
 import { IoLogoInstagram } from "react-icons/io";
 import { TiSocialFacebook } from "react-icons/ti";
+import Loader from "../Loader";
 
 function BusinessCardPreview({ selectTheme, values }) {
   const { id } = useParams();
@@ -74,135 +75,146 @@ function BusinessCardPreview({ selectTheme, values }) {
 
   return (
     <div className={`flex flex-col justify-center items-center min-h-screen`}>
-      <div className="flex flex-col items-center w-full max-w-md relative">
-        <div
-          className={`${cardData?.image ? "rounded-none" : "rounded-3xl"} w-full md:w-80 h-30 bg-white shadow-xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${
-            cardData?.image ? "min-h-screen" : "auto"}`}
-        >
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="flex flex-col items-center w-full max-w-md relative">
           <div
-            className={`${themeClass} h-64 ${cardData?.image ? "rounded-none" : "rounded-se-3xl"} ${cardData?.image ? "rounded-none" : "rounded-tl-3xl"}`}
+            className={`${
+              cardData?.image ? "rounded-none" : "rounded-3xl"
+            } w-full md:w-80 h-30 bg-white shadow-xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${
+              cardData?.image ? "min-h-screen" : "auto"
+            }`}
           >
-            <div className="flex justify-center items-center text-center pt-5">
-              <div>
-                <img
-                  src={
-                    values?.image
-                      ? URL.createObjectURL(values?.image)
-                      : cardData?.image
-                      ? cardData?.image
-                      : avatar
-                  }
-                  className="w-24 h-24"
-                  alt="Not Found"
-                />
-                <p className="text-2xl text-white pt-2">
-                  {values?.name
-                    ? values?.name
-                    : cardData?.name
-                    ? cardData?.name
-                    : "Name"}
-                </p>
-                <p className="text-white">
-                  {" "}
-                  {values?.title
-                    ? values?.title
-                    : cardData?.title
-                    ? cardData?.title
-                    : "Title"}
-                </p>
+            <div
+              className={`${themeClass} h-64 ${
+                cardData?.image ? "rounded-none" : "rounded-se-3xl"
+              } ${cardData?.image ? "rounded-none" : "rounded-tl-3xl"}`}
+            >
+              <div className="flex justify-center items-center text-center pt-5">
+                <div>
+                  <img
+                    src={
+                      values?.image
+                        ? URL.createObjectURL(values?.image)
+                        : cardData?.image
+                        ? cardData?.image
+                        : avatar
+                    }
+                    className="w-24 h-24"
+                    alt="Not Found"
+                  />
+                  <p className="text-2xl text-white pt-2">
+                    {values?.name
+                      ? values?.name
+                      : cardData?.name
+                      ? cardData?.name
+                      : "Name"}
+                  </p>
+                  <p className="text-white">
+                    {" "}
+                    {values?.title
+                      ? values?.title
+                      : cardData?.title
+                      ? cardData?.title
+                      : "Title"}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="flex justify-evenly -mt-5">
-            {(values?.address || cardData?.address) && (
-              <button
-                className="bg-white text-2xl rounded-full py-2 px-2"
-                onClick={() =>
-                  handleAddress(values?.address || cardData?.address)
-                }
-              >
-                <HiOutlineMapPin />
-              </button>
-            )}
-            {(values?.instagram || cardData) &&
-              cardData?.instagram !== "undefined" && (
+            <div className="flex justify-evenly -mt-5">
+              {(values?.address || cardData?.address) && (
                 <button
                   className="bg-white text-2xl rounded-full py-2 px-2"
                   onClick={() =>
-                    handleRedirect(values?.instagram || cardData?.instagram)
+                    handleAddress(values?.address || cardData?.address)
                   }
                 >
-                  <IoLogoInstagram />
+                  <HiOutlineMapPin />
                 </button>
               )}
-            {(values?.facebook || cardData) &&
-              cardData?.facebook !== "undefined" && (
-                <button
-                  className="bg-white text-2xl rounded-full py-2 px-2"
-                  onClick={() =>
-                    handleRedirect(values?.facebook || cardData?.facebook)
-                  }
-                >
-                  <TiSocialFacebook />
-                </button>
-              )}
-          </div>
-
-          <div className="mt-5 px-3">
-            <p className="break-words">
-              Description :{" "}
-              {values?.description ? (
-                <span
-                  dangerouslySetInnerHTML={{ __html: values.description }}
-                />
-              ) : cardData?.description ? (
-                <span
-                  dangerouslySetInnerHTML={{ __html: cardData.description }}
-                />
-              ) : (
-                "Luxury Auto Dealership Over 9 years of experience in auto sales, dedicated to bridging the gap between sales and customers."
-              )}
-            </p>
-            {(values?.phone || cardData?.phone) && (
-              <div className="my-4">
-                <p>Mobile</p>
-                <Link
-                  className="cursor-pointer text-blue-800 break-words"
-                  onClick={() => handlePhone(values?.phone || cardData?.phone)}
-                >
-                  {values?.phone || cardData?.phone}
-                </Link>
-              </div>
-            )}
-            {(values?.email || cardData?.email) && (
-              <>
-                <p>Email</p>
-                <Link
-                  className="cursor-pointer text-blue-800"
-                  onClick={() => handleMail(values?.email || cardData?.email)}
-                >
-                  {values?.email || cardData?.email}
-                </Link>
-              </>
-            )}
-            {(values?.website || cardData) &&
-              cardData?.website !== "undefined" && (
-                <>
-                  <p className="mt-4">Website</p>
-                  <Link
-                    className="text-blue-800 cursor-pointer"
+              {(values?.instagram || cardData) &&
+                cardData?.instagram !== "undefined" && (
+                  <button
+                    className="bg-white text-2xl rounded-full py-2 px-2"
                     onClick={() =>
-                      handleRedirect(values?.website || cardData?.website)
+                      handleRedirect(values?.instagram || cardData?.instagram)
                     }
                   >
-                    {values?.website || cardData?.website}
+                    <IoLogoInstagram />
+                  </button>
+                )}
+              {(values?.facebook || cardData) &&
+                cardData?.facebook !== "undefined" && (
+                  <button
+                    className="bg-white text-2xl rounded-full py-2 px-2"
+                    onClick={() =>
+                      handleRedirect(values?.facebook || cardData?.facebook)
+                    }
+                  >
+                    <TiSocialFacebook />
+                  </button>
+                )}
+            </div>
+
+            <div className="mt-5 px-3">
+              <p className="break-words">
+                Description :{" "}
+                {values?.description ? (
+                  <span
+                    dangerouslySetInnerHTML={{ __html: values.description }}
+                  />
+                ) : cardData?.description ? (
+                  <span
+                    dangerouslySetInnerHTML={{ __html: cardData.description }}
+                  />
+                ) : (
+                  "Luxury Auto Dealership Over 9 years of experience in auto sales, dedicated to bridging the gap between sales and customers."
+                )}
+              </p>
+              {(values?.phone || cardData?.phone) && (
+                <div className="my-4">
+                  <p>Mobile</p>
+                  <Link
+                    className="cursor-pointer text-blue-800 break-words"
+                    onClick={() =>
+                      handlePhone(values?.phone || cardData?.phone)
+                    }
+                  >
+                    {values?.phone || cardData?.phone}
+                  </Link>
+                </div>
+              )}
+              {(values?.email || cardData?.email) && (
+                <>
+                  <p>Email</p>
+                  <Link
+                    className="cursor-pointer text-blue-800"
+                    onClick={() => handleMail(values?.email || cardData?.email)}
+                  >
+                    {values?.email || cardData?.email}
                   </Link>
                 </>
               )}
+              {(values?.website || cardData) &&
+                cardData?.website !== "undefined" && (
+                  <>
+                    <p className="mt-4">Website</p>
+                    <Link
+                      className="text-blue-800 cursor-pointer"
+                      onClick={() =>
+                        handleRedirect(values?.website || cardData?.website)
+                      }
+                    >
+                      {values?.website || cardData?.website}
+                    </Link>
+                  </>
+                )}
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
