@@ -18,6 +18,7 @@ module.exports = {
       },
       width: {
         17: '17.3rem',
+        18: '18.7rem',
         p7: '7.5rem',
         20: '20rem'
       },
@@ -26,7 +27,9 @@ module.exports = {
         30: '40rem',
         42: '42.5rem',
         h30: '34rem',
-        19: '19rem'
+        35: '36.5rem',
+        29: '28.2rem',
+        19: '19rem',
       },
       margin: {
         m4: '4.5rem',
@@ -40,6 +43,7 @@ module.exports = {
       },
       borderRadius: {
         2: '2.5rem',
+        b2:'2.4rem',
         b1: '1.2rem',
         b5: '5rem',
       },
