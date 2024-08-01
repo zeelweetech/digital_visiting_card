@@ -12,13 +12,12 @@ code {
     monospace;
 }
 
-@media (max-width: 426px){
+@media (max-width: 431px){
   .responsive{
     width: 100%;
-    margin-top: -1rem;
+    margin-top: 46rem;
   }
   .women{
-    margin-top: -3.5rem;
     width: 10rem;
   }
   /* .addcontact{margin-top: 6rem;} */
@@ -30,11 +29,12 @@ code {
 
 .scrollable-container {
   -ms-overflow-style: none; 
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
 }
+/* .conatact-scrollable-container{max-height: 29rem;} */
 
-.scrollable-container::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, and Opera */
+.scrollable-container::-webkit-scrollbar{
+  display: none;
 }
 
 @tailwind base;
