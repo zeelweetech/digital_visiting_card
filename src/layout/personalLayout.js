@@ -79,7 +79,9 @@ function PersonalLayOut() {
               <PersonalBusinessCard values={values} />
             )}
 
-            {selectCard === "PersonalContactCard" && <PersonalContactCard />}
+            {selectCard === "PersonalContactCard" && (
+              <PersonalContactCard values={values} />
+            )}
 
             {selectCard === "PersonalDetailsCard" && <PersonalDetailsCrad />}
 

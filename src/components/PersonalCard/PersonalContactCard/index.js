@@ -4,12 +4,100 @@ import instagram from "../../../assets/image/instagram.jpeg";
 import twitter from "../../../assets/image/twitter.png";
 import linkedin from "../../../assets/image/linkedin.png";
 import businesswomen from "../../../assets/image/businesswomen.webp";
+import location from "../../../assets/image/location.png";
+import facebook from "../../../assets/image/Facebook.webp";
 import { FiPhoneCall } from "react-icons/fi";
 import { IoMailOutline } from "react-icons/io5";
 import { TbWorld } from "react-icons/tb";
 import { MdOutlinePersonAddAlt } from "react-icons/md";
+import { useNavigate, useParams } from "react-router-dom";
+import { getProfileDetails } from "../../../services/ProfileServices";
 
-function PersonalContactCard() {
+function PersonalContactCard({ values }) {
+  const { id } = useParams();
+  const [cardData, setCardData] = useState();
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchProfileDetails = async () => {
+      setLoading(true);
+      try {
+        const res = await getProfileDetails({ id: id });
+        console.log("res", res);
+        setCardData(res?.cardDetail);
+        setLoading(false);
+      } catch (err) {
+        console.log("err", err);
+        setLoading(false);
+      }
+    };
+    if (id) {
+      fetchProfileDetails();
+    }
+  }, [id]);
+
+  const handleRedirect = (url) => {
+    if (url) {
+      window.open(url, "_blank");
+    }
+  };
+
+  const handleMail = (email) => {
+    if (email) {
+      window.location.href = `mailto:${email}`;
+    }
+  };
+
+  const handlePhone = (phone) => {
+    if (phone) {
+      window.location.href = `tel:${phone}`;
+    }
+  };
+
+  const handleAddress = (address) => {
+    if (address) {
+      window.open(
+        `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+          address
+        )}`,
+        "_blank"
+      );
+    }
+  };
+
+  const handleDownloadVCard = () => {
+    const name = values?.name || cardData?.name || "Alex Thomson";
+    const company = values?.company || cardData?.company || "Company name";
+    const title = values?.title || cardData?.title || "Director";
+    const email = values?.email || cardData?.email || "hello@gmail.com";
+    const phone = values?.phone || cardData?.phone || "+31 61166 87576";
+    const website = values?.website || cardData?.website || "www.acmenet.com";
+    const address =
+      values?.address ||
+      cardData?.address ||
+      "Acme LTD 1131 AW Amstertlam, The Netherlands";
+
+    const vCardData = `BEGIN
+VERSION:3.0
+FN:${name}
+ORG:${company}
+TITLE:${title}
+EMAIL;TYPE=WORK:${email}
+TEL;TYPE=WORK:${phone}
+URL:${website}
+ADR;TYPE=WORK:${address}
+END
+`;
+    const blob = new Blob([vCardData], { type: "text/vcard" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${name.replace(/\s/g, "_")}.vcf`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <div className="flex flex-col justify-center items-center h-0 md:h-screen overflow-y-hidden">
       <div>
@@ -30,7 +118,16 @@ function PersonalContactCard() {
             >
               <defs>
                 <linearGradient id="sw-gradient-0">
-                  <stop stop-color="#00ffec" offset="0%"></stop>
+                  <stop
+                    stop-color={
+                      values?.backgroundcolor
+                        ? values?.backgroundcolor
+                        : cardData?.backgroundcolor
+                        ? cardData?.backgroundcolor
+                        : "#00ffec"
+                    }
+                    offset="0%"
+                  ></stop>
                 </linearGradient>
               </defs>
               <path
@@ -42,45 +139,149 @@ function PersonalContactCard() {
             <div className="relative flex justify-center -mt-32">
               <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
                 <img
-                  src={businesswomen}
+                  src={
+                    values?.image
+                      ? URL.createObjectURL(values?.image)
+                      : cardData?.image
+                      ? cardData?.image
+                      : businesswomen
+                  }
                   className="w-36 h-36 md:w-28 md:h-28 rounded-full border-4 border-white women"
                   alt="Not Found"
                 />
               </div>
               <div className="text-center">
-                <p className="pt-14 text-2xl font-semibold text-teal-600">
-                  Sophie Mitchell
+                <p
+                  className="pt-14 text-2xl font-semibold"
+                  style={{
+                    color: values?.fontcolor
+                      ? values?.fontcolor
+                      : cardData?.fontcolor
+                      ? cardData?.fontcolor
+                      : "rgb(13 148 136)",
+                  }}
+                >
+                  {values?.name
+                    ? values?.name
+                    : cardData?.name
+                    ? cardData?.name
+                    : "Sophie Mitchell"}
                 </p>
-                <p className="my-2 text-teal-500">Chief Marketing Officers</p>
+                <p
+                  className="my-2"
+                  style={{
+                    color: values?.fontcolor
+                      ? values?.fontcolor
+                      : cardData?.fontcolor
+                      ? cardData?.fontcolor
+                      : "rgb(20 184 166)",
+                  }}
+                >
+                  {values?.title
+                    ? values?.title
+                    : cardData?.title
+                    ? cardData?.title
+                    : "Chief Marketing Officers "}
+                </p>
                 <p className="w-80 px-6">
-                  Luxury Auto Dealership Over 9 years of experience in auto
-                  sales, dedicated to bridging the gap between sales.
+                  {values?.description
+                    ? values?.description
+                    : cardData?.description
+                    ? cardData?.description
+                    : "Luxury Auto Dealership Over 9 years of experience in auto sales, dedicated to bridging the gap between sales."}
                 </p>
 
                 <div className="flex items-start px-8 mt-10 md:mt-6">
-                  <button className="bg-teal-100 text-teal-500 text-xl p-2.5 rounded-full">
+                  <button
+                    className="text-xl p-2.5 rounded-full"
+                    onClick={() =>
+                      handlePhone(values?.phone || cardData?.phone)
+                    }
+                    style={{
+                      backgroundColor: values?.backgroundcolor
+                        ? values?.backgroundcolor
+                        : cardData?.backgroundcolor
+                        ? cardData?.backgroundcolor
+                        : "rgb(204 251 241)",
+                      color: values?.fontcolor
+                        ? values?.fontcolor
+                        : cardData?.fontcolor
+                        ? cardData?.fontcolor
+                        : "rgb(20 184 166)",
+                    }}
+                  >
                     <FiPhoneCall />
                   </button>
                   <div className="text-start ml-2.5">
-                    <p className="font-semibold">+1 57458 98549</p>
+                    <p className="font-semibold">
+                      {values?.phone
+                        ? values?.phone
+                        : cardData?.phone
+                        ? cardData?.phone
+                        : "+1 57458 98549"}
+                    </p>
                     <p>Work</p>
                   </div>
                 </div>
                 <div className="flex items-start px-8 py-4 md:py-2">
-                  <button className="bg-teal-100 text-teal-500 text-xl p-2.5 rounded-full">
+                  <button
+                    className="text-xl p-2.5 rounded-full"
+                    onClick={() => handleMail(values?.email || cardData?.email)}
+                    style={{
+                      backgroundColor: values?.backgroundcolor
+                        ? values?.backgroundcolor
+                        : cardData?.backgroundcolor
+                        ? cardData?.backgroundcolor
+                        : "rgb(204 251 241)",
+                      color: values?.fontcolor
+                        ? values?.fontcolor
+                        : cardData?.fontcolor
+                        ? cardData?.fontcolor
+                        : "rgb(20 184 166)",
+                    }}
+                  >
                     <IoMailOutline />
                   </button>
                   <div className="text-start ml-2.5">
-                    <p className="font-semibold">shophie.m@cloudiech.com</p>
+                    <p className="font-semibold">
+                      {values?.email
+                        ? values?.email
+                        : cardData?.email
+                        ? cardData?.email
+                        : "shophie.m@cloudiech.com"}
+                    </p>
                     <p>Work</p>
                   </div>
                 </div>
                 <div className="flex items-start px-8">
-                  <button className="bg-teal-100 text-teal-500 text-xl p-2.5 rounded-full">
+                  <button
+                    className="text-xl p-2.5 rounded-full"
+                    onClick={() =>
+                      handleRedirect(values?.website || cardData?.website)
+                    }
+                    style={{
+                      backgroundColor: values?.backgroundcolor
+                        ? values?.backgroundcolor
+                        : cardData?.backgroundcolor
+                        ? cardData?.backgroundcolor
+                        : "rgb(204 251 241)",
+                      color: values?.fontcolor
+                        ? values?.fontcolor
+                        : cardData?.fontcolor
+                        ? cardData?.fontcolor
+                        : "rgb(20 184 166)",
+                    }}
+                  >
                     <TbWorld />
                   </button>
                   <div className="text-start ml-2.5">
-                    <p className="font-semibold">www.cloudiech.com</p>
+                    <p className="font-semibold">
+                      {values?.website
+                        ? values?.website
+                        : cardData?.website
+                        ? cardData?.website
+                        : "www.cloudiech.com"}
+                    </p>
                     <p>Company</p>
                   </div>
                 </div>
@@ -89,31 +290,49 @@ function PersonalContactCard() {
                   <p className="text-lg">Connect with me on</p>
                   <div className="flex justify-evenly px-16 mt-2 md:mt-0">
                     <img
+                      src={location}
+                      className="w-10 h-10 bg-white shadow-lg p-2 rounded-full hover:cursor-pointer"
+                      alt="Not Found"
+                      onClick={() =>
+                        handleAddress(values?.address || cardData?.address)
+                      }
+                    />
+                    <img
                       src={instagram}
                       className="w-10 h-10 bg-white shadow-lg p-1 rounded-full hover:cursor-pointer"
                       alt="Not Found"
-                      // onClick={() =>
-                      //   handleRedirect(values?.instagram || cardData?.instagram)
-                      // }
+                      onClick={() =>
+                        handleRedirect(values?.instagram || cardData?.instagram)
+                      }
                     />
                     <img
-                      src={twitter}
-                      className="w-10 h-10 bg-white shadow-lg p-2 rounded-full hover:cursor-pointer"
-                      alt="Not Found"
-                    />
-                    <img
-                      src={linkedin}
+                      src={facebook}
                       className="w-10 h-10 bg-white shadow-lg p-1 rounded-full hover:cursor-pointer"
                       alt="Not Found"
-                      // onClick={() =>
-                      //   handleRedirect(values?.linkedin || cardData?.linkedin)
-                      // }
+                      onClick={() => {
+                        handleRedirect(values?.facebook || cardData?.facebook);
+                      }}
                     />
                   </div>
                 </div>
 
                 <div>
-                  <button className="flex justify-center items-center text-white font-semibold bg-personalcontactcard w-96 md:w-full py-2.5 mt-8 md:mt-4 md:rounded-b-2 hover:cursor-pointer">
+                  <button
+                    className="flex justify-center items-center font-semibold w-96 md:w-full py-2.5 mt-8 md:mt-4 md:rounded-b-2 hover:cursor-pointer"
+                    style={{
+                      backgroundColor: values?.backgroundcolor
+                        ? values?.backgroundcolor
+                        : cardData?.backgroundcolor
+                        ? cardData?.backgroundcolor
+                        : "#00ffec",
+                      color: values?.fontcolor
+                        ? values?.fontcolor
+                        : cardData?.fontcolor
+                        ? cardData?.fontcolor
+                        : "rgb(255 255 255)",
+                    }}
+                    onClick={handleDownloadVCard}
+                  >
                     <MdOutlinePersonAddAlt className="mr-2" />
                     Add to Contacts
                   </button>

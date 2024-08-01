@@ -77,7 +77,6 @@ function PersonalPreviewCard({ selectTheme, values }) {
     }
   };
 
-  // console.log("valus ********** :", values);
   return (
     <div className="flex flex-col justify-center items-center min-h-screen overflow-hidden">
       {loading ? (
@@ -100,7 +99,7 @@ function PersonalPreviewCard({ selectTheme, values }) {
           )}
           <div
             className="scrollable-container h-h30 overflow-x-hidden relative"
-            style={{ minHeight: cardData?.image ? "100vh" : "34rem",}}
+            style={{ minHeight: cardData?.image ? "100vh" : "34rem" }}
           >
             <div className="bg-gray-200 w-17 h-80 rounded-3xl flex flex-col justify-center text-center mt-20">
               <img
