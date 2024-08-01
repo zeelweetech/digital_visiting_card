@@ -22,9 +22,31 @@ function CardDetails({ cardDetails, loading }) {
                       `/business_digital_card/${item?.name}/${item?.businessCardId}`
                     );
                   } else if (item?.category === "personalcard") {
-                    navigate(
-                      `/personal_digital_card/${item?.name}/${item?.personalCardId}`
-                    );
+                    if (item?.cardName === "PersonalBusinessCard") {
+                      navigate(
+                        `/PersonalBusinessCard/${item?.name}/${item?.personalCardId}`
+                      );
+                    } else if (item?.cardName === "PersonalContactCard") {
+                      navigate(
+                        `/PersonalContactCard/${item?.name}/${item?.personalCardId}`
+                      );
+                    } else if (item?.cardName === "PersonalDetailsCard") {
+                      navigate(
+                        `/PersonalDetailsCard/${item?.name}/${item?.personalCardId}`
+                      );
+                    } else if (item?.cardName === "PersonalLinksCard") {
+                      navigate(
+                        `/PersonalLinksCard/${item?.name}/${item?.personalCardId}`
+                      );
+                    } else if (item?.cardName === "PersonalPreviewCard") {
+                      navigate(
+                        `/PersonalPreviewCard/${item?.name}/${item?.personalCardId}`
+                      );
+                    } else if (item?.cardName === "PersonalThemeCard") {
+                      navigate(
+                        `/PersonalThemeCard/${item?.name}/${item?.personalCardId}`
+                      );
+                    }
                   }
                 }}
               >

@@ -49,24 +49,33 @@ function ProfileContent({
       newErrors.address = "Please enter an address";
     }
 
-    if (!values?.instagram) {
-      newErrors.instagram = "Please enter an instagram";
+    if (selectCard !== "PersonalThemeCard") {
+      if (!values?.instagram) {
+        newErrors.instagram = "Please enter an instagram";
+      }
     }
 
     if (!values?.website) {
       newErrors.website = "Please enter a website";
     }
 
-    if (!values?.facebook) {
-      newErrors.facebook = "Please enter a facebook";
+    if (selectCard !== "PersonalThemeCard") {
+      if (!values?.facebook) {
+        newErrors.facebook = "Please enter a facebook";
+      }
     }
 
-    if (!values?.linkedin) {
-      newErrors.linkedin = "Please enter a linkedin";
-    }
+    if (
+      selectCard === "PersonalBusinessCard" ||
+      selectCard === "PersonalLinksCard"
+    ) {
+      if (!values?.linkedin) {
+        newErrors.linkedin = "Please enter a linkedin";
+      }
 
-    if (!values?.paypal) {
-      newErrors.paypal = "Please enter a paypal";
+      if (!values?.paypal) {
+        newErrors.paypal = "Please enter a paypal";
+      }
     }
 
     setErrors(newErrors);
@@ -115,8 +124,8 @@ function ProfileContent({
           "cardName",
           selectCard === "PersonalBusinessCard"
             ? "PersonalBusinessCard"
-            : selectCard === "PersonalBusinessCard"
-            ? "PersonalBusinessCard"
+            : selectCard === "PersonalContactCard"
+            ? "PersonalContactCard"
             : selectCard === "PersonalDetailsCard"
             ? "PersonalDetailsCard"
             : selectCard === "PersonalLinksCard"
@@ -138,15 +147,35 @@ function ProfileContent({
           toast.success(res?.message);
           setLoading(false);
           if (path === "business_profile_design") {
-            navigate(res?.digitalBusinessCard?.link);
-            // navigate(
-            //   `/business_digital_card/${res?.digitalBusinessCard?.name}/${res?.digitalBusinessCard?.businessCardId}`
-            // );
+            navigate(
+              `/business_digital_card/${res?.digitalBusinessCard?.name}/${res?.digitalBusinessCard?.businessCardId}`
+            );
           } else if (path === "personal_profile_design") {
-            navigate(res?.digitalPersonalCard?.link);
-            // navigate(
-            //   `/personal_digital_card/${res?.digitalPersonalCard?.name}/${res?.digitalPersonalCard?.personalCardId}`
-            // );
+            if (selectCard === "PersonalBusinessCard") {
+              navigate(
+                `/PersonalBusinessCard/${res?.digitalPersonalCard?.name}/${res?.digitalPersonalCard?.personalCardId}`
+              );
+            } else if (selectCard === "PersonalContactCard") {
+              navigate(
+                `/PersonalContactCard/${res?.digitalPersonalCard?.name}/${res?.digitalPersonalCard?.personalCardId}`
+              );
+            } else if (selectCard === "PersonalDetailsCard") {
+              navigate(
+                `/PersonalDetailsCard/${res?.digitalPersonalCard?.name}/${res?.digitalPersonalCard?.personalCardId}`
+              );
+            } else if (selectCard === "PersonalLinksCard") {
+              navigate(
+                `/PersonalLinksCard/${res?.digitalPersonalCard?.name}/${res?.digitalPersonalCard?.personalCardId}`
+              );
+            } else if (selectCard === "PersonalPreviewCard") {
+              navigate(
+                `/PersonalPreviewCard/${res?.digitalPersonalCard?.name}/${res?.digitalPersonalCard?.personalCardId}`
+              );
+            } else if (selectCard === "PersonalThemeCard") {
+              navigate(
+                `/PersonalThemeCard/${res?.digitalPersonalCard?.name}/${res?.digitalPersonalCard?.personalCardId}`
+              );
+            }
           }
         })
         .catch((err) => {
@@ -162,7 +191,7 @@ function ProfileContent({
       <form className="flex flex-col items-center w-full max-w-md">
         <p className="text-3xl font-semibold">Add Contact Options</p>
 
-        <div className="flex flex-col items-center w-full max-w-lg mt-10">
+        <div className="flex flex-col items-center w-full max-w-lg mt-10 py-3">
           <div className="flex w-full max-w-md border-x border-y rounded-md hover:border-blue-700">
             <span className="inline-flex items-center px-3 text-xl text-gray-900 bg-white border border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
               <CiMail />
@@ -204,7 +233,7 @@ function ProfileContent({
           )}
         </div>
 
-        <div className="flex flex-col items-center w-full max-w-lg">
+        <div className="flex flex-col items-center w-full max-w-lg py-3">
           <div className="flex w-full max-w-md border-x border-y rounded-md hover:border-blue-700">
             <span className="inline-flex items-center px-3 text-xl text-gray-900 bg-white border border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
               <FiMapPin />
@@ -224,27 +253,29 @@ function ProfileContent({
           )}
         </div>
 
-        <div className="flex flex-col items-center w-full max-w-lg py-3">
-          <div className="flex w-full max-w-md border-x border-y rounded-md hover:border-blue-700">
-            <span className="inline-flex items-center px-3 text-xl text-gray-900 bg-white border border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
-              <IoLogoInstagram />
-            </span>
-            <input
-              type="text"
-              id="website-admin"
-              className="rounded-e-md bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0 w-full text-sm p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="+ Instagram"
-              name="instagram"
-              value={values?.instagram}
-              onChange={(e) => handleOnChange(e)}
-            />
+        {selectCard !== "PersonalThemeCard" && (
+          <div className="flex flex-col items-center w-full max-w-lg py-3">
+            <div className="flex w-full max-w-md border-x border-y rounded-md hover:border-blue-700">
+              <span className="inline-flex items-center px-3 text-xl text-gray-900 bg-white border border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                <IoLogoInstagram />
+              </span>
+              <input
+                type="text"
+                id="website-admin"
+                className="rounded-e-md bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0 w-full text-sm p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="+ Instagram"
+                name="instagram"
+                value={values?.instagram}
+                onChange={(e) => handleOnChange(e)}
+              />
+            </div>
+            {errors?.instagram && (
+              <p className="text-xs text-red-500">{errors?.instagram}</p>
+            )}
           </div>
-          {errors?.instagram && (
-            <p className="text-xs text-red-500">{errors?.instagram}</p>
-          )}
-        </div>
+        )}
 
-        <div className="flex flex-col items-center w-full max-w-lg">
+        <div className="flex flex-col items-center w-full max-w-lg py-3">
           <div className="flex w-full max-w-md border-x border-y rounded-md hover:border-blue-700">
             <span className="inline-flex items-center px-3 text-xl text-gray-900 bg-white border border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
               <BiWorld />
@@ -264,72 +295,85 @@ function ProfileContent({
           )}
         </div>
 
-        <div className="flex flex-col items-center w-full max-w-lg py-3">
-          <div className="flex w-full max-w-md border-x border-y rounded-md hover:border-blue-700">
-            <span className="inline-flex items-center px-3 text-xl text-gray-900 bg-white border border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
-              <TiSocialFacebook />
-            </span>
-            <input
-              type="text"
-              id="website-admin"
-              className="rounded-e-md bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0 w-full text-sm p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="+ Facebook"
-              name="facebook"
-              value={values?.facebook}
-              onChange={(e) => handleOnChange(e)}
-            />
+        {selectCard !== "PersonalThemeCard" && (
+          <div className="flex flex-col items-center w-full max-w-lg py-3">
+            <div className="flex w-full max-w-md border-x border-y rounded-md hover:border-blue-700">
+              <span className="inline-flex items-center px-3 text-xl text-gray-900 bg-white border border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                <TiSocialFacebook />
+              </span>
+              <input
+                type="text"
+                id="website-admin"
+                className="rounded-e-md bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0 w-full text-sm p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="+ Facebook"
+                name="facebook"
+                value={values?.facebook}
+                onChange={(e) => handleOnChange(e)}
+              />
+            </div>
+            {errors?.facebook && (
+              <p className="text-xs text-red-500">{errors?.facebook}</p>
+            )}
           </div>
-          {errors?.facebook && (
-            <p className="text-xs text-red-500">{errors?.facebook}</p>
-          )}
-        </div>
+        )}
 
-        <div className="flex flex-col items-center w-full max-w-lg py-3">
-          <div className="flex w-full max-w-md border-x border-y rounded-md hover:border-blue-700">
-            <span className="inline-flex items-center px-3 text-xl text-gray-900 bg-white border border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
-              <TiSocialLinkedin />
-            </span>
-            <input
-              type="text"
-              id="website-admin"
-              className="rounded-e-md bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0 w-full text-sm p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="+ Linkedin"
-              name="linkedin"
-              value={values?.linkedin}
-              onChange={(e) => handleOnChange(e)}
-            />
+        {(selectCard === "PersonalBusinessCard" ||
+          selectCard === "PersonalLinksCard") && (
+          <div className="flex flex-col items-center w-full max-w-lg py-3">
+            <div className="flex w-full max-w-md border-x border-y rounded-md hover:border-blue-700">
+              <span className="inline-flex items-center px-3 text-xl text-gray-900 bg-white border border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                <TiSocialLinkedin />
+              </span>
+              <input
+                type="text"
+                id="website-admin"
+                className="rounded-e-md bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0 w-full text-sm p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="+ Linkedin"
+                name="linkedin"
+                value={values?.linkedin}
+                onChange={(e) => handleOnChange(e)}
+              />
+            </div>
+            {errors?.linkedin && (
+              <p className="text-xs text-red-500">{errors?.linkedin}</p>
+            )}
           </div>
-          {errors?.linkedin && (
-            <p className="text-xs text-red-500">{errors?.linkedin}</p>
-          )}
-        </div>
+        )}
 
-        <div className="flex flex-col items-center w-full max-w-lg py-3">
-          <div className="flex w-full max-w-md border-x border-y rounded-md hover:border-blue-700">
-            <span className="inline-flex items-center px-3 text-xl text-gray-900 bg-white border border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
-              <FaPaypal />
-            </span>
-            <input
-              type="text"
-              id="website-admin"
-              className="rounded-e-md bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0 w-full text-sm p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="+ PayPal"
-              name="paypal"
-              value={values?.paypal}
-              onChange={(e) => handleOnChange(e)}
-            />
+        {(selectCard === "PersonalBusinessCard" ||
+          selectCard === "PersonalLinksCard") && (
+          <div className="flex flex-col items-center w-full max-w-lg py-3">
+            <div className="flex w-full max-w-md border-x border-y rounded-md hover:border-blue-700">
+              <span className="inline-flex items-center px-3 text-xl text-gray-900 bg-white border border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                <FaPaypal />
+              </span>
+              <input
+                type="text"
+                id="website-admin"
+                className="rounded-e-md bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0 w-full text-sm p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="+ PayPal"
+                name="paypal"
+                value={values?.paypal}
+                onChange={(e) => handleOnChange(e)}
+              />
+            </div>
+            {errors?.paypal && (
+              <p className="text-xs text-red-500">{errors?.paypal}</p>
+            )}
           </div>
-          {errors?.paypal && (
-            <p className="text-xs text-red-500">{errors?.paypal}</p>
-          )}
-        </div>
+        )}
 
         <div className="flex sm:flex-row justify-between sm:space-x-4 w-full pt-10">
           <div
             className="flex items-center space-x-2"
             onClick={() => {
-              setPage(2);
-              setErrors("");
+              if (selectCard) {
+                setPage(2);
+                setErrors("");
+              } else {
+                setPage(1);
+                setErrors("");
+              }
             }}
           >
             <FaArrowLeft className="text-darkblue text-sm" />

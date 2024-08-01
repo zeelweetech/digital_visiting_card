@@ -29,11 +29,18 @@ function Profile({
   setErrors,
   selectCard,
 }) {
+  const path = window.location.pathname.split("/").pop();
   const validation = () => {
     const newErrors = {};
 
     if (!values?.image) {
       newErrors.image = "Please enter an image";
+    }
+
+    if (selectCard === "PersonalThemeCard") {
+      if (!values?.backgroundimage) {
+        newErrors.backgroundimage = "Please enter an backgroundimage";
+      }
     }
 
     if (!values?.name) {
@@ -56,7 +63,8 @@ function Profile({
 
     if (
       selectCard === "PersonalPreviewCard" ||
-      selectCard === "PersonalContactCard"
+      selectCard === "PersonalContactCard" ||
+      path === "business_profile_design"
     ) {
       if (!values?.description) {
         newErrors.description = "Please enter a description";
@@ -90,7 +98,11 @@ function Profile({
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     if (validation()) {
-      setPage(3);
+      if (path === "business_profile_design") {
+        setPage(2);
+      } else {
+        setPage(3);
+      }
     }
   };
 
@@ -135,7 +147,23 @@ function Profile({
           )}
         </div>
 
-        <div className="w-full mt-8">
+        {selectCard === "PersonalThemeCard" && (
+          <div className="w-full mt-8">
+            <input
+              className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-darkblue"
+              id="image"
+              type="file"
+              accept="image/*"
+              name="backgroundimage"
+              onChange={(e) => handleOnChange(e)}
+            />
+            {errors?.backgroundimage && (
+              <p className="text-xs text-red-500">{errors?.backgroundimage}</p>
+            )}
+          </div>
+        )}
+
+        <div className="w-full mt-5">
           <input
             className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-darkblue"
             id="inline-full-name"
@@ -185,7 +213,8 @@ function Profile({
         )}
 
         {(selectCard === "PersonalPreviewCard" ||
-          selectCard === "PersonalContactCard") && (
+          selectCard === "PersonalContactCard" ||
+          path === "business_profile_design") && (
           <div className="w-full mt-5">
             <EditorProvider>
               <Editor
