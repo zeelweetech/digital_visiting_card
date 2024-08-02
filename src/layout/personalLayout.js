@@ -7,9 +7,9 @@ import PersonalPreviewColorDesign from "../components/PersonalCard/PersonalPrevi
 import PersonalPreviewCard from "../components/PersonalCard/PersonalPreviewCard";
 import PersonalBusinessCard from "../components/PersonalCard/PersonalBusinessCard";
 import PersonalContactCard from "../components/PersonalCard/PersonalContactCard";
-import PersonalDetailsCrad from "../components/PersonalCard/PersonalDetailsCard";
 import PersonalLinksCard from "../components/PersonalCard/PersonalLinksCard";
 import PersonalThemeCard from "../components/PersonalCard/PersonalThemeCard";
+import PersonalDetailsCard from "../components/PersonalCard/PersonalDetailsCard";
 
 function PersonalLayOut() {
   const [selectTheme, setSelectTheme] = useState();
@@ -84,7 +84,7 @@ function PersonalLayOut() {
             )}
 
             {selectCard === "PersonalDetailsCard" && (
-              <PersonalDetailsCrad values={values} />
+              <PersonalDetailsCard values={values} />
             )}
 
             {selectCard === "PersonalLinksCard" && (

@@ -10,10 +10,10 @@ import PersonalLayOut from "./layout/personalLayout.js";
 // import PersonalPreviewCard from "./components/PersonalCard/PersonalPreviewCard/index.js";
 import PersonalContactCard from "./components/PersonalCard/PersonalContactCard/index.js";
 import PersonalBusinessCard from "./components/PersonalCard/PersonalBusinessCard/index.js";
-import PersonalDetailsCrad from "./components/PersonalCard/PersonalDetailsCard/index.js";
 import PersonalLinksCard from "./components/PersonalCard/PersonalLinksCard/index.js";
 import PersonalPreviewCard from "./components/PersonalCard/PersonalPreviewCard/index.js";
 import PersonalThemeCard from "./components/PersonalCard/PersonalThemeCard/index.js";
+import PersonalDetailsCard from "./components/PersonalCard/PersonalDetailsCard/index.js";
 
 function App() {
   return (
@@ -52,7 +52,7 @@ function App() {
             />
             <Route
               path="/PersonalDetailsCard/:name/:id"
-              element={<PersonalDetailsCrad />}
+              element={<PersonalDetailsCard />}
             />
             <Route
               path="/PersonalLinksCard/:name/:id"
@@ -67,7 +67,7 @@ function App() {
               element={<PersonalThemeCard />}
             />
 
-            <Route path="/PersonalContactCard" element={<PersonalContactCard/>} />
+            <Route path="/PersonalDetailsCrad" element={<PersonalDetailsCard />} />
           </Route>
         </Routes>
       </BrowserRouter>

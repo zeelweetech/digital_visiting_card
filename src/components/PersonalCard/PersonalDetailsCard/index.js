@@ -8,7 +8,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getProfileDetails } from "../../../services/ProfileServices";
 import Loader from "../../Loader";
 
-function PersonalDetailsCrad({ values }) {
+function PersonalDetailsCard({ values }) {
   const { id } = useParams();
   const [cardData, setCardData] = useState();
   const [loading, setLoading] = useState(false);
@@ -116,7 +116,7 @@ function PersonalDetailsCrad({ values }) {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center h-0 md:h-screen mt-22 md:mt-0">
       {loading ? (
         <Loader />
       ) : (
@@ -127,7 +127,7 @@ function PersonalDetailsCrad({ values }) {
             alt="Not Found"
           />
           <div
-            className={`relative flex justify-center text-center h-42 items-center px-9`}
+            className="relative flex justify-center text-center h-42 items-center px-9"
           >
             <div>
               <div className="flex justify-center text-center">
@@ -143,7 +143,7 @@ function PersonalDetailsCrad({ values }) {
                   alt="Not Found"
                 />
               </div>
-              <p className="text-xl font-semibold">
+              <p className="text-2xl md:text-xl font-semibold mt-5 md:mt-0">
                 {values?.name
                   ? values?.name
                   : cardData?.name
@@ -166,7 +166,7 @@ function PersonalDetailsCrad({ values }) {
                   : "Company Name"}
               </p>
 
-              <div className="space-x-2 mt-3">
+              <div className="space-x-5 md:space-x-2 mt-6 md:mt-3">
                 <button
                   className="bg-theme p-2 text-xl"
                   onClick={() => handlePhone(values?.phone || cardData?.phone)}
@@ -203,7 +203,7 @@ function PersonalDetailsCrad({ values }) {
                 </button>
               </div>
 
-              <div className="bg-slate-200 p-1 mt-5 w-full sm:w-auto">
+              <div className="bg-slate-200 p-1 mt-10 md:mt-5 w-full sm:w-auto">
                 {CardDetails?.map((data) => (
                   <div
                     key={data.Filed}
@@ -214,13 +214,13 @@ function PersonalDetailsCrad({ values }) {
                     </button>
                     <div className="text-sm">
                       <p className="font-semibold">{data.Filed}</p>
-                      <p>{data.filedDetail}</p>
+                      <p className={`${data.Filed === 'Address' ? "scrollable-container h-10 w-44 break-words overflow-x-hidden" : ""} ${data.Filed === 'Website' ? "scrollable-container h-5 w-44 break-words overflow-x-hidden" : ""}`}>{data.filedDetail}</p>
                     </div>
                   </div>
                 ))}
               </div>
               <div className="flex justify-center">
-                <button className="flex items-center font-semibold bg-blue-950 text-white px-3 py-1 mt-2 rounded-sm">
+                <button className="flex items-center font-semibold bg-blue-950 text-white px-16 md:px-3 py-2 md:py-1 mt-5 md:mt-2 rounded-sm">
                   Save To Phone
                   <IoMdDownload className="ml-2" />
                 </button>
@@ -233,4 +233,4 @@ function PersonalDetailsCrad({ values }) {
   );
 }
 
-export default PersonalDetailsCrad;
+export default PersonalDetailsCard;

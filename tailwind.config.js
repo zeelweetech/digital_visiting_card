@@ -35,6 +35,7 @@ module.exports = {
         m4: '4.5rem',
         m7: '7.7rem',
         17: '17.2rem',
+        22: '23rem',
       },
       padding: {
         p3: '3.7rem',
