@@ -65,22 +65,16 @@ function PersonalBusinessCard({ values }) {
   };
 
   return (
-    <div className={`flex flex-col justify-center items-center min-h-screen`}>
+    <div className={`flex flex-col justify-center items-center h-0 md:h-screen mt-22 md:mt-0`}>
       {loading ? (
         <Loader />
       ) : (
         <div className="flex flex-col items-center w-full max-w-md relative">
           <div
-            className={`${
-              cardData?.image ? "rounded-none" : "rounded-3xl"
-            } w-full md:w-80 h-30 bg-white shadow-xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${
-              cardData?.image ? "min-h-screen" : "auto"
-            }`}
+            className={`md:rounded-3xl w-full md:w-80 bg-white shadow-xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
           >
             <div
-              className={`h-72 ${
-                cardData?.image ? "rounded-none" : "rounded-se-3xl"
-              } ${cardData?.image ? "rounded-none" : "rounded-tl-3xl"}`}
+              className="h-80 md:h-72 md:rounded-se-3xl md:rounded-tl-3xl"
               style={{
                 backgroundColor: values?.backgroundcolor
                   ? values?.backgroundcolor
@@ -100,7 +94,7 @@ function PersonalBusinessCard({ values }) {
                           ? cardData?.image
                           : businessmen
                       }
-                      className="w-24 h-24 rounded-full"
+                      className="w-28 md:w-24 h-28 md:h-24 rounded-full" 
                       alt="Not Found"
                     />
                   </div>
@@ -142,21 +136,21 @@ function PersonalBusinessCard({ values }) {
               </div>
             </div>
 
-            <div className="flex justify-evenly -mt-5">
+            <div className="flex justify-evenly -mt-7 md:-mt-5 text-3xl md:text-2xl">
               <button
-                className="bg-white text-2xl rounded-full py-2 px-2"
+                className="bg-white rounded-full p-3 md:p-2"
                 onClick={() => handlePhone(values?.phone || cardData?.phone)}
               >
                 <FiPhone />
               </button>
               <button
-                className="bg-white text-2xl rounded-full py-2 px-2"
+                className="bg-white rounded-full p-3 md:p-2"
                 onClick={() => handleMail(values?.email || cardData?.email)}
               >
                 <CiMail />
               </button>
               <button
-                className="bg-white text-2xl rounded-full py-2 px-2"
+                className="bg-white rounded-full p-3 md:p-2"
                 onClick={() =>
                   handleAddress(values?.address || cardData?.address)
                 }
@@ -165,7 +159,7 @@ function PersonalBusinessCard({ values }) {
               </button>
             </div>
 
-            <div className="mt-5 px-3">
+            <div className="mt-10 md:mt-5 px-5 md:px-3">
               <div className="my-5">
                 <p>Mobile</p>
                 <Link
@@ -191,9 +185,9 @@ function PersonalBusinessCard({ values }) {
               </div>
 
               <div>
-                <p className="mt-4">Website</p>
+                <p className="mt-8 md:mt-4">Website</p>
                 <Link
-                  className="text-blue-800 font-semibold cursor-pointer"
+                  className="text-blue-800 font-semibold cursor-pointer break-words w-52"
                   onClick={() =>
                     handleRedirect(values?.website || cardData?.website)
                   }
@@ -205,14 +199,14 @@ function PersonalBusinessCard({ values }) {
               </div>
             </div>
 
-            <p className="text-center mt-5 font-semibold text-lg">
+            <p className="text-center mt-8 md:mt-4 font-semibold text-2xl md:text-lg">
               Connect with me on
             </p>
 
-            <div className="flex items-center justify-evenly px-6 mt-3">
+            <div className="flex items-center justify-evenly px-6 mt-3 md:mt-1">
               <img
                 src={facebook}
-                className="w-10 h-10"
+                className="w-16 md:w-10 h-16 md:h-10"
                 alt="Not Foung"
                 onClick={() => {
                   handleRedirect(values?.facebook || cardData?.facebook);
@@ -220,7 +214,7 @@ function PersonalBusinessCard({ values }) {
               />
               <img
                 src={instagram}
-                className="w-10 h-10"
+                className="w-16 md:w-10 h-16 md:h-10"
                 alt="Not Foung"
                 onClick={() =>
                   handleRedirect(values?.instagram || cardData?.instagram)
@@ -228,7 +222,7 @@ function PersonalBusinessCard({ values }) {
               />
               <img
                 src={linkedin}
-                className="w-10 h-10"
+                className="w-16 md:w-10 h-16 md:h-10"
                 alt="Not Foung"
                 onClick={() =>
                   handleRedirect(values?.linkedin || cardData?.linkedin)
@@ -236,7 +230,7 @@ function PersonalBusinessCard({ values }) {
               />
               <img
                 src={paypal}
-                className="w-12 h-12"
+                className="w-16 md:w-12 h-16 md:h-12"
                 alt="Not Foung"
                 onClick={() =>
                   handleRedirect(values?.paypal || cardData?.paypal)

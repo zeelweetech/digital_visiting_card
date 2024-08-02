@@ -78,30 +78,20 @@ function PersonalPreviewCard({ selectTheme, values }) {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen overflow-hidden">
+    <div className="flex justify-center items-center h-0 md:h-screen mt-96 md:-mt-80">
       {loading ? (
         <Loader />
       ) : (
-        <div
-          className={`flex flex-col items-center ${
-            cardData?.image ? "w-full" : "w-full"
-          } max-w-md relative ${cardData?.image && themeClass}`}
-          style={{
-            minHeight: cardData?.image ? "100vh" : "auto",
-          }}
-        >
-          {!cardData?.image && (
+        <div className={`md:rounded-2 ${themeClass} w-full md:w-80 h-100 md:h-0 pt-14 px-6 md:p-0`}>
+          <div className="absolute"> 
             <img
               src={phone}
-              className={`rounded-2 w-80 h-30 ${themeClass} absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
+              className={`hidden md:block rounded-2 w-full h-30 ${themeClass}`}
               alt="Not Found"
             />
-          )}
-          <div
-            className="scrollable-container h-h30 overflow-x-hidden relative"
-            style={{ minHeight: cardData?.image ? "100vh" : "34rem" }}
-          >
-            <div className="bg-gray-200 w-17 h-80 rounded-3xl flex flex-col justify-center text-center mt-20">
+          </div>
+          <div className="scrollable-container md:h-35 h-42 overflow-x-hidden relative md:mt-10 md:pl-p5">
+            <div className="bg-gray-200 w-21 md:w-17 h-80 rounded-3xl flex flex-col justify-center text-center mt-20">
               <img
                 src={
                   values?.image
@@ -155,66 +145,66 @@ function PersonalPreviewCard({ selectTheme, values }) {
 
             {(values?.email || cardData?.email) && (
               <button
-                className="bg-neutral-700 text-white font-semibold mt-4 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto"
+                className="bg-neutral-700 text-white font-semibold mt-4 py-2.5 w-21 md:w-17 rounded-full shadow-md flex items-center overflow-auto"
                 onClick={() => handleMail(values?.email || cardData?.email)}
               >
-                <CiMail className="ml-5 mr-20" />
+                <CiMail className="ml-5 mr-28 md:mr-20" />
                 <span>Email</span>
               </button>
             )}
             {(values?.phone || cardData?.phone) && (
               <button
-                className="bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto"
+                className="bg-neutral-700 text-white font-semibold my-3 py-2.5 w-21 md:w-17 rounded-full shadow-md flex items-center overflow-auto"
                 onClick={() => handlePhone(values?.phone || cardData?.phone)}
               >
-                <MdLocalPhone className="ml-5 mr-20" />
+                <MdLocalPhone className="ml-5 mr-28 md:mr-20" />
                 <span>phone</span>
               </button>
             )}
             {(values?.address || cardData?.address) && (
               <button
-                className="bg-neutral-700 text-white font-semibold py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto"
+                className="bg-neutral-700 text-white font-semibold py-2.5 w-21 md:w-17 rounded-full shadow-md flex items-center overflow-auto"
                 onClick={() =>
                   handleAddress(values?.address || cardData?.address)
                 }
               >
-                <FiMapPin className="ml-5 mr-20" />
+                <FiMapPin className="ml-5 mr-28 md:mr-20" />
                 <span>Address</span>
               </button>
             )}
             {(values?.instagram || cardData) &&
               cardData?.instagram !== "undefined" && (
                 <button
-                  className="bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto"
+                  className="bg-neutral-700 text-white font-semibold my-3 py-2.5 w-21 md:w-17 rounded-full shadow-md flex items-center overflow-auto"
                   onClick={() =>
                     handleRedirect(values?.instagram || cardData?.instagram)
                   }
                 >
-                  <IoLogoInstagram className="ml-5 mr-20" />
+                  <IoLogoInstagram className="ml-5 mr-28 md:mr-20" />
                   <span>Instagram</span>
                 </button>
               )}
             {(values?.website || cardData) &&
               cardData?.website !== "undefined" && (
                 <button
-                  className="bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto"
+                  className="bg-neutral-700 text-white font-semibold my-3 py-2.5 w-21 md:w-17 rounded-full shadow-md flex items-center overflow-auto"
                   onClick={() =>
                     handleRedirect(values?.website || cardData?.website)
                   }
                 >
-                  <BiWorld className="ml-5 mr-20" />
+                  <BiWorld className="ml-5 mr-28 md:mr-20" />
                   <span>Website</span>
                 </button>
               )}
             {(values?.facebook || cardData) &&
               cardData?.facebook !== "undefined" && (
                 <button
-                  className="bg-neutral-700 text-white font-semibold my-3 py-2.5 w-17 rounded-full shadow-md flex items-center overflow-auto"
+                  className="bg-neutral-700 text-white font-semibold my-3 py-2.5 w-21 md:w-17 rounded-full shadow-md flex items-center overflow-auto"
                   onClick={() =>
                     handleRedirect(values?.facebook || cardData?.facebook)
                   }
                 >
-                  <TiSocialFacebook className="ml-5 mr-20" />
+                  <TiSocialFacebook className="ml-5 mr-28 md:mr-20" />
                   <span>Facebook</span>
                 </button>
               )}

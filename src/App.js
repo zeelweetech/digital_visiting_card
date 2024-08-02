@@ -66,8 +66,6 @@ function App() {
               path="/PersonalThemeCard/:name/:id"
               element={<PersonalThemeCard />}
             />
-
-            <Route path="/PersonalDetailsCrad" element={<PersonalDetailsCard />} />
           </Route>
         </Routes>
       </BrowserRouter>

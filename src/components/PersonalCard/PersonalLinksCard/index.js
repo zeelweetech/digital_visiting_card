@@ -74,12 +74,12 @@ function PersonalLinksCard({ values }) {
 
   return (
     <div
-      className={`flex flex-col justify-center items-center min-h-screen overflow-hidden`}
+      className="flex flex-col justify-center items-center h-100 md:h-screen -mt-5 md:mt-0 overflow-hidden"
     >
       {loading ? (
         <Loader />
       ) : (
-        <div className={`${phone ? "100vh" : ""}`}>
+        <div>
           <div className="absolute">
             <img
               src={phone}
@@ -89,7 +89,7 @@ function PersonalLinksCard({ values }) {
           </div>
           <div className="relative px-p5 pt-7">
             <div
-              className={`w-17 rounded-3xl text-center mt-24 mb-2 py-8`}
+              className="w-21 md:w-17 rounded-3xl text-center md:mt-24 mb-2 py-8"
               style={{
                 backgroundColor: values?.backgroundcolor
                   ? values?.backgroundcolor
@@ -131,7 +131,7 @@ function PersonalLinksCard({ values }) {
                 }}
               >
                 <div className="flex justify-center">
-                  <p className="text-3xl font-semibold pt-5 w-32">
+                  <p className="text-3xl font-semibold pt-9 w-32">
                     {values?.name
                       ? values?.name
                       : cardData?.name
@@ -149,7 +149,7 @@ function PersonalLinksCard({ values }) {
               </div>
             </div>
 
-            <div className="flex justify-around bg-white shadow-xl mx-1 my-3 py-3">
+            <div className="flex justify-around bg-white shadow-xl mx-1 my-7 md:my-3 py-5 md:py-3">
               <div className="flex flex-col items-center">
                 <button
                   type="button"
@@ -181,8 +181,8 @@ function PersonalLinksCard({ values }) {
               </div>
             </div>
 
-            <div className="bg-white shadow-xl mx-1 py-3">
-              <p className="text-lg font-semibold px-3 pb-2">Links</p>
+            <div className="bg-white shadow-xl mx-1 py-6 md:py-3">
+              <p className="text-lg font-semibold px-5 md:px-3 pb-4 md:pb-2">Links</p>
               <div className="grid grid-cols-3 gap-y-5">
                 <div className="flex flex-col items-center">
                   <button

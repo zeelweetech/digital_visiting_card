@@ -20,7 +20,8 @@ module.exports = {
         17: '17.3rem',
         18: '18.7rem',
         p7: '7.5rem',
-        20: '20rem'
+        20: '20rem',
+        21: '21rem'
       },
       height: {
         100: '100vh',
@@ -34,13 +35,16 @@ module.exports = {
       margin: {
         m4: '4.5rem',
         m7: '7.7rem',
+        b17: '16.8rem',
         17: '17.2rem',
         22: '23rem',
+        23: '22rem',
       },
       padding: {
         p3: '3.7rem',
         p8: '0.69rem',
         p5: '1.38rem',
+        pd3: '3.3rem'
       },
       borderRadius: {
         2: '2.5rem',

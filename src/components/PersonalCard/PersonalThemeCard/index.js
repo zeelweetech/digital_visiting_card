@@ -96,7 +96,7 @@ END
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center h-0 md:h-screen mt-23 md:mt-0"> 
       {loading ? (
         <Loader />
       ) : (
@@ -117,7 +117,7 @@ END
                   ? cardData?.backgroundimage
                   : triper
               }
-              className="w-80 h-40 px-p8 mt-10"
+              className="w-full md:w-80 h-56 md:h-40 px-0 md:px-p8 mt-10"
               alt="Not Found"
             />
             <div className="flex justify-center">
@@ -131,11 +131,11 @@ END
                         ? cardData?.image
                         : businessmen
                     }
-                    className="w-32 h-32 rounded-full shadow-xl border-4 border-white -mt-16"
+                    className="w-36 md:w-32 h-36 md:h-32 rounded-full shadow-xl border-4 border-white -mt-16"
                     alt="Not Found"
                   />
                 </div>
-                <p className="text-2xl font-semibold mt-3">
+                <p className="text-3xl md:text-2xl font-semibold mt-3">
                   {values?.name
                     ? values?.name
                     : cardData?.name
@@ -159,10 +159,10 @@ END
               </div>
             </div>
 
-            <div className="mt-6 space-y-3">
+            <div className="mt-10 md:mt-6 space-y-3">
               <div className="flex items-center px-7 space-x-3">
                 <button
-                  className="bg-zinc-900 text-white rounded-full p-2"
+                  className="bg-zinc-900 text-white rounded-full p-3 md:p-2 text-2xl md:text-base"
                   onClick={() => handleMail(values?.email || cardData?.email)}
                 >
                   <IoMdMail />
@@ -177,7 +177,7 @@ END
               </div>
               <div className="flex items-center px-7 space-x-3">
                 <button
-                  className="bg-zinc-900 text-white rounded-full p-2"
+                  className="bg-zinc-900 text-white rounded-full p-3 md:p-2 text-2xl md:text-base"
                   onClick={() => handlePhone(values?.phone || cardData?.phone)}
                 >
                   <MdCall />
@@ -192,14 +192,14 @@ END
               </div>
               <div className="flex items-center px-7 space-x-3">
                 <button
-                  className="bg-zinc-900 text-white rounded-full p-2"
+                  className="bg-zinc-900 text-white rounded-full p-3 md:p-2 text-2xl md:text-base"
                   onClick={() =>
                     handleRedirect(values?.website || cardData?.website)
                   }
                 >
                   <TbWorld />
                 </button>
-                <p>
+                <p className="break-words w-56">
                   {values?.website
                     ? values?.website
                     : cardData?.website
@@ -209,14 +209,14 @@ END
               </div>
               <div className="flex items-start px-7 space-x-3">
                 <button
-                  className="bg-zinc-900 text-white rounded-full p-2"
+                  className="bg-zinc-900 text-white rounded-full p-3 md:p-2 text-2xl md:text-base"
                   onClick={() =>
                     handleAddress(values?.address || cardData?.address)
                   }
                 >
                   <FaMapMarker />
                 </button>
-                <p className="w-52 text-sm">
+                <p className="w-52 text-sm scrollable-container h-10 break-words overflow-x-hidden">
                   {values?.address
                     ? values?.address
                     : cardData?.address
@@ -225,10 +225,10 @@ END
                 </p>
               </div>
 
-              <div className="px-p5">
+              <div className="px-10 md:px-p5">
                 <button
                   type="button"
-                  className="bg-blue-600 py-2 px-20 mt-3 rounded-full text-white font-semibold"
+                  className="bg-blue-600 py-2 px-24 md:px-20 rounded-full text-white font-semibold"
                   onClick={handleDownloadVCard}
                 >
                   Add to contacts

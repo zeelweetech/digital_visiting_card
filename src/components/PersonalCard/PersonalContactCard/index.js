@@ -279,7 +279,7 @@ END
                     <TbWorld />
                   </button>
                   <div className="text-start ml-2.5">
-                    <p className="font-semibold">
+                    <p className="font-semibold break-words w-52">
                       {values?.website
                         ? values?.website
                         : cardData?.website
@@ -300,7 +300,7 @@ END
                       onClick={() =>
                         handleAddress(values?.address || cardData?.address)
                       }
-                      offset="0%"
+                      offset="0%"   
                     />
                     <img
                       src={instagram}

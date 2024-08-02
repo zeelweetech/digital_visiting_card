@@ -215,7 +215,7 @@ function PersonalDetailsCard({ values }) {
                     <div className="text-sm">
                       <p className="font-semibold">{data.Filed}</p>
                       <p className={`${data.Filed === 'Address' ? "scrollable-container h-10 w-44 break-words overflow-x-hidden" : ""} ${data.Filed === 'Website' ? "scrollable-container h-5 w-44 break-words overflow-x-hidden" : ""}`}>{data.filedDetail}</p>
-                    </div>
+                    </div> 
                   </div>
                 ))}
               </div>

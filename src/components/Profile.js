@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import profile from "../assets/image/profile.png";
+import avatar from "../assets/image/avatar.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
 import { FaArrowLeft } from "react-icons/fa";
@@ -105,6 +105,7 @@ function Profile({
       }
     }
   };
+  console.log("value *******", values);
 
   return (
     <div className="flex flex-col justify-center items-center min-h-screen p-4">
@@ -120,18 +121,18 @@ function Profile({
           ) : (
             <img
               className="inline-block h-32 w-32 rounded-full"
-              src={profile}
+              src={avatar}
               alt="Profile"
             />
           )}
           <label
-            className="absolute bottom-4 right-2 rounded-full p-2"
+            className="absolute bottom-2 -right-2.5 rounded-full p-2"
             aria-label="Change Profile Picture"
           >
             <FontAwesomeIcon
               icon={faCamera}
               // className={values?.image ? "hidden" : "text-darkblue text-xl"}
-              className="text-darkblue text-xl"
+              className="bg-white p-1 rounded-full text-xl"
             />
             <input
               className="hidden"
