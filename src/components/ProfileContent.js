@@ -53,7 +53,8 @@ function ProfileContent({
       selectCard === "PersonalContactCard" ||
       selectCard === "PersonalLinksCard" ||
       selectCard === "PersonalBusinessCard" ||
-      selectCard === "PersonalPreviewCard"
+      selectCard === "PersonalPreviewCard" ||
+      path === "business_profile_design"
     ) {
       if (!values?.instagram) {
         newErrors.instagram = "Please enter an instagram";
@@ -68,7 +69,8 @@ function ProfileContent({
       selectCard === "PersonalContactCard" ||
       selectCard === "PersonalLinksCard" ||
       selectCard === "PersonalBusinessCard" ||
-      selectCard === "PersonalPreviewCard"
+      selectCard === "PersonalPreviewCard" ||
+      path === "business_profile_design"
     ) {
       if (!values?.facebook) {
         newErrors.facebook = "Please enter a facebook";
@@ -266,7 +268,8 @@ function ProfileContent({
         {(selectCard === "PersonalContactCard" ||
           selectCard === "PersonalLinksCard" ||
           selectCard === "PersonalBusinessCard" ||
-          selectCard === "PersonalPreviewCard") && (
+          selectCard === "PersonalPreviewCard" ||
+          path === "business_profile_design") && (
           <div className="flex flex-col items-center w-full max-w-lg py-3">
             <div className="flex w-full max-w-md border-x border-y rounded-md hover:border-blue-700">
               <span className="inline-flex items-center px-3 text-xl text-gray-900 bg-white border border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
@@ -311,7 +314,8 @@ function ProfileContent({
         {(selectCard === "PersonalContactCard" ||
           selectCard === "PersonalLinksCard" ||
           selectCard === "PersonalBusinessCard" ||
-          selectCard === "PersonalPreviewCard") && (
+          selectCard === "PersonalPreviewCard" ||
+          path === "business_profile_design") && (
           <div className="flex flex-col items-center w-full max-w-lg py-3">
             <div className="flex w-full max-w-md border-x border-y rounded-md hover:border-blue-700">
               <span className="inline-flex items-center px-3 text-xl text-gray-900 bg-white border border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
