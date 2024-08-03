@@ -74,36 +74,33 @@ function BusinessCardPreview({ selectTheme, values }) {
   };
 
   return (
-    <div className={`flex flex-col justify-center items-center min-h-screen`}>
+    <div className="flex flex-col justify-center items-center h-0 md:h-screen"
+      >
       {loading ? (
         <Loader />
       ) : (
         <div className="flex flex-col items-center w-full max-w-md relative">
           <div
-            className={`${
-              cardData?.image ? "rounded-none" : "rounded-3xl"
-            } w-full md:w-80 h-30 bg-white shadow-xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${
-              cardData?.image ? "min-h-screen" : "auto"
-            }`}
+            className="md:rounded-3xl w-full md:w-80 h-full md:h-30 bg-white shadow-xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
           >
             <div
-              className={`${themeClass} h-64 ${
-                cardData?.image ? "rounded-none" : "rounded-se-3xl"
-              } ${cardData?.image ? "rounded-none" : "rounded-tl-3xl"}`}
+              className={`${themeClass} h-72 md:h-64 md:rounded-t-3xl`}
             >
-              <div className="flex justify-center items-center text-center pt-5">
+              <div className="flex justify-center items-center text-center pt-10">
                 <div>
-                  <img
-                    src={
-                      values?.image
-                        ? URL.createObjectURL(values?.image)
-                        : cardData?.image
-                        ? cardData?.image
-                        : avatar
-                    }
-                    className="w-24 h-24"
-                    alt="Not Found"
-                  />
+                  <div className="flex justify-center">
+                    <img
+                      src={
+                        values?.image
+                          ? URL.createObjectURL(values?.image)
+                          : cardData?.image
+                          ? cardData?.image
+                          : avatar
+                      }
+                      className="w-32 md:w-24 h-32 md:h-24 mt-2 md:mt-0"
+                      alt="Not Found"
+                    />
+                  </div>
                   <p className="text-2xl text-white pt-2">
                     {values?.name
                       ? values?.name
@@ -158,7 +155,7 @@ function BusinessCardPreview({ selectTheme, values }) {
                 )}
             </div>
 
-            <div className="mt-5 px-3">
+            <div className="mt-9 md:mt-5 px-4 md:px-3">
               <p className="break-words">
                 Description :{" "}
                 {values?.description ? (
@@ -174,7 +171,7 @@ function BusinessCardPreview({ selectTheme, values }) {
                 )}
               </p>
               {(values?.phone || cardData?.phone) && (
-                <div className="my-4">
+                <div className="my-7 md:my-4">
                   <p>Mobile</p>
                   <Link
                     className="cursor-pointer text-blue-800 break-words"
@@ -200,7 +197,7 @@ function BusinessCardPreview({ selectTheme, values }) {
               {(values?.website || cardData) &&
                 cardData?.website !== "undefined" && (
                   <>
-                    <p className="mt-4">Website</p>
+                    <p className="mt-6 md:mt-4">Website</p>
                     <Link
                       className="text-blue-800 cursor-pointer"
                       onClick={() =>
