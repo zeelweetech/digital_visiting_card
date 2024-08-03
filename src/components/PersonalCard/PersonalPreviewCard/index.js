@@ -78,11 +78,11 @@ function PersonalPreviewCard({ selectTheme, values }) {
   };
 
   return (
-    <div className="flex justify-center items-center h-0 md:h-screen mt-96 md:-mt-80">
+    <div className="flex justify-center items-center h-full md:h-screen">
       {loading ? (
         <Loader />
       ) : (
-        <div className={`md:rounded-2 ${themeClass} w-full md:w-80 h-100 md:h-0 pt-14 px-6 md:p-0`}>
+        <div className={`md:rounded-2 ${themeClass} w-full md:w-80 pt-14 px-4 md:p-0`}>
           <div className="absolute"> 
             <img
               src={phone}
@@ -90,8 +90,8 @@ function PersonalPreviewCard({ selectTheme, values }) {
               alt="Not Found"
             />
           </div>
-          <div className="scrollable-container md:h-35 h-42 overflow-x-hidden relative md:mt-10 md:pl-p5">
-            <div className="bg-gray-200 w-21 md:w-17 h-80 rounded-3xl flex flex-col justify-center text-center mt-20">
+          <div className="scrollable-container h-full md:h-35 overflow-x-hidden relative md:mt-10 md:pl-p5">
+            <div className="bg-gray-200 w-full md:w-17 h-80 rounded-3xl flex flex-col justify-center text-center mt-20">
               <img
                 src={
                   values?.image
@@ -103,7 +103,7 @@ function PersonalPreviewCard({ selectTheme, values }) {
                 className="rounded-full border-4 border-white w-36 h-36 -mt-44 absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                 alt="Not Found"
               />
-              <div className="overflow-y-auto overflow-x-hidden overscroll-y-hidden">
+              <div className="overflow-y-auto scrollable-container overscroll-y-hidden">
                 <p className="text-3xl pt-12 mt-5">
                   {values?.name
                     ? values?.name
@@ -125,7 +125,7 @@ function PersonalPreviewCard({ selectTheme, values }) {
                     ? cardData?.company
                     : "Company Name"}
                 </p>
-                <p className="pt-3 pr-7 pl-4 w-72 break-words">
+                <p className="pt-3 px-3 break-words flex justify-center">
                   {values?.description ? (
                     <span
                       dangerouslySetInnerHTML={{ __html: values.description }}
@@ -136,8 +136,8 @@ function PersonalPreviewCard({ selectTheme, values }) {
                     />
                   ) : (
                     `Luxury Auto Dealership Over 9 years of experience in auto sales,
-              dedicated to bridging the gap between sales and customers. +1
-              [345] 678 - 888`
+                    dedicated to bridging the gap between sales and customers. +1
+                    [345] 678 - 888`
                   )}
                 </p>
               </div>
@@ -145,67 +145,68 @@ function PersonalPreviewCard({ selectTheme, values }) {
 
             {(values?.email || cardData?.email) && (
               <button
-                className="bg-neutral-700 text-white font-semibold mt-4 py-2.5 w-21 md:w-17 rounded-full shadow-md flex items-center overflow-auto"
-                onClick={() => handleMail(values?.email || cardData?.email)}
-              >
-                <CiMail className="ml-5 mr-28 md:mr-20" />
-                <span>Email</span>
-              </button>
+              className="bg-neutral-700 text-white font-semibold mt-4 py-2.5 w-full md:w-17 rounded-full shadow-md flex items-center"
+              onClick={() => handleMail(values?.email || cardData?.email)}
+            >
+              <CiMail className="ml-4" />
+              <span className="flex-1 text-center">Email</span>
+            </button>
+            
             )}
             {(values?.phone || cardData?.phone) && (
               <button
-                className="bg-neutral-700 text-white font-semibold my-3 py-2.5 w-21 md:w-17 rounded-full shadow-md flex items-center overflow-auto"
+                className="bg-neutral-700 text-white font-semibold my-3 py-2.5 w-full md:w-17 rounded-full shadow-md flex items-center"
                 onClick={() => handlePhone(values?.phone || cardData?.phone)}
               >
-                <MdLocalPhone className="ml-5 mr-28 md:mr-20" />
-                <span>phone</span>
+                <MdLocalPhone className="ml-4" />
+                <span className="flex-1 text-center">phone</span>
               </button>
             )}
             {(values?.address || cardData?.address) && (
               <button
-                className="bg-neutral-700 text-white font-semibold py-2.5 w-21 md:w-17 rounded-full shadow-md flex items-center overflow-auto"
+                className="bg-neutral-700 text-white font-semibold py-2.5 w-full md:w-17 rounded-full shadow-md flex items-centero"
                 onClick={() =>
                   handleAddress(values?.address || cardData?.address)
                 }
               >
-                <FiMapPin className="ml-5 mr-28 md:mr-20" />
-                <span>Address</span>
+                <FiMapPin className="ml-4" />
+                <span className="flex-1 text-center">Address</span>
               </button>
             )}
             {(values?.instagram || cardData) &&
               cardData?.instagram !== "undefined" && (
                 <button
-                  className="bg-neutral-700 text-white font-semibold my-3 py-2.5 w-21 md:w-17 rounded-full shadow-md flex items-center overflow-auto"
+                  className="bg-neutral-700 text-white font-semibold my-3 py-2.5 w-full md:w-17 rounded-full shadow-md flex items-center overflow-auto"
                   onClick={() =>
                     handleRedirect(values?.instagram || cardData?.instagram)
                   }
                 >
-                  <IoLogoInstagram className="ml-5 mr-28 md:mr-20" />
-                  <span>Instagram</span>
+                  <IoLogoInstagram className="ml-4" />
+                  <span className="flex-1 text-center">Instagram</span>
                 </button>
               )}
             {(values?.website || cardData) &&
               cardData?.website !== "undefined" && (
                 <button
-                  className="bg-neutral-700 text-white font-semibold my-3 py-2.5 w-21 md:w-17 rounded-full shadow-md flex items-center overflow-auto"
+                  className="bg-neutral-700 text-white font-semibold my-3 py-2.5 w-full md:w-17 rounded-full shadow-md flex items-center overflow-auto"
                   onClick={() =>
                     handleRedirect(values?.website || cardData?.website)
                   }
                 >
-                  <BiWorld className="ml-5 mr-28 md:mr-20" />
-                  <span>Website</span>
+                  <BiWorld className="ml-4" />
+                  <span className="flex-1 text-center">Website</span>
                 </button>
               )}
             {(values?.facebook || cardData) &&
               cardData?.facebook !== "undefined" && (
                 <button
-                  className="bg-neutral-700 text-white font-semibold my-3 py-2.5 w-21 md:w-17 rounded-full shadow-md flex items-center overflow-auto"
+                  className="bg-neutral-700 text-white font-semibold my-3 py-2.5 w-full md:w-17 rounded-full shadow-md flex items-center overflow-auto"
                   onClick={() =>
                     handleRedirect(values?.facebook || cardData?.facebook)
                   }
                 >
-                  <TiSocialFacebook className="ml-5 mr-28 md:mr-20" />
-                  <span>Facebook</span>
+                  <TiSocialFacebook className="ml-4" />
+                  <span className="flex-1 text-center">Facebook</span>
                 </button>
               )}
           </div>
