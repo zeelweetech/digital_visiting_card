@@ -1,18 +1,9 @@
 import React, { useEffect, useState } from "react";
 import phone from "../../../assets/image/phone.png";
 import businesswomen from "../../../assets/image/businesswomen.webp";
-import {
-  FaInstagram,
-  FaRegAddressCard,
-} from "react-icons/fa";
-import {
-  IoCallOutline,
-  IoMailOutline,
-} from "react-icons/io5";
-import {
-  PiFacebookLogoBold,
-  PiLinkedinLogo,
-} from "react-icons/pi";
+import { FaInstagram, FaRegAddressCard } from "react-icons/fa";
+import { IoCallOutline, IoMailOutline } from "react-icons/io5";
+import { PiFacebookLogoBold, PiLinkedinLogo } from "react-icons/pi";
 import { useNavigate, useParams } from "react-router-dom";
 import { getProfileDetails } from "../../../services/ProfileServices";
 import Loader from "../../Loader";
@@ -73,23 +64,21 @@ function PersonalLinksCard({ values }) {
   };
 
   return (
-    <div
-      className="flex flex-col justify-center items-center h-100 md:h-screen -mt-5 md:mt-0 overflow-hidden"
-    >
+    <div className="flex flex-col md:justify-center items-center h-screen md:h-screen overflow-hidden">
       {loading ? (
         <Loader />
       ) : (
-        <div>
-          <div className="absolute">
+        <div className="relative w-full max-w-lg px-1.5 md:ml-44">
+          <div className="absolute left-0 hidden md:block">
             <img
               src={phone}
-              className="hidden md:block rounded-2 w-80 h-30"
+              className="w-80 h-30"
               alt="Not Found"
             />
           </div>
-          <div className="relative px-p5 pt-7">
+          <div className="relative px-4 pt-16 mt-12">
             <div
-              className="w-21 md:w-17 rounded-3xl text-center md:mt-24 mb-2 py-8"
+              className="w-full md:w-17 rounded-3xl text-center mb-4 py-8"
               style={{
                 backgroundColor: values?.backgroundcolor
                   ? values?.backgroundcolor
@@ -106,22 +95,14 @@ function PersonalLinksCard({ values }) {
                     ? cardData?.image
                     : businesswomen
                 }
-                className="rounded-full border-4 border-white w-36 h-36 absolute left-1/2 -mt-10 transform -translate-x-1/2 -translate-y-1/2"
+                className="rounded-full border-4 border-white w-32 h-32 -mt-24 mx-auto"
                 style={{
                   boxShadow: "0 1px 2px 0 #ffffff, 0 1px 5px 0 #ffffff",
                 }}
                 alt="Not Found"
               />
-              {/* <div className="relative">
-                <button
-                  type="button"
-                  className="bg-white rounded-full p-1 ml-24 -mt-40"
-                >
-                  <IoShareSocialOutline />
-                </button>
-              </div> */}
               <div
-                className="overflow-y-auto overflow-x-hidden overscroll-y-hidden mt-2"
+                className="text-center"
                 style={{
                   color: values?.fontcolor
                     ? values?.fontcolor
@@ -130,16 +111,14 @@ function PersonalLinksCard({ values }) {
                     : "rgb(255 255 255)",
                 }}
               >
-                <div className="flex justify-center">
-                  <p className="text-3xl font-semibold pt-9 w-32">
-                    {values?.name
-                      ? values?.name
-                      : cardData?.name
-                      ? cardData?.name
-                      : "Johannes GutMann"}
-                  </p>
-                </div>
-                <p className="text-base pt-2">
+                <p className="text-2xl font-semibold mb-2">
+                  {values?.name
+                    ? values?.name
+                    : cardData?.name
+                    ? cardData?.name
+                    : "Johannes GutMann"}
+                </p>
+                <p className="text-base">
                   {values?.title
                     ? values?.title
                     : cardData?.title
@@ -149,95 +128,95 @@ function PersonalLinksCard({ values }) {
               </div>
             </div>
 
-            <div className="flex justify-around bg-white shadow-xl mx-1 my-7 md:my-3 py-5 md:py-3">
-              <div className="flex flex-col items-center">
+            <div className="flex flex-wrap justify-around bg-white shadow-xl my-4 py-4 md:w-17">
+              <div className="flex flex-col items-center mb-4">
                 <button
                   type="button"
                   onClick={() =>
                     handleAddress(values?.address || cardData?.address)
                   }
                 >
-                  <FaRegAddressCard className="text-3xl" />
+                  <FaRegAddressCard className="text-2xl" />
                 </button>
-                <p className="text-xs w-16 text-center">Address</p>
+                <p className="text-xs text-center mt-2">Address</p>
               </div>
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center mb-4">
                 <button
                   type="button"
                   onClick={() => handlePhone(values?.phone || cardData?.phone)}
                 >
-                  <IoCallOutline className="text-3xl" />
+                  <IoCallOutline className="text-2xl" />
                 </button>
-                <p className="text-xs">calling</p>
+                <p className="text-xs text-center mt-2">Calling</p>
               </div>
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center mb-4">
                 <button
                   type="button"
                   onClick={() => handleMail(values?.email || cardData?.email)}
                 >
-                  <IoMailOutline className="text-3xl" />
+                  <IoMailOutline className="text-2xl" />
                 </button>
-                <p className="text-xs">Email</p>
+                <p className="text-xs text-center mt-2">Email</p>
               </div>
             </div>
 
-            <div className="bg-white shadow-xl mx-1 py-6 md:py-3">
-              <p className="text-lg font-semibold px-5 md:px-3 pb-4 md:pb-2">Links</p>
-              <div className="grid grid-cols-3 gap-y-5">
-                <div className="flex flex-col items-center">
+            <div className="bg-white shadow-xl py-4 md:w-17">
+              <p className="text-lg font-semibold px-4 pb-2">Links</p>
+              <div className="grid grid-cols-3 gap-4">
+                <div className="flex flex-col items-center mb-4">
                   <button
                     type="button"
                     onClick={() =>
                       handleRedirect(values?.instagram || cardData?.instagram)
                     }
                   >
-                    <FaInstagram className="text-3xl" />
+                    <FaInstagram className="text-2xl" />
                   </button>
-                  <p className="text-xs w-16 text-center">Instagram</p>
+                  <p className="text-xs text-center mt-2">Instagram</p>
                 </div>
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center mb-4">
                   <button
                     type="button"
-                    onClick={() => {
-                      handleRedirect(values?.facebook || cardData?.facebook);
-                    }}
+                    onClick={() =>
+                      handleRedirect(values?.facebook || cardData?.facebook)
+                    }
                   >
-                    <PiFacebookLogoBold className="text-3xl" />
+                    <PiFacebookLogoBold className="text-2xl" />
                   </button>
-                  <p className="text-xs">Facebook</p>
+                  <p className="text-xs text-center mt-2">Facebook</p>
                 </div>
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center mb-4">
                   <button
                     type="button"
                     onClick={() =>
                       handleRedirect(values?.linkedin || cardData?.linkedin)
                     }
                   >
-                    <PiLinkedinLogo className="text-3xl" />
+                    <PiLinkedinLogo className="text-2xl" />
                   </button>
-                  <p className="text-xs">Linkedin</p>
+                  <p className="text-xs text-center mt-2">Linkedin</p>
                 </div>
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center mb-4">
                   <button
                     type="button"
                     onClick={() =>
                       handleRedirect(values?.website || cardData?.website)
                     }
                   >
-                    <TfiWorld className="text-3xl" />
+                    <TfiWorld className="text-2xl" />
                   </button>
-                  <p className="text-xs">Website</p>
+                  <p className="text-xs text-center mt-2">Website</p>
                 </div>
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center mb-4">
                   <button
                     type="button"
                     onClick={() =>
                       handleRedirect(values?.paypal || cardData?.paypal)
                     }
                   >
-                    <SlPaypal className="text-3xl" />
+                    <SlPaypal className="text-2xl" />
                   </button>
-                  <p className="text-xs">PayPal</p>
+                  <p className="text-xs text-center mt-2">PayPal</p>
                 </div>
               </div>
             </div>

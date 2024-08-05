@@ -117,7 +117,7 @@ END
             viewBox="1110 0 200 145"
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-auto px-0 md:px-3 rounded-b2"
+            className="w-full md:w-full h-auto px-0 md:px-3 rounded-b2 contact-response"
           >
             <defs>
               <linearGradient id="sw-gradient-0">
@@ -147,9 +147,9 @@ END
                     ? URL.createObjectURL(values?.image)
                     : cardData?.image
                     ? cardData?.image
-                    : businesswomen
+                    : businesswomen  
                 }
-                className="w-36 h-36 md:w-28 md:h-28 rounded-full border-4 border-white women"
+                className="w-36 h-36 md:w-28 md:h-28 rounded-full border-4 border-white women"  
                 alt="Not Found"
               />
             </div>

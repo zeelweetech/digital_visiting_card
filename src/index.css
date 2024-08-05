@@ -17,7 +17,9 @@ code {
     width: 100%;
     margin-top: 46rem;
   }
-  /* .personal-details{margin-top: ;} */
+  .contact-response{
+    width: 100vw;
+  }
   .women{
     width: 10rem;
   }

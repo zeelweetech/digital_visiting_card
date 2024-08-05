@@ -78,7 +78,7 @@ function Login() {
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="flex justify-center items-center h-full md:h-screen mt-44 md:mt-0">
       <div className="hidden lg:flex bg-darkblue lg:w-6/12 h-full justify-center items-center digital">
         {/* <p className="text-white text-2xl">Digital Visiting Card</p> */}
         <img

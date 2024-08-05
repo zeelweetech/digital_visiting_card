@@ -87,9 +87,11 @@ function PersonalLayOut() {
               <PersonalDetailsCard values={values} />
             )}
 
-            {selectCard === "PersonalLinksCard" && (
-              <PersonalLinksCard values={values} />
-            )}
+            <div className="-ml-10">
+              {selectCard === "PersonalLinksCard" && (
+                <PersonalLinksCard values={values} />
+              )}
+            </div>
 
             {selectCard === "PersonalPreviewCard" && (
               <PersonalPreviewCard selectTheme={selectTheme} values={values} />
