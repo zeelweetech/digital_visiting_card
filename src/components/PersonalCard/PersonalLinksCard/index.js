@@ -76,7 +76,7 @@ function PersonalLinksCard({ values }) {
               alt="Not Found"
             />
           </div>
-          <div className="relative px-4 pt-16 mt-12">
+          <div className="relative px-4 pt-16 mt-12 h-[36rem] scrollable-container overflow-y-auto overflow-x-hidden">
             <div
               className="w-full md:w-17 rounded-3xl text-center mb-4 py-8"
               style={{
@@ -118,13 +118,15 @@ function PersonalLinksCard({ values }) {
                     ? cardData?.name
                     : "Johannes GutMann"}
                 </p>
-                <p className="text-base">
+                <div className="flex justify-center">
+                <p className="text-base w-52 break-words">
                   {values?.title
                     ? values?.title
                     : cardData?.title
                     ? cardData?.title
                     : "Manager"}
                 </p>
+                </div>
               </div>
             </div>
 

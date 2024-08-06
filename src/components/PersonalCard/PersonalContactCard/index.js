@@ -111,13 +111,11 @@ END
             style={{
               transform: "rotate(180deg)",
               transition: "0.3s",
-              width: "100%",
-              height: "auto",
             }}
             viewBox="1110 0 200 145"
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"
-            className="w-full md:w-full h-auto px-0 md:px-3 rounded-b2 contact-response"
+            className="md:w-full h-auto px-0 md:px-3 rounded-b2 contact-response"
           >
             <defs>
               <linearGradient id="sw-gradient-0">
@@ -147,46 +145,50 @@ END
                     ? URL.createObjectURL(values?.image)
                     : cardData?.image
                     ? cardData?.image
-                    : businesswomen  
+                    : businesswomen
                 }
-                className="w-36 h-36 md:w-28 md:h-28 rounded-full border-4 border-white women"  
+                className="w-36 h-36 md:w-28 md:h-28 rounded-full border-4 border-white women"
                 alt="Not Found"
               />
             </div>
             <div className="scrollable-container h-35 md:h-29 overflow-y-auto overflow-x-hidden">
-              <div className="text-center">
-                <p
-                  className="pt-20 md:pt-14 text-2xl font-semibold"
-                  style={{
-                    color: values?.fontcolor
-                      ? values?.fontcolor
-                      : cardData?.fontcolor
-                      ? cardData?.fontcolor
-                      : "rgb(13 148 136)",
-                  }}
-                >
-                  {values?.name
-                    ? values?.name
-                    : cardData?.name
-                    ? cardData?.name
-                    : "Sophie Mitchell"}
-                </p>
-                <p
-                  className="my-2"
-                  style={{
-                    color: values?.fontcolor
-                      ? values?.fontcolor
-                      : cardData?.fontcolor
-                      ? cardData?.fontcolor
-                      : "rgb(20 184 166)",
-                  }}
-                >
-                  {values?.title
-                    ? values?.title
-                    : cardData?.title
-                    ? cardData?.title
-                    : "Chief Marketing Officers "}
-                </p>
+              <div className="text-center flex flex-col justify-center">
+                <div className="flex justify-center">
+                  <p
+                    className="pt-20 md:pt-14 text-2xl font-semibold w-full md:w-17"
+                    style={{
+                      color: values?.fontcolor
+                        ? values?.fontcolor
+                        : cardData?.fontcolor
+                        ? cardData?.fontcolor
+                        : "rgb(13 148 136)",
+                    }}
+                  >
+                    {values?.name
+                      ? values?.name
+                      : cardData?.name
+                      ? cardData?.name
+                      : "Sophie Mitchell"}
+                  </p>
+                </div>
+                <div className="flex justify-center">
+                  <p
+                    className="my-2 w-full md:w-17"
+                    style={{
+                      color: values?.fontcolor
+                        ? values?.fontcolor
+                        : cardData?.fontcolor
+                        ? cardData?.fontcolor
+                        : "rgb(20 184 166)",
+                    }}
+                  >
+                    {values?.title
+                      ? values?.title
+                      : cardData?.title
+                      ? cardData?.title
+                      : "Chief Marketing Officers "}
+                  </p>
+                </div>
                 <p className="w-full md:w-80 px-6 break-words">
                   {values?.description
                     ? values?.description
@@ -300,7 +302,7 @@ END
                       onClick={() =>
                         handleAddress(values?.address || cardData?.address)
                       }
-                      offset="0%"   
+                      offset="0%"
                     />
                     <img
                       src={instagram}
@@ -324,7 +326,7 @@ END
             </div>
             <div className="flex justify-center">
               <button
-                className="flex justify-center items-center font-semibold w-96 md:w-18 py-2.5 -mt-4 md:mt-5 md:rounded-b-3xl hover:cursor-pointer"
+                className="flex justify-center items-center font-semibold w-full md:w-18 py-2.5 -mt-4 md:mt-5 md:rounded-b-3xl hover:cursor-pointer"
                 style={{
                   backgroundColor: values?.backgroundcolor
                     ? values?.backgroundcolor

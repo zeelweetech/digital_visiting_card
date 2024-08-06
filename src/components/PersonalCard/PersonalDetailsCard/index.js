@@ -126,10 +126,8 @@ function PersonalDetailsCard({ values }) {
             className={`hidden md:block absolute rounded-2 w-80 h-42`}
             alt="Not Found"
           />
-          <div
-            className="relative flex justify-center text-center h-42 items-center px-9"
-          >
-            <div>
+          <div className="relative flex justify-center text-center h-30 items-center px-9 pt-10">
+            <div className="md:h-[38rem] scrollable-container overflow-y-auto overflow-x-hidden">
               <div className="flex justify-center text-center">
                 <img
                   src={
@@ -143,7 +141,7 @@ function PersonalDetailsCard({ values }) {
                   alt="Not Found"
                 />
               </div>
-              <p className="text-2xl md:text-xl font-semibold mt-5 md:mt-0">
+              <p className="text-2xl md:text-xl font-semibold mt-5 md:mt-0 w-full md:w-[15.5rem] break-words">
                 {values?.name
                   ? values?.name
                   : cardData?.name
@@ -151,20 +149,24 @@ function PersonalDetailsCard({ values }) {
                   : "Mark Zuckerberg"}
               </p>
               {/* <p>Proprietor</p> */}
-              <p className="font-semibold">
-                {values?.title
-                  ? values?.title
-                  : cardData?.title
-                  ? cardData?.title
-                  : "Directore"}
-              </p>
-              <p className="font-semibold">
-                {values?.company
-                  ? values?.company
-                  : cardData?.company
-                  ? cardData?.company
-                  : "Company Name"}
-              </p>
+              <div className="flex justify-center">
+                <p className="font-semibold w-52 break-words">
+                  {values?.title
+                    ? values?.title
+                    : cardData?.title
+                    ? cardData?.title
+                    : "Directore"}
+                </p>
+              </div>
+              <div className="flex justify-center">
+                <p className="font-semibold w-52 break-words">
+                  {values?.company
+                    ? values?.company
+                    : cardData?.company
+                    ? cardData?.company
+                    : "Company Name"}
+                </p>
+              </div>
 
               <div className="space-x-5 md:space-x-2 mt-6 md:mt-3">
                 <button
@@ -212,13 +214,26 @@ function PersonalDetailsCard({ values }) {
                     <button className="bg-white p-2 text-xl">
                       {data.Icon}
                     </button>
-                    <div className="text-sm">
+                    <div className="text-sm flex-1">
                       <p className="font-semibold">{data.Filed}</p>
-                      <p className={`${data.Filed === 'Address' ? "scrollable-container h-10 w-44 break-words overflow-x-hidden" : ""} ${data.Filed === 'Website' ? "scrollable-container h-5 w-44 break-words overflow-x-hidden" : ""}`}>{data.filedDetail}</p>
-                    </div> 
+                      <p
+                        className={`${
+                          data.Filed === "Address"
+                            ? "md:w-44 break-words"
+                            : ""
+                        } ${
+                          data.Filed === "Website"
+                            ? "md:w-44 break-words"
+                            : ""
+                        }`}
+                      >
+                        {data.filedDetail}
+                      </p>
+                    </div>
                   </div>
                 ))}
               </div>
+
               <div className="flex justify-center">
                 <button className="flex items-center font-semibold bg-blue-950 text-white px-16 md:px-3 py-2 md:py-1 mt-5 md:mt-2 rounded-sm">
                   Save To Phone

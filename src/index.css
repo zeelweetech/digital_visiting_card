@@ -23,10 +23,14 @@ code {
   .women{
     width: 10rem;
   }
-  /* .addcontact{margin-top: 6rem;} */
-  /* .addcontact1{border-bottom-left-radius: 0; border-bottom-right-radius: 0;} */
   #wave{
     border-radius: 0%;
+  }
+}
+
+@media (max-width: 375px){
+  .theme-responsive{
+    margin-top: -1rem;
   }
 }
 

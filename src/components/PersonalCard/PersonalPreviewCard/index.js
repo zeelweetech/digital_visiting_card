@@ -82,8 +82,10 @@ function PersonalPreviewCard({ selectTheme, values }) {
       {loading ? (
         <Loader />
       ) : (
-        <div className={`md:rounded-2 ${themeClass} w-full md:w-80 pt-14 px-4 md:p-0`}>
-          <div className="absolute"> 
+        <div
+          className={`md:rounded-2 ${themeClass} w-full md:w-80 pt-14 px-4 md:p-0`}
+        >
+          <div className="absolute">
             <img
               src={phone}
               className={`hidden md:block rounded-2 w-full h-30 ${themeClass}`}
@@ -91,19 +93,19 @@ function PersonalPreviewCard({ selectTheme, values }) {
             />
           </div>
           <div className="scrollable-container h-full md:h-35 overflow-x-hidden relative md:mt-10 md:pl-p5">
-            <div className="bg-gray-200 w-full md:w-17 h-80 rounded-3xl flex flex-col justify-center text-center mt-20">
-              <img
-                src={
-                  values?.image
-                    ? URL.createObjectURL(values?.image)
-                    : cardData?.image
-                    ? cardData?.image
-                    : avatar
-                }
-                className="rounded-full border-4 border-white w-36 h-36 -mt-44 absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                alt="Not Found"
-              />
-              <div className="overflow-y-auto scrollable-container overscroll-y-hidden">
+            <img
+              src={
+                values?.image
+                  ? URL.createObjectURL(values?.image)
+                  : cardData?.image
+                  ? cardData?.image
+                  : avatar
+              }
+              className="rounded-full border-4 border-white w-36 h-36 mt-20 absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+              alt="Not Found"
+            />
+            <div className="bg-gray-200 w-full md:w-17 h-auto rounded-3xl flex flex-col justify-center text-center mt-20">
+              <div>
                 <p className="text-3xl pt-12 mt-5">
                   {values?.name
                     ? values?.name
@@ -145,13 +147,12 @@ function PersonalPreviewCard({ selectTheme, values }) {
 
             {(values?.email || cardData?.email) && (
               <button
-              className="bg-neutral-700 text-white font-semibold mt-4 py-2.5 w-full md:w-17 rounded-full shadow-md flex items-center"
-              onClick={() => handleMail(values?.email || cardData?.email)}
-            >
-              <CiMail className="ml-4" />
-              <span className="flex-1 text-center">Email</span>
-            </button>
-            
+                className="bg-neutral-700 text-white font-semibold mt-4 py-2.5 w-full md:w-17 rounded-full shadow-md flex items-center"
+                onClick={() => handleMail(values?.email || cardData?.email)}
+              >
+                <CiMail className="ml-4" />
+                <span className="flex-1 text-center">Email</span>
+              </button>
             )}
             {(values?.phone || cardData?.phone) && (
               <button

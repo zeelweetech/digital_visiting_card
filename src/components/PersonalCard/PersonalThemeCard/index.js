@@ -96,7 +96,7 @@ END
   };
 
   return (
-    <div className="flex justify-center items-center h-0 md:h-screen mt-23 md:mt-0"> 
+    <div className="flex justify-center items-center h-0 md:h-screen mt-21 md:mt-0"> 
       {loading ? (
         <Loader />
       ) : (
@@ -108,7 +108,7 @@ END
               alt="Not Found"
             />
           </div>
-          <div className="relative">
+          <div className="relative md:h-[36rem] scrollable-container overflow-y-auto overflow-x-hidden md:mt-10 theme-responsive">
             <img
               src={
                 values?.backgroundimage
@@ -117,7 +117,7 @@ END
                   ? cardData?.backgroundimage
                   : triper
               }
-              className="w-full md:w-80 h-56 md:h-40 px-0 md:px-p8 mt-10"
+              className="w-full md:w-80 md:h-40 px-0 md:px-p8"
               alt="Not Found"
             />
             <div className="flex justify-center">
@@ -135,21 +135,23 @@ END
                     alt="Not Found"
                   />
                 </div>
-                <p className="text-3xl md:text-2xl font-semibold mt-3">
+                <div className="flex justify-center">
+                <p className="text-3xl md:text-2xl font-semibold mt-3 w-full md:w-56 break-words">
                   {values?.name
                     ? values?.name
                     : cardData?.name
                     ? cardData?.name
                     : "Alex Thomson"}
                 </p>
-                <p>
+                </div>
+                <p className="w-full md:w-64 break-words">
                   {values?.title
                     ? values?.title
                     : cardData?.title
                     ? cardData?.title
                     : "Director"}
                 </p>
-                <p>
+                <p className="w-64 break-words">
                   {values?.company
                     ? values?.company
                     : cardData?.company
@@ -216,7 +218,7 @@ END
                 >
                   <FaMapMarker />
                 </button>
-                <p className="w-52 text-sm scrollable-container h-10 break-words overflow-x-hidden">
+                <p className="w-52 text-sm">
                   {values?.address
                     ? values?.address
                     : cardData?.address
@@ -228,7 +230,7 @@ END
               <div className="px-10 md:px-p5">
                 <button
                   type="button"
-                  className="bg-blue-600 py-2 px-24 md:px-20 rounded-full text-white font-semibold"
+                  className="bg-blue-600 py-2 w-full md:w-17 rounded-full text-white font-semibold"
                   onClick={handleDownloadVCard}
                 >
                   Add to contacts

@@ -65,7 +65,9 @@ function PersonalBusinessCard({ values }) {
   };
 
   return (
-    <div className={`flex flex-col justify-center items-center h-0 md:h-screen mt-22 md:mt-0`}>
+    <div
+      className={`flex flex-col justify-center items-center h-0 md:h-screen mt-22 md:mt-0`}
+    >
       {loading ? (
         <Loader />
       ) : (
@@ -83,8 +85,8 @@ function PersonalBusinessCard({ values }) {
                   : "rgb(23 37 84)",
               }}
             >
-              <div className="flex justify-center items-center text-center pt-10">
-                <div>
+              <div className="flex flex-col justify-center items-center text-center pt-10">
+                {/* <div> */}
                   <div className="flex justify-center">
                     <img
                       src={
@@ -94,29 +96,32 @@ function PersonalBusinessCard({ values }) {
                           ? cardData?.image
                           : businessmen
                       }
-                      className="w-28 md:w-24 h-28 md:h-24 rounded-full" 
+                      className="w-28 md:w-24 h-28 md:h-24 rounded-full"
                       alt="Not Found"
                     />
                   </div>
-                  <p
-                    className="text-2xl pt-2"
-                    style={{
-                      color: values?.fontcolor
-                        ? values?.fontcolor
-                        : cardData?.fontcolor
-                        ? cardData?.fontcolor
-                        : "rgb(234 179 8)",
-                    }}
-                  >
-                    {values?.name
-                      ? values?.name
-                      : cardData?.name
-                      ? cardData?.name
-                      : "Aaron Hotchner"}
-                  </p>
-                  <div className="overflow-y-auto h-20 overscroll-y-hidden overscroll-x-hidden">
+                  <div className="h-24 scrollable-container overflow-y-auto overflow-x-hidden">
+                    <div className="flex justify-center">
                     <p
-                      className="w-40 "
+                      className="text-2xl pt-2 w-56"
+                      style={{
+                        color: values?.fontcolor
+                          ? values?.fontcolor
+                          : cardData?.fontcolor
+                          ? cardData?.fontcolor
+                          : "rgb(234 179 8)",
+                      }}
+                    >
+                      {values?.name
+                        ? values?.name
+                        : cardData?.name
+                        ? cardData?.name
+                        : "Aaron Hotchner"}
+                    </p>
+                    </div>
+                    <div className="flex justify-center">
+                    <p
+                      className="w-72"
                       style={{
                         color: values?.fontcolor
                           ? values?.fontcolor
@@ -131,8 +136,9 @@ function PersonalBusinessCard({ values }) {
                         ? cardData?.title
                         : "Manager, Logstics Mackwater pvt Ltd."}
                     </p>
+                    </div>
                   </div>
-                </div>
+                {/* </div> */}
               </div>
             </div>
 
