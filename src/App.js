@@ -14,6 +14,7 @@ import PersonalLinksCard from "./components/PersonalCard/PersonalLinksCard/index
 import PersonalPreviewCard from "./components/PersonalCard/PersonalPreviewCard/index.js";
 import PersonalThemeCard from "./components/PersonalCard/PersonalThemeCard/index.js";
 import PersonalDetailsCard from "./components/PersonalCard/PersonalDetailsCard/index.js";
+import CardsDesign from "./components/homePage.js/CardsDesign.js";
 
 function App() {
   return (
@@ -66,6 +67,7 @@ function App() {
               path="/PersonalThemeCard/:name/:id"
               element={<PersonalThemeCard />}
             />
+            <Route path="/cardsdesign" element={<CardsDesign/>} />
           </Route>
         </Routes>
       </BrowserRouter>
