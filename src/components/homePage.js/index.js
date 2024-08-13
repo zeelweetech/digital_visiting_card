@@ -4,6 +4,7 @@ import Cardbutton from "./Cardbutton";
 import Header from "../Header";
 import { decodedToken } from "../../utils";
 import { getAllCardDetails } from "../../services/ProfileServices";
+import CardsDesign from "./CardsDesign";
 
 function Home() {
   const { userId } = decodedToken();
@@ -46,6 +47,7 @@ function Home() {
       <div>
         <Cardbutton setCardName={setCardName} />
         <CardDetails cardDetails={cardDetails} loading={loading} />
+        <CardsDesign cardDetails={cardDetails} loading={loading}/>
       </div>
     </div>
   );

@@ -127,21 +127,25 @@ function PersonalPreviewCard({ selectTheme, values }) {
                     ? cardData?.company
                     : "Company Name"}
                 </p>
-                <p className="pt-3 px-3 break-words flex justify-center">
-                  {values?.description ? (
-                    <span
-                      dangerouslySetInnerHTML={{ __html: values.description }}
-                    />
-                  ) : cardData?.description ? (
-                    <span
-                      dangerouslySetInnerHTML={{ __html: cardData.description }}
-                    />
-                  ) : (
-                    `Luxury Auto Dealership Over 9 years of experience in auto sales,
+                <div className="flex justify-center">
+                  <p className="pt-3 px-3 w-72 break-words">
+                    {values?.description ? (
+                      <span
+                        dangerouslySetInnerHTML={{ __html: values.description }}
+                      />
+                    ) : cardData?.description ? (
+                      <span
+                        dangerouslySetInnerHTML={{
+                          __html: cardData.description,
+                        }}
+                      />
+                    ) : (
+                      `Luxury Auto Dealership Over 9 years of experience in auto sales,
                     dedicated to bridging the gap between sales and customers. +1
                     [345] 678 - 888`
-                  )}
-                </p>
+                    )}
+                  </p>
+                </div>
               </div>
             </div>
 
