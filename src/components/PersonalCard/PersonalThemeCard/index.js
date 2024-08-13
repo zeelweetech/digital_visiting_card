@@ -111,10 +111,10 @@ END
           <div className="relative md:h-[36rem] scrollable-container overflow-y-auto overflow-x-hidden md:mt-10 theme-responsive">
             <img
               src={
-                values?.backgroundimage
-                  ? URL.createObjectURL(values?.backgroundimage)
-                  : cardData?.backgroundimage
-                  ? cardData?.backgroundimage
+                values?.backgroundImage
+                  ? URL.createObjectURL(values?.backgroundImage)
+                  : cardData?.backgroundImage
+                  ? cardData?.backgroundImage
                   : triper
               }
               className="w-full md:w-80 md:h-40 px-0 md:px-p8"
