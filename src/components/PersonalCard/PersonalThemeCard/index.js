@@ -218,7 +218,7 @@ END
                 >
                   <FaMapMarker />
                 </button>
-                <p className="w-52 text-sm">
+                <p className="w-52 text-sm break-words">
                   {values?.address
                     ? values?.address
                     : cardData?.address
