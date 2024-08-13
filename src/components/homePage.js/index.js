@@ -46,7 +46,7 @@ function Home() {
       </div>
       <div>
         <Cardbutton setCardName={setCardName} />
-        <CardDetails cardDetails={cardDetails} loading={loading} />
+        {/* <CardDetails cardDetails={cardDetails} loading={loading} /> */}
         <CardsDesign cardDetails={cardDetails} loading={loading}/>
       </div>
     </div>

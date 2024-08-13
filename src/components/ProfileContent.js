@@ -118,7 +118,9 @@ function ProfileContent({
         formdata.append("image", values?.image);
         formdata.append("name", values?.name);
         formdata.append("title", values?.title);
+        formdata.append("backgroundImage", values?.backgroundimage);
         formdata.append("description", values?.description);
+        formdata.append("company", values?.company);
         formdata.append("backgroundcolor", values?.backgroundcolor);
         formdata.append("fontcolor", values?.fontcolor);
         formdata.append("email", values?.email);
