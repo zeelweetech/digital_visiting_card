@@ -35,39 +35,40 @@ function App() {
               path="/personal_profile_design"
               element={<PersonalLayOut />}
             />
-            <Route
-              path="/business_digital_card/:name/:id"
-              element={<BusinessCardPreview />}
-            />
-            {/* <Route
+          </Route>
+          <Route
+            path="/business_digital_card/:name/:id"
+            element={<BusinessCardPreview />}
+          />
+          {/* <Route
               path="/personal_digital_card/:name/:id"
               element={<PersonalPreviewCard />}
             /> */}
-            <Route
-              path="/PersonalBusinessCard/:name/:id"
-              element={<PersonalBusinessCard />}
-            />
-            <Route
-              path="/PersonalContactCard/:name/:id"
-              element={<PersonalContactCard />}
-            />
-            <Route
-              path="/PersonalDetailsCard/:name/:id"
-              element={<PersonalDetailsCard />}
-            />
-            <Route
-              path="/PersonalLinksCard/:name/:id"
-              element={<PersonalLinksCard />}
-            />
-            <Route
-              path="/PersonalPreviewCard/:name/:id"
-              element={<PersonalPreviewCard />}
-            />
-            <Route
-              path="/PersonalThemeCard/:name/:id"
-              element={<PersonalThemeCard />}
-            />
-          </Route>
+          <Route
+            path="/PersonalBusinessCard/:name/:id"
+            element={<PersonalBusinessCard />}
+          />
+          <Route
+            path="/PersonalContactCard/:name/:id"
+            element={<PersonalContactCard />}
+          />
+          <Route
+            path="/PersonalDetailsCard/:name/:id"
+            element={<PersonalDetailsCard />}
+          />
+          <Route
+            path="/PersonalLinksCard/:name/:id"
+            element={<PersonalLinksCard />}
+          />
+          <Route
+            path="/PersonalPreviewCard/:name/:id"
+            element={<PersonalPreviewCard />}
+          />
+          <Route
+            path="/PersonalThemeCard/:name/:id"
+            element={<PersonalThemeCard />}
+          />
+          <Route path="*" element={<Login />} />
         </Routes>
       </BrowserRouter>
     </div>
