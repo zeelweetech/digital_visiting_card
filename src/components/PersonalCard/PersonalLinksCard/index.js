@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import phone from "../../../assets/image/phone.png";
 import businesswomen from "../../../assets/image/businesswomen.webp";
-import { FaInstagram, FaRegAddressCard } from "react-icons/fa";
+import { FaInstagram, FaLink, FaRegAddressCard } from "react-icons/fa";
 import { IoCallOutline, IoMailOutline } from "react-icons/io5";
 import { PiFacebookLogoBold, PiLinkedinLogo } from "react-icons/pi";
 import { useNavigate, useParams } from "react-router-dom";
@@ -70,11 +70,7 @@ function PersonalLinksCard({ values }) {
       ) : (
         <div className="relative w-full max-w-lg px-1.5 md:ml-44">
           <div className="absolute left-0 hidden md:block">
-            <img
-              src={phone}
-              className="w-80 h-30"
-              alt="Not Found"
-            />
+            <img src={phone} className="w-80 h-30" alt="Not Found" />
           </div>
           <div className="relative px-4 pt-16 mt-12 h-[36rem] scrollable-container overflow-y-auto overflow-x-hidden">
             <div
@@ -119,13 +115,13 @@ function PersonalLinksCard({ values }) {
                     : "Johannes GutMann"}
                 </p>
                 <div className="flex justify-center">
-                <p className="text-base w-52 break-words">
-                  {values?.title
-                    ? values?.title
-                    : cardData?.title
-                    ? cardData?.title
-                    : "Manager"}
-                </p>
+                  <p className="text-base w-52 break-words">
+                    {values?.title
+                      ? values?.title
+                      : cardData?.title
+                      ? cardData?.title
+                      : "Manager"}
+                  </p>
                 </div>
               </div>
             </div>
@@ -219,6 +215,19 @@ function PersonalLinksCard({ values }) {
                     <SlPaypal className="text-2xl" />
                   </button>
                   <p className="text-xs text-center mt-2">PayPal</p>
+                </div>
+                <div className="flex flex-col items-center mb-4">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      handleRedirect(
+                        values?.businessCardLink || cardData?.businessCardLink
+                      )
+                    }
+                  >
+                    <FaLink className="text-2xl" />
+                  </button>
+                  <p className="text-xs text-center mt-2">CardLink</p>
                 </div>
               </div>
             </div>

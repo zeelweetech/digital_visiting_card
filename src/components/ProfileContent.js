@@ -5,7 +5,7 @@ import { FiMapPin } from "react-icons/fi";
 import { IoLogoInstagram } from "react-icons/io";
 import { BiWorld } from "react-icons/bi";
 import { TiSocialFacebook, TiSocialLinkedin } from "react-icons/ti";
-import { FaArrowLeft, FaArrowRight, FaPaypal } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaLink, FaPaypal } from "react-icons/fa";
 import { decodedToken, handleNumberKeyDown } from "../utils";
 import {
   addBusinessDetails,
@@ -90,6 +90,10 @@ function ProfileContent({
       }
     }
 
+    if (!values?.businessCardLink) {
+      newErrors.businessCardLink = "Please enter an businessCardLink";
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -134,6 +138,7 @@ function ProfileContent({
         formdata.append("userId", userId);
         formdata.append("color", selectTheme);
         formdata.append("category", "personalcard");
+        formdata.append("businessCardLink", values?.businessCardLink);
         formdata.append(
           "cardName",
           selectCard === "PersonalBusinessCard"
@@ -384,6 +389,25 @@ function ProfileContent({
             )}
           </div>
         )}
+        <div className="flex flex-col items-center w-full max-w-lg py-3">
+          <div className="flex w-full max-w-md border-x border-y rounded-md hover:border-blue-700">
+            <span className="inline-flex items-center px-3 text-xl text-gray-900 bg-white border border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+              <FaLink />
+            </span>
+            <input
+              type="text"
+              id="website-admin"
+              className="rounded-e-md bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0 w-full text-sm p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="+ AddLink"
+              name="businessCardLink"
+              value={values?.businessCardLink}
+              onChange={(e) => handleOnChange(e)}
+            />
+          </div>
+          {errors?.businessCardLink && (
+            <p className="text-xs text-red-500">{errors?.businessCardLink}</p>
+          )}
+        </div>
 
         <div className="flex sm:flex-row justify-between sm:space-x-4 w-full pt-10">
           <div

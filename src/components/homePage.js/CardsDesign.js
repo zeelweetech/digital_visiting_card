@@ -20,6 +20,7 @@ import { TbWorld } from "react-icons/tb";
 import { MdCall, MdLocalPhone, MdOutlinePersonAddAlt } from "react-icons/md";
 import {
   FaInstagram,
+  FaLink,
   FaMapMarker,
   FaMapMarkerAlt,
   FaPhoneAlt,
@@ -34,6 +35,16 @@ import Loader from "../Loader";
 
 function CardsDesign({ cardDetails, loading }) {
   const navigate = useNavigate();
+
+  const themeClasses = {
+    Light: "bg-theme",
+    Dark: "bg-black",
+    Neutral: "bg-theme1",
+    Gradient: "bg-theme2",
+    Energetic: "bg-custom-gradient",
+    Ambitious: "bg-custom1-gradient",
+  };
+  const getThemeClass = (color) => themeClasses[color] || "bg-default";
 
   console.log("cardDetails : ", cardDetails);
   return (
@@ -57,13 +68,15 @@ function CardsDesign({ cardDetails, loading }) {
                     }
                   }}
                 >
-                  <div className="h-44 rounded-se-2xl rounded-tl-2xl bg-[#172554]"
-                  //  style={{
-                  //     color: cardDetails?.backgroundcolor
-                  //       ? cardDetails?.backgroundcolor
-                  //       : "#172554",
-                  //   }}
-                    >
+                  <div
+                    className="h-44 rounded-se-2xl rounded-tl-2xl"
+                    style={{
+                      backgroundColor:
+                        item?.cardName === "PersonalBusinessCard"
+                          ? item?.backgroundcolor
+                          : "#172554",
+                    }}
+                  >
                     <div className="flex flex-col justify-center items-center text-center pt-7">
                       <div className="flex justify-center">
                         <img
@@ -72,16 +85,20 @@ function CardsDesign({ cardDetails, loading }) {
                           alt="Not Found"
                         />
                       </div>
-                      <div className="h-12 scrollable-container overflow-y-auto overflow-x-hidden">
+                      <div
+                        className="h-12 scrollable-container overflow-y-auto overflow-x-hidden"
+                        style={{
+                          color:
+                            item?.cardName === "PersonalBusinessCard"
+                              ? item?.fontcolor
+                              : "#eab308",
+                        }}
+                      >
                         <div className="flex justify-center">
-                          <p className="text-sm mt-2 w-56 text-[#eab308]">
-                            {item?.name}
-                          </p>
+                          <p className="text-sm mt-2 w-56">{item?.name}</p>
                         </div>
                         <div className="flex justify-center">
-                          <p className="w-40 text-xs text-[#eab308]">
-                            {item?.title}
-                          </p>
+                          <p className="w-40 text-xs">{item?.title}</p>
                         </div>
                       </div>
                     </div>
@@ -126,27 +143,28 @@ function CardsDesign({ cardDetails, loading }) {
                     Connect with me on
                   </p>
 
-                  <div className="flex items-center justify-evenly px-6 mt-1">
+                  <div className="flex items-center justify-evenly px-3 mt-1">
                     <img
                       src={facebook}
-                      className="w-6 md:w-9 h-6 md:h-9"
+                      className="w-5 md:w-9 h-5 md:h-9"
                       alt="Not Foung"
                     />
                     <img
                       src={instagram}
-                      className="w-6 md:w-9 h-6 md:h-9"
+                      className="w-5 md:w-9 h-5 md:h-9"
                       alt="Not Foung"
                     />
                     <img
                       src={linkedin}
-                      className="w-6 md:w-9 h-6 md:h-9"
+                      className="w-5 md:w-9 h-5 md:h-9"
                       alt="Not Foung"
                     />
                     <img
                       src={paypal}
-                      className="w-6 md:w-10 h-6 md:h-10"
+                      className="w-5 md:w-10 h-5 md:h-10"
                       alt="Not Foung"
                     />
+                    <FaLink className="hover:cursor-pointer" />
                   </div>
                 </div>
               ) : item?.cardName === "PersonalContactCard" ? (
@@ -181,7 +199,14 @@ function CardsDesign({ cardDetails, loading }) {
                       >
                         <defs>
                           <linearGradient id="sw-gradient-0">
-                            <stop stop-color={"#00ffec"} offset="0%"></stop>
+                            <stop
+                              stop-color={
+                                item?.cardName === "PersonalContactCard"
+                                  ? item?.backgroundcolor
+                                  : "#00ffec"
+                              }
+                              offset="0%"
+                            ></stop>
                           </linearGradient>
                         </defs>
                         <path
@@ -200,11 +225,27 @@ function CardsDesign({ cardDetails, loading }) {
                         </div>
                         <div className="scrollable-container h-[16.4rem] md:h-[18.35rem] overflow-y-auto overflow-x-hidden">
                           <div className="text-center">
-                            <p className="pt-10 md:pt-8 text-xs md:text-base font-semibold text-[#0d9488]">
+                            <p
+                              className="pt-10 md:pt-8 text-xs md:text-base font-semibold"
+                              style={{
+                                color:
+                                  item?.cardName === "PersonalContactCard"
+                                    ? item?.fontcolor
+                                    : "#0d9488",
+                              }}
+                            >
                               {item?.name}
                             </p>
-                            <div className="flex justify-center text-xs">
-                              <p className="my-2 w-36 md:w-17 text-[#14b8a6]">
+                            <div
+                              className="flex justify-center text-xs"
+                              style={{
+                                color:
+                                  item?.cardName === "PersonalContactCard"
+                                    ? item?.fontcolor
+                                    : "#14b8a6",
+                              }}
+                            >
+                              <p className="my-2 w-36 md:w-17 ">
                                 {item?.title}
                               </p>
                             </div>
@@ -215,7 +256,19 @@ function CardsDesign({ cardDetails, loading }) {
                             </div>
 
                             <div className="flex px-3 md:px-5 items-start mt-6 text-sm">
-                              <button className="text-base p-1.5 rounded-full bg-[#ccfbf1] text-[#14b8a6]">
+                              <button
+                                className="text-base p-1.5 rounded-full"
+                                style={{
+                                  color:
+                                    item?.cardName === "PersonalContactCard"
+                                      ? item?.fontcolor
+                                      : "#14b8a6",
+                                  backgroundColor:
+                                    item?.cardName === "PersonalContactCard"
+                                      ? item?.backgroundcolor
+                                      : "#ccfbf1",
+                                }}
+                              >
                                 <FiPhoneCall />
                               </button>
                               <div className="text-start ml-1.5">
@@ -226,7 +279,19 @@ function CardsDesign({ cardDetails, loading }) {
                               </div>
                             </div>
                             <div className="flex items-start px-3 md:px-5 py-2 text-xs">
-                              <button className="text-base p-1.5 rounded-full bg-[#ccfbf1] text-[#14b8a6]">
+                              <button
+                                className="text-base p-1.5 rounded-full"
+                                style={{
+                                  color:
+                                    item?.cardName === "PersonalContactCard"
+                                      ? item?.fontcolor
+                                      : "#14b8a6",
+                                  backgroundColor:
+                                    item?.cardName === "PersonalContactCard"
+                                      ? item?.backgroundcolor
+                                      : "#ccfbf1",
+                                }}
+                              >
                                 <IoMailOutline />
                               </button>
                               <div className="text-start ml-1.5">
@@ -237,7 +302,19 @@ function CardsDesign({ cardDetails, loading }) {
                               </div>
                             </div>
                             <div className="flex items-start px-3 md:px-5 text-xs">
-                              <button className="text-base p-1.5 rounded-full bg-[#ccfbf1] text-[#14b8a6]">
+                              <button
+                                className="text-base p-1.5 rounded-full"
+                                style={{
+                                  color:
+                                    item?.cardName === "PersonalContactCard"
+                                      ? item?.fontcolor
+                                      : "#14b8a6",
+                                  backgroundColor:
+                                    item?.cardName === "PersonalContactCard"
+                                      ? item?.backgroundcolor
+                                      : "#ccfbf1",
+                                }}
+                              >
                                 <TbWorld />
                               </button>
                               <div className="text-start ml-1.5">
@@ -252,7 +329,7 @@ function CardsDesign({ cardDetails, loading }) {
                               <p className="text-xs md:text-base">
                                 Connect with me on
                               </p>
-                              <div className="flex justify-evenly px-6 md:px-16">
+                              <div className="flex justify-evenly px-5 md:px-10">
                                 <img
                                   src={location}
                                   className="w-8 h-8 bg-white shadow-lg p-1 rounded-full hover:cursor-pointer"
@@ -269,12 +346,21 @@ function CardsDesign({ cardDetails, loading }) {
                                   className="w-8 h-8 bg-white shadow-lg p-1 rounded-full hover:cursor-pointer"
                                   alt="Not Found"
                                 />
+                                <FaLink className="text-lg hover:cursor-pointer mt-2 ml-2" />
                               </div>
                             </div>
                           </div>
                         </div>
                         <div className="px-1 md:px-2">
-                          <button className="flex bg-[#00ffec] text-[#ffffff] justify-center items-center font-semibold w-[9.4rem] md:w-48 py-1.5 rounded-b-2xl hover:cursor-pointer">
+                          <button
+                            className="flex bg-[#00ffec] text-[#ffffff] justify-center items-center font-semibold w-[9.4rem] md:w-48 py-1.5 rounded-b-2xl hover:cursor-pointer"
+                            style={{
+                              backgroundColor:
+                                item?.cardName === "PersonalContactCard"
+                                  ? item?.backgroundcolor
+                                  : "#00ffec",
+                            }}
+                          >
                             <MdOutlinePersonAddAlt className="mr-2" />
                             Add to Contacts
                           </button>
@@ -319,11 +405,11 @@ function CardsDesign({ cardDetails, loading }) {
                         </div>
                         <div className="flex justify-center">
                           <p className="font-semibold text-xs w-52 break-words">
-                            Company Name
+                            {item?.company}
                           </p>
                         </div>
 
-                        <div className="space-x-1.5 md:space-x-2 mt-3">
+                        <div className="space-x-0 md:space-x-0.5 mt-3">
                           <button className="bg-theme p-1 text-xs md:text-base">
                             <FaPhoneAlt />
                           </button>
@@ -338,6 +424,9 @@ function CardsDesign({ cardDetails, loading }) {
                           </button>
                           <button className="bg-theme p-1 text-xs md:text-base">
                             <BiWorld />
+                          </button>
+                          <button className="bg-theme p-1 text-xs md:text-base">
+                            <FaLink />
                           </button>
                         </div>
 
@@ -423,7 +512,15 @@ function CardsDesign({ cardDetails, loading }) {
                       />
                     </div>
                     <div className="relative px-2 md:px-4 pt-12 mt-5 h-[20rem] md:h-[24rem] scrollable-container overflow-y-auto overflow-x-hidden">
-                      <div className="bg-[#8b5cf6] w-36 md:w-44 rounded-2xl text-center mb-2 py-2">
+                      <div
+                        className="w-36 md:w-44 rounded-2xl text-center mb-2 py-2"
+                        style={{
+                          backgroundColor:
+                            item?.cardName === "PersonalLinksCard"
+                              ? item?.backgroundcolor
+                              : "#8b5cf6",
+                        }}
+                      >
                         <img
                           src={item?.image}
                           className="rounded-full border-4 border-white w-[5rem] h-[5rem] -mt-14 mx-auto"
@@ -433,7 +530,15 @@ function CardsDesign({ cardDetails, loading }) {
                           }}
                           alt="Not Found"
                         />
-                        <div className="text-center text-[#ffffff]">
+                        <div
+                          className="text-center"
+                          style={{
+                            color:
+                              item?.cardName === "PersonalLinksCard"
+                                ? item?.fontcolor
+                                : "#ffffff",
+                          }}
+                        >
                           <div className="flex justify-center">
                             <p className="text-xl w-40 font-semibold my-1">
                               {item?.name}
@@ -503,6 +608,12 @@ function CardsDesign({ cardDetails, loading }) {
                             </button>
                             <p className="text-xs text-center mt-1">PayPal</p>
                           </div>
+                          <div className="flex flex-col items-center mb-2">
+                            <button type="button">
+                              <FaLink className="text-lg" />
+                            </button>
+                            <p className="text-xs text-center mt-1">CardLink</p>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -523,7 +634,9 @@ function CardsDesign({ cardDetails, loading }) {
                     <div className="absolute">
                       <img
                         src={phone}
-                        className="w-40 h-[22rem] md:w-52 md:h-[26rem] bg-custom-gradient rounded-3xl"
+                        className={`w-40 h-[22rem] md:w-52 md:h-[26rem] rounded-3xl ${getThemeClass(
+                          item?.color
+                        )}`}
                         alt="Not Found"
                       />
                     </div>
@@ -537,13 +650,16 @@ function CardsDesign({ cardDetails, loading }) {
                         <div>
                           <p className="text-xl pt-12 mt-2">{item?.name}</p>
                           <p className="text-base">{item?.title}</p>
-                          <p className="text-base">Company Name</p>
+                          <p className="text-base">{item?.company}</p>
                           <p className="pt-3 text-xs leading-5 px-3 break-words line-clamp-3">
                             {item?.address}
                           </p>
                         </div>
                       </div>
-
+                      <button className="bg-neutral-700 text-xs text-white font-semibold mt-3 py-2 w-[8.4rem] md:w-44  rounded-full shadow-md flex items-center">
+                        <FaLink className="ml-4" />
+                        <span className="flex-1 text-center">CardLink</span>
+                      </button>
                       <button className="bg-neutral-700 text-xs text-white font-semibold mt-3 py-2 w-[8.4rem] md:w-44  rounded-full shadow-md flex items-center">
                         <CiMail className="ml-4" />
                         <span className="flex-1 text-center">Email</span>
@@ -614,7 +730,7 @@ function CardsDesign({ cardDetails, loading }) {
                             {item?.title}
                           </p>
                           <p className="w-64 break-words text-xs">
-                            Company name
+                            {item?.company}
                           </p>
                         </div>
                       </div>
@@ -652,6 +768,11 @@ function CardsDesign({ cardDetails, loading }) {
                             {item?.address}
                           </p>
                         </div>
+                        <div className="flex justify-start px-4">
+                          <button className="bg-zinc-900 text-white rounded-full p-1 text-base">
+                            <FaLink />
+                          </button>
+                        </div>
 
                         <div className="px-2 md:px-6">
                           <button
@@ -677,7 +798,11 @@ function CardsDesign({ cardDetails, loading }) {
                   }}
                 >
                   <div className="rounded-2xl w-40 md:w-52 md:h-[26rem] bg-white shadow-xl h-[22rem] scrollable-container overflow-y-auto overflow-x-hidden">
-                    <div className="bg-slate-400 h-44 rounded-t-2xl">
+                    <div
+                      className={`h-44 rounded-t-2xl ${getThemeClass(
+                        item?.color
+                      )}`}
+                    >
                       <div className="flex justify-center items-center text-center">
                         <div>
                           <div className="flex justify-center">

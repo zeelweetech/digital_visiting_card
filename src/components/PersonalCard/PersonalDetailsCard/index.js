@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BiWorld } from "react-icons/bi";
-import { FaMapMarkerAlt, FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
+import { FaLink, FaMapMarkerAlt, FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 import { IoMdDownload, IoMdMail } from "react-icons/io";
 import businessmen from "../../../assets/image/businessmen.jpg";
 import phone from "../../../assets/image/phone.png";
@@ -168,41 +168,55 @@ function PersonalDetailsCard({ values }) {
                 </p>
               </div>
 
-              <div className="space-x-5 md:space-x-2 mt-6 md:mt-3">
-                <button
-                  className="bg-theme p-2 text-xl"
-                  onClick={() => handlePhone(values?.phone || cardData?.phone)}
-                >
-                  <FaPhoneAlt />
-                </button>
-                <button
-                  className="bg-theme p-2 text-xl"
-                  onClick={() => handleMail(values?.email || cardData?.email)}
-                >
-                  <IoMdMail />
-                </button>
-                <button
-                  className="bg-theme p-2 text-xl"
-                  onClick={() => handlePhone(values?.phone || cardData?.phone)}
-                >
-                  <FaWhatsapp />
-                </button>
-                <button
-                  className="bg-theme p-2 text-xl"
-                  onClick={() =>
-                    handleAddress(values?.address || cardData?.address)
-                  }
-                >
-                  <FaMapMarkerAlt />
-                </button>
-                <button
-                  className="bg-theme p-2 text-xl"
-                  onClick={() =>
-                    handleRedirect(values?.website || cardData?.website)
-                  }
-                >
-                  <BiWorld />
-                </button>
+              <div className="space-x-4 md:space-x-2 mt-6 md:mt-3">
+                  <button
+                    className="bg-theme p-2 text-xl"
+                    onClick={() =>
+                      handlePhone(values?.phone || cardData?.phone)
+                    }
+                  >
+                    <FaPhoneAlt />
+                  </button>
+                  <button
+                    className="bg-theme p-2 text-xl"
+                    onClick={() => handleMail(values?.email || cardData?.email)}
+                  >
+                    <IoMdMail />
+                  </button>
+                  <button
+                    className="bg-theme p-2 text-xl"
+                    onClick={() =>
+                      handlePhone(values?.phone || cardData?.phone)
+                    }
+                  >
+                    <FaWhatsapp />
+                  </button>
+                  <button
+                    className="bg-theme p-2 text-xl"
+                    onClick={() =>
+                      handleAddress(values?.address || cardData?.address)
+                    }
+                  >
+                    <FaMapMarkerAlt />
+                  </button>
+                  <button
+                    className="bg-theme p-2 text-xl"
+                    onClick={() =>
+                      handleRedirect(values?.website || cardData?.website)
+                    }
+                  >
+                    <BiWorld />
+                  </button>
+                  <button
+                    className="bg-theme p-2 text-xl"
+                    onClick={() =>
+                      handleRedirect(
+                        values?.businessCardLink || cardData?.businessCardLink
+                      )
+                    }
+                  >
+                    <FaLink />
+                  </button>
               </div>
 
               <div className="bg-slate-200 p-1 mt-10 md:mt-5 w-full sm:w-auto">
@@ -218,13 +232,9 @@ function PersonalDetailsCard({ values }) {
                       <p className="font-semibold">{data.Filed}</p>
                       <p
                         className={`${
-                          data.Filed === "Address"
-                            ? "md:w-44 break-words"
-                            : ""
+                          data.Filed === "Address" ? "md:w-44 break-words" : ""
                         } ${
-                          data.Filed === "Website"
-                            ? "md:w-44 break-words"
-                            : ""
+                          data.Filed === "Website" ? "md:w-44 break-words" : ""
                         }`}
                       >
                         {data.filedDetail}

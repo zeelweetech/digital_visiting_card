@@ -10,6 +10,7 @@ import { CiMail } from "react-icons/ci";
 import Loader from "../../Loader";
 import avatar from "../../../assets/image/avatar.png";
 import phone from "../../../assets/image/phone.png";
+import { FaLink } from "react-icons/fa";
 
 function PersonalPreviewCard({ selectTheme, values }) {
   const { id } = useParams();
@@ -148,7 +149,21 @@ function PersonalPreviewCard({ selectTheme, values }) {
                 </div>
               </div>
             </div>
-
+            {(values?.businessCardLink || cardData?.businessCardLink) && (
+              <button
+                className="bg-neutral-700 text-white font-semibold mt-4 py-2.5 w-full md:w-17 rounded-full shadow-md flex justify-center"
+                onClick={() => handleMail(values?.email || cardData?.email)}
+              >
+                <FaLink
+                  className="text-xl"
+                  onClick={() =>
+                    handleRedirect(
+                      values?.businessCardLink || cardData?.businessCardLink
+                    )
+                  }
+                />
+              </button>
+            )}
             {(values?.email || cardData?.email) && (
               <button
                 className="bg-neutral-700 text-white font-semibold mt-4 py-2.5 w-full md:w-17 rounded-full shadow-md flex items-center"

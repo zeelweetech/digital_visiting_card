@@ -10,6 +10,7 @@ import { HiOutlineMapPin } from "react-icons/hi2";
 import { FiPhone } from "react-icons/fi";
 import { CiMail } from "react-icons/ci";
 import Loader from "../../Loader";
+import { FaLink } from "react-icons/fa";
 
 function PersonalBusinessCard({ values }) {
   const { id } = useParams();
@@ -22,7 +23,7 @@ function PersonalBusinessCard({ values }) {
       setLoading(true);
       try {
         const res = await getProfileDetails({ id: id });
-        console.log("res", res);
+        console.log("res +++++++++", res);
         setCardData(res?.cardDetail);
         setLoading(false);
       } catch (err) {
@@ -86,22 +87,21 @@ function PersonalBusinessCard({ values }) {
               }}
             >
               <div className="flex flex-col justify-center items-center text-center pt-10">
-                {/* <div> */}
+                <div className="flex justify-center">
+                  <img
+                    src={
+                      values?.image
+                        ? URL.createObjectURL(values?.image)
+                        : cardData?.image
+                        ? cardData?.image
+                        : businessmen
+                    }
+                    className="w-28 md:w-24 h-28 md:h-24 rounded-full"
+                    alt="Not Found"
+                  />
+                </div>
+                <div className="h-24 scrollable-container overflow-y-auto overflow-x-hidden">
                   <div className="flex justify-center">
-                    <img
-                      src={
-                        values?.image
-                          ? URL.createObjectURL(values?.image)
-                          : cardData?.image
-                          ? cardData?.image
-                          : businessmen
-                      }
-                      className="w-28 md:w-24 h-28 md:h-24 rounded-full"
-                      alt="Not Found"
-                    />
-                  </div>
-                  <div className="h-24 scrollable-container overflow-y-auto overflow-x-hidden">
-                    <div className="flex justify-center">
                     <p
                       className="text-2xl pt-2 w-56"
                       style={{
@@ -118,8 +118,8 @@ function PersonalBusinessCard({ values }) {
                         ? cardData?.name
                         : "Aaron Hotchner"}
                     </p>
-                    </div>
-                    <div className="flex justify-center">
+                  </div>
+                  <div className="flex justify-center">
                     <p
                       className="w-72"
                       style={{
@@ -136,9 +136,8 @@ function PersonalBusinessCard({ values }) {
                         ? cardData?.title
                         : "Manager, Logstics Mackwater pvt Ltd."}
                     </p>
-                    </div>
                   </div>
-                {/* </div> */}
+                </div>
               </div>
             </div>
 
@@ -240,6 +239,14 @@ function PersonalBusinessCard({ values }) {
                 alt="Not Foung"
                 onClick={() =>
                   handleRedirect(values?.paypal || cardData?.paypal)
+                }
+              />
+              <FaLink
+                className="text-xl hover:cursor-pointer"
+                onClick={() =>
+                  handleRedirect(
+                    values?.businessCardLink || cardData?.businessCardLink
+                  )
                 }
               />
             </div>
