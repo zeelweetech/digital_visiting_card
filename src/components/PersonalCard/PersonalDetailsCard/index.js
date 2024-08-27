@@ -14,6 +14,9 @@ function PersonalDetailsCard({ values }) {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  const Businesslink = values?.businessCardLink || cardData?.businessCardLink;
+  const Link = Businesslink ? decodeURIComponent(Businesslink).split("/") : []; 
+  
   const CardDetails = [
     {
       Icon: <FaPhoneAlt />,
@@ -60,6 +63,11 @@ function PersonalDetailsCard({ values }) {
         ? cardData?.address
         : "Luxury Auto Dealership Over 9 years of experience.",
     },
+    {
+      Icon: <FaLink />,
+      Filed: "Link",
+      filedDetail: Link?.[4] ? Link[4] : "No Link available",
+    }
   ];
 
   useEffect(() => {

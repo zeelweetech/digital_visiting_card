@@ -16,6 +16,9 @@ function PersonalLinksCard({ values }) {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  const Businesslink = values?.businessCardLink || cardData?.businessCardLink;
+  const Link = Businesslink ? decodeURIComponent(Businesslink).split("/") : []; 
+
   useEffect(() => {
     const fetchProfileDetails = async () => {
       setLoading(true);
@@ -227,7 +230,7 @@ function PersonalLinksCard({ values }) {
                   >
                     <FaLink className="text-2xl" />
                   </button>
-                  <p className="text-xs text-center mt-2">CardLink</p>
+                  <p className="text-xs text-center mt-2 w-24 line-clamp-1">{Link?.[4] ? Link[4] : "No Link available"}</p>
                 </div>
               </div>
             </div>

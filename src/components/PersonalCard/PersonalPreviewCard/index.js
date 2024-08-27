@@ -18,6 +18,9 @@ function PersonalPreviewCard({ selectTheme, values }) {
   const [loading, setLoading] = useState(false);
   const path = window.location.pathname.split("/").pop();
 
+  const Businesslink = values?.businessCardLink || cardData?.businessCardLink;
+  const Link = Businesslink ? decodeURIComponent(Businesslink).split("/") : []; 
+
   const themeClasses = {
     Light: "bg-theme",
     Dark: "bg-black",
@@ -151,17 +154,17 @@ function PersonalPreviewCard({ selectTheme, values }) {
             </div>
             {(values?.businessCardLink || cardData?.businessCardLink) && (
               <button
-                className="bg-neutral-700 text-white font-semibold mt-4 py-2.5 w-full md:w-17 rounded-full shadow-md flex justify-center"
-                onClick={() => handleMail(values?.email || cardData?.email)}
+                className="bg-neutral-700 text-white font-semibold mt-4 py-2.5 w-full md:w-17 rounded-full shadow-md flex items-center"
+                onClick={() =>
+                  handleRedirect(
+                    values?.businessCardLink || cardData?.businessCardLink
+                  )
+                }
               >
                 <FaLink
-                  className="text-xl"
-                  onClick={() =>
-                    handleRedirect(
-                      values?.businessCardLink || cardData?.businessCardLink
-                    )
-                  }
+                  className="ml-4"
                 />
+                <span className="flex-1 text-center">{Link?.[4] ? Link[4] : "No link available"}</span>
               </button>
             )}
             {(values?.email || cardData?.email) && (

@@ -16,6 +16,9 @@ function PersonalThemeCard({ values }) {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  const Businesslink = values?.businessCardLink || cardData?.businessCardLink;
+  const Link = Businesslink ? decodeURIComponent(Businesslink).split("/") : []; 
+
   useEffect(() => {
     const fetchProfileDetails = async () => {
       setLoading(true);
@@ -226,21 +229,20 @@ END
                     : " Acme LTD 1131 AW Amstertlam, The Netherlands"}
                 </p>
               </div>
-              <div className="flex justify-center px-7 space-x-3">
+              <div className="flex items-start px-7 space-x-3">
                 <button
                   className="bg-zinc-900 text-white rounded-full p-3 md:p-2 text-2xl md:text-base"
                   onClick={() =>
-                    handleAddress(values?.address || cardData?.address)
+                    handleRedirect(
+                      values?.businessCardLink || cardData?.businessCardLink
+                    )
                   }
                 >
-                  <FaLink
-                    onClick={() =>
-                      handleRedirect(
-                        values?.businessCardLink || cardData?.businessCardLink
-                      )
-                    }
-                  />
+                  <FaLink />
                 </button>
+                <p className="w-52 text-sm break-words">
+                  {Link?.[4] ? Link[4] : "No link available"}
+                </p>
               </div>
 
               <div className="px-10 md:px-p5">

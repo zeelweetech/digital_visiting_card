@@ -46,7 +46,6 @@ function CardsDesign({ cardDetails, loading }) {
   };
   const getThemeClass = (color) => themeClasses[color] || "bg-default";
 
-  console.log("cardDetails : ", cardDetails);
   return (
     <div className="flex justify-center py-5 px-1 md:p-7">
       {loading ? (
