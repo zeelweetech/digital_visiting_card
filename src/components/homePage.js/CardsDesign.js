@@ -479,6 +479,19 @@ function CardsDesign({ cardDetails, loading }) {
                               </p>
                             </div>
                           </div>
+                          <div className="flex items-start bg-theme pt-1 pb-1.5 px-2 text-start space-x-2 mt-1">
+                            <button className="bg-white p-1 text-base">
+                              <FaLink />
+                            </button>
+                            <div className="text-sm flex-1">
+                              <p className="font-semibold">CardLink</p>
+                              <p className="line-clamp-1 w-24">
+                                {decodeURIComponent(
+                                  item?.businessCardLink?.split("/")[4]
+                                )}
+                              </p>
+                            </div>
+                          </div>
                         </div>
 
                         <div className="flex justify-center">
@@ -611,7 +624,11 @@ function CardsDesign({ cardDetails, loading }) {
                             <button type="button">
                               <FaLink className="text-lg" />
                             </button>
-                            <p className="text-xs text-center mt-1">CardLink</p>
+                            <p className="text-xs text-center mt-1 w-[4.3rem] line-clamp-1">
+                              {decodeURIComponent(
+                                item?.businessCardLink?.split("/")[4]
+                              )}
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -657,7 +674,11 @@ function CardsDesign({ cardDetails, loading }) {
                       </div>
                       <button className="bg-neutral-700 text-xs text-white font-semibold mt-3 py-2 w-[8.4rem] md:w-44  rounded-full shadow-md flex items-center">
                         <FaLink className="ml-4" />
-                        <span className="flex-1 text-center">CardLink</span>
+                        <span className="flex-1 text-center w-8 line-clamp-1">
+                          {decodeURIComponent(
+                            item?.businessCardLink?.split("/")[4]
+                          )}
+                        </span>
                       </button>
                       <button className="bg-neutral-700 text-xs text-white font-semibold mt-3 py-2 w-[8.4rem] md:w-44  rounded-full shadow-md flex items-center">
                         <CiMail className="ml-4" />
@@ -767,10 +788,15 @@ function CardsDesign({ cardDetails, loading }) {
                             {item?.address}
                           </p>
                         </div>
-                        <div className="flex justify-start px-4">
+                        <div className="flex items-start px-4 space-x-3">
                           <button className="bg-zinc-900 text-white rounded-full p-1 text-base">
                             <FaLink />
                           </button>
+                          <p className="w-52 text-sm line-clamp-1 md:line-clamp-none">
+                            {decodeURIComponent(
+                              item?.businessCardLink?.split("/")[4]
+                            )}
+                          </p>
                         </div>
 
                         <div className="px-2 md:px-6">

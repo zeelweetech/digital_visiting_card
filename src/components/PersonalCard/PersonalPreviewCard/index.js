@@ -164,7 +164,7 @@ function PersonalPreviewCard({ selectTheme, values }) {
                 <FaLink
                   className="ml-4"
                 />
-                <span className="flex-1 text-center">{Link?.[4] ? Link[4] : "No link available"}</span>
+                <span className="flex-1 text-center w-28 line-clamp-1">{Link?.[4] ? Link[4] : "No link available"}</span>
               </button>
             )}
             {(values?.email || cardData?.email) && (

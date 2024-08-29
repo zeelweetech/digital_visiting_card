@@ -243,6 +243,8 @@ function PersonalDetailsCard({ values }) {
                           data.Filed === "Address" ? "md:w-44 break-words" : ""
                         } ${
                           data.Filed === "Website" ? "md:w-44 break-words" : ""
+                        } ${
+                          data.Filed === "Link" ? "md:w-44 break-words" : ""
                         }`}
                       >
                         {data.filedDetail}
