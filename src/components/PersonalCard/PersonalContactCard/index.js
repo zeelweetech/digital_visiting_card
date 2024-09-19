@@ -177,7 +177,7 @@ END
                 </div>
                 <div className="flex justify-center">
                   <p
-                    className="my-2 w-full md:w-17"
+                    className="my-2 w-full md:w-17 font-semibold"
                     style={{
                       color: values?.fontcolor
                         ? values?.fontcolor

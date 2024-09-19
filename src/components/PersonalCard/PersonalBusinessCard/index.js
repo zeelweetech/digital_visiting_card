@@ -127,7 +127,7 @@ function PersonalBusinessCard({ values }) {
                   </div>
                   <div className="flex justify-center">
                     <p
-                      className="w-72"
+                      className="w-72 font-semibold"
                       style={{
                         color: values?.fontcolor
                           ? values?.fontcolor

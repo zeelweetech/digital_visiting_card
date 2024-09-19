@@ -121,7 +121,7 @@ function PersonalLinksCard({ values }) {
                     : "Johannes GutMann"}
                 </p>
                 <div className="flex justify-center">
-                  <p className="text-base w-52 break-words">
+                  <p className="text-base w-52 break-words font-semibold">
                     {values?.title
                       ? values?.title
                       : cardData?.title

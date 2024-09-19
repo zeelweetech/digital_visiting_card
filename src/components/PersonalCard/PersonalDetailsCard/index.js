@@ -163,7 +163,7 @@ function PersonalDetailsCard({ values }) {
               </p>
               {/* <p>Proprietor</p> */}
               <div className="flex justify-center">
-                <p className="font-semibold w-52 break-words">
+                <p className="font-bold w-52 break-words">
                   {values?.title
                     ? values?.title
                     : cardData?.title
@@ -172,7 +172,7 @@ function PersonalDetailsCard({ values }) {
                 </p>
               </div>
               <div className="flex justify-center">
-                <p className="font-semibold w-52 break-words">
+                <p className="font-bold w-52 break-words">
                   {values?.company
                     ? values?.company
                     : cardData?.company
