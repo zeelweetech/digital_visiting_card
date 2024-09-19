@@ -40,10 +40,10 @@ function BusinessCardPreview({ selectTheme, values }) {
         setLoading(false);
       }
     };
-    if ("WeetechInstitute") {
+    if ("WeeTechInstitute") {
       fetchProfileDetails();
     }
-  }, ["WeetechInstitute"]);
+  }, ["WeeTechInstitute"]);
 
   const handleRedirect = (url) => {
     if (!url || url === "undefined") {
