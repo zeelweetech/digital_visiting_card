@@ -103,7 +103,7 @@ function BusinessCardPreview({ selectTheme, values }) {
                       ? cardData?.name
                       : "Business Name"}
                   </p>
-                  <p className="text-white">
+                  <p className="text-white font-semibold">
                     {" "}
                     {values?.title
                       ? values?.title

@@ -93,10 +93,10 @@ function CardsDesign({ cardDetails, loading }) {
                               : "#eab308",
                         }}
                       >
-                        <div className="flex justify-center">
+                        <div className="flex justify-center font-semibold">
                           <p className="text-sm mt-2 w-56">{item?.name}</p>
                         </div>
-                        <div className="flex justify-center">
+                        <div className="flex justify-center font-semibold">
                           <p className="w-40 text-xs">{item?.title}</p>
                         </div>
                       </div>
@@ -244,7 +244,7 @@ function CardsDesign({ cardDetails, loading }) {
                                     : "#14b8a6",
                               }}
                             >
-                              <p className="my-2 w-36 md:w-17 ">
+                              <p className="my-2 w-36 md:w-17 font-semibold">
                                 {item?.title}
                               </p>
                             </div>
@@ -398,12 +398,12 @@ function CardsDesign({ cardDetails, loading }) {
                           {item?.name}
                         </p>
                         <div className="flex justify-center">
-                          <p className="font-semibold text-xs w-52 break-words">
+                          <p className="font-bold text-xs w-52 break-words">
                             {item?.title}
                           </p>
                         </div>
                         <div className="flex justify-center">
-                          <p className="font-semibold text-xs w-52 break-words">
+                          <p className="font-bold text-xs w-52 break-words">
                             {item?.company}
                           </p>
                         </div>
@@ -557,7 +557,7 @@ function CardsDesign({ cardDetails, loading }) {
                             </p>
                           </div>
                           <div className="flex justify-center">
-                            <p className="text-base w-52 break-words">
+                            <p className="text-base w-52 break-words font-semibold">
                               {item?.title}
                             </p>
                           </div>
@@ -665,8 +665,8 @@ function CardsDesign({ cardDetails, loading }) {
                       <div className="bg-gray-200 w-[8.4rem] md:w-44 rounded-xl flex flex-col justify-center text-center mt-14">
                         <div>
                           <p className="text-xl pt-12 mt-2">{item?.name}</p>
-                          <p className="text-base">{item?.title}</p>
-                          <p className="text-base">{item?.company}</p>
+                          <p className="text-base font-semibold">{item?.title}</p>
+                          <p className="text-base font-semibold">{item?.company}</p>
                           <p className="pt-3 text-xs leading-5 px-3 break-words line-clamp-3">
                             {item?.address}
                           </p>
@@ -746,10 +746,10 @@ function CardsDesign({ cardDetails, loading }) {
                               {item?.name}
                             </p>
                           </div>
-                          <p className="w-full md:w-64 break-words text-xs">
+                          <p className="w-full md:w-64 break-words text-xs font-semibold">
                             {item?.title}
                           </p>
-                          <p className="w-64 break-words text-xs">
+                          <p className="w-64 break-words text-xs font-semibold">
                             {item?.company}
                           </p>
                         </div>
@@ -840,7 +840,7 @@ function CardsDesign({ cardDetails, loading }) {
                           <p className="text-base text-white pt-1">
                             {item?.name}
                           </p>
-                          <p className="text-white text-xs line-clamp-1 w-44">
+                          <p className="text-white text-xs line-clamp-1 w-44 font-semibold">
                             {item?.title}
                           </p>
                         </div>

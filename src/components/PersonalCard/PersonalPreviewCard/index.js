@@ -120,14 +120,14 @@ function PersonalPreviewCard({ selectTheme, values }) {
                     ? cardData?.name
                     : "Noah Miller"}
                 </p>
-                <p className="text-xl pt-2">
+                <p className="text-xl pt-2 font-semibold">
                   {values?.title
                     ? values?.title
                     : cardData?.title
                     ? cardData?.title
                     : "Directore"}
                 </p>
-                <p className="text-xl pt-2">
+                <p className="text-xl pt-2 font-semibold">
                   {values?.company
                     ? values?.company
                     : cardData?.company

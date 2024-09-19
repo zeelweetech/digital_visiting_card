@@ -150,14 +150,14 @@ END
                       : "Alex Thomson"}
                   </p>
                 </div>
-                <p className="w-full md:w-64 break-words">
+                <p className="w-full md:w-64 break-words font-semibold">
                   {values?.title
                     ? values?.title
                     : cardData?.title
                     ? cardData?.title
                     : "Director"}
                 </p>
-                <p className="w-64 break-words">
+                <p className="w-64 break-words font-semibold">
                   {values?.company
                     ? values?.company
                     : cardData?.company
