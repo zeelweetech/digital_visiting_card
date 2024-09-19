@@ -11,12 +11,16 @@ import Loader from "../../Loader";
 import avatar from "../../../assets/image/avatar.png";
 import phone from "../../../assets/image/phone.png";
 import toast from "react-hot-toast";
+import { FaLink } from "react-icons/fa";
 
 function PersonalPreviewCard({ selectTheme, values }) {
   const { id } = useParams();
   const [cardData, setCardData] = useState();
   const [loading, setLoading] = useState(false);
   const path = window.location.pathname.split("/").pop();
+
+  const Businesslink = values?.businessCardLink || cardData?.businessCardLink;
+  const Link = Businesslink ? decodeURIComponent(Businesslink).split("/") : []; 
 
   const themeClasses = {
     Light: "bg-theme",
@@ -151,7 +155,21 @@ function PersonalPreviewCard({ selectTheme, values }) {
                 </div>
               </div>
             </div>
-
+            {(values?.businessCardLink || cardData?.businessCardLink) && (
+              <button
+                className="bg-neutral-700 text-white font-semibold mt-4 py-2.5 w-full md:w-17 rounded-full shadow-md flex items-center"
+                onClick={() =>
+                  handleRedirect(
+                    values?.businessCardLink || cardData?.businessCardLink
+                  )
+                }
+              >
+                <FaLink
+                  className="ml-4"
+                />
+                <span className="flex-1 text-center w-28 line-clamp-1">{Link?.[4] ? Link[4] : "No link available"}</span>
+              </button>
+            )}
             {(values?.email || cardData?.email) && (
               <button
                 className="bg-neutral-700 text-white font-semibold mt-4 py-2.5 w-full md:w-17 rounded-full shadow-md flex items-center"

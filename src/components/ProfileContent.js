@@ -5,7 +5,7 @@ import { FiMapPin } from "react-icons/fi";
 import { IoLogoInstagram } from "react-icons/io";
 import { BiWorld } from "react-icons/bi";
 import { TiSocialFacebook, TiSocialLinkedin } from "react-icons/ti";
-import { FaArrowLeft, FaArrowRight, FaPaypal } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight, FaLink, FaPaypal } from "react-icons/fa";
 import { decodedToken, handleNumberKeyDown } from "../utils";
 import {
   addBusinessDetails,
@@ -90,6 +90,19 @@ function ProfileContent({
     //   }
     // }
 
+    if (
+      selectCard === "PersonalBusinessCard" ||
+      selectCard === "PersonalContactCard" ||
+      selectCard === "PersonalDetailsCard" ||
+      selectCard === "PersonalLinksCard" ||
+      selectCard === "PersonalPreviewCard" ||
+      selectCard === "PersonalThemeCard"
+    ) {
+      if (!values?.businessCardLink) {
+        newErrors.businessCardLink = "Please enter an Business CardLink";
+      }
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -100,6 +113,7 @@ function ProfileContent({
       setLoading(true);
       if (path === "business_profile_design") {
         var formdata = new FormData();
+        console.log("values ))))))))))))))))", values?.image);
         formdata.append("image", values?.image);
         formdata.append("name", values?.name);
         formdata.append("title", values?.title);
@@ -134,6 +148,7 @@ function ProfileContent({
         formdata.append("userId", userId);
         formdata.append("color", selectTheme);
         formdata.append("category", "personalcard");
+        formdata.append("businessCardLink", values?.businessCardLink);
         formdata.append(
           "cardName",
           selectCard === "PersonalBusinessCard"
@@ -157,7 +172,7 @@ function ProfileContent({
         : addPersonalDetails({ body: formdata })
       )
         .then((res) => {
-          console.log("res", res);
+          console.log("res sssssssssss", res);
           toast.success(res?.message);
           setLoading(false);
           if (path === "business_profile_design") {
@@ -382,6 +397,32 @@ function ProfileContent({
             {/* {errors?.paypal && (
               <p className="text-xs text-red-500">{errors?.paypal}</p>
             )} */}
+          </div>
+        )}
+        {(selectCard === "PersonalBusinessCard" ||
+          selectCard === "PersonalContactCard" ||
+          selectCard === "PersonalDetailsCard" ||
+          selectCard === "PersonalLinksCard" ||
+          selectCard === "PersonalPreviewCard" ||
+          selectCard === "PersonalThemeCard") && (
+          <div className="flex flex-col items-center w-full max-w-lg py-3">
+            <div className="flex w-full max-w-md border-x border-y rounded-md hover:border-blue-700">
+              <span className="inline-flex items-center px-3 text-xl text-gray-900 bg-white border border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                <FaLink />
+              </span>
+              <input
+                type="text"
+                id="website-admin"
+                className="rounded-e-md bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0 w-full text-sm p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="+ Business CardLink"
+                name="businessCardLink"
+                value={values?.businessCardLink}
+                onChange={(e) => handleOnChange(e)}
+              />
+            </div>
+            {errors?.businessCardLink && (
+              <p className="text-xs text-red-500">{errors?.businessCardLink}</p>
+            )}
           </div>
         )}
 

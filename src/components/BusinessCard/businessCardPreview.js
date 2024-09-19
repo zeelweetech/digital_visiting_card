@@ -101,7 +101,7 @@ function BusinessCardPreview({ selectTheme, values }) {
                       ? values?.name
                       : cardData?.name
                       ? cardData?.name
-                      : "Name"}
+                      : "Business Name"}
                   </p>
                   <p className="text-white">
                     {" "}
@@ -109,7 +109,7 @@ function BusinessCardPreview({ selectTheme, values }) {
                       ? values?.title
                       : cardData?.title
                       ? cardData?.title
-                      : "Title"}
+                      : "Business Title"}
                   </p>
                 </div>
               </div>

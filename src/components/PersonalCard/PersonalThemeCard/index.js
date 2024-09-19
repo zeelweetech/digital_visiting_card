@@ -5,7 +5,7 @@ import businessmen from "../../../assets/image/businessmen.jpg";
 import { IoMdMail } from "react-icons/io";
 import { MdCall } from "react-icons/md";
 import { TbWorld } from "react-icons/tb";
-import { FaMapMarker } from "react-icons/fa";
+import { FaLink, FaMapMarker } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
 import { getProfileDetails } from "../../../services/ProfileServices";
 import Loader from "../../Loader";
@@ -15,6 +15,9 @@ function PersonalThemeCard({ values }) {
   const [cardData, setCardData] = useState();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  const Businesslink = values?.businessCardLink || cardData?.businessCardLink;
+  const Link = Businesslink ? decodeURIComponent(Businesslink).split("/") : []; 
 
   useEffect(() => {
     const fetchProfileDetails = async () => {
@@ -226,6 +229,21 @@ END
                     : cardData?.address
                     ? cardData?.address
                     : " Acme LTD 1131 AW Amstertlam, The Netherlands"}
+                </p>
+              </div>
+              <div className="flex items-start px-7 space-x-3">
+                <button
+                  className="bg-zinc-900 text-white rounded-full p-3 md:p-2 text-2xl md:text-base"
+                  onClick={() =>
+                    handleRedirect(
+                      values?.businessCardLink || cardData?.businessCardLink
+                    )
+                  }
+                >
+                  <FaLink />
+                </button>
+                <p className="w-52 text-sm break-words">
+                  {Link?.[4] ? Link[4] : "No link available"}
                 </p>
               </div>
 

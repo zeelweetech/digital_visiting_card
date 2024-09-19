@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import phone from "../../../assets/image/phone.png";
 import businesswomen from "../../../assets/image/businesswomen.webp";
-import { FaInstagram, FaRegAddressCard } from "react-icons/fa";
+import { FaInstagram, FaLink, FaRegAddressCard } from "react-icons/fa";
 import { IoCallOutline, IoMailOutline } from "react-icons/io5";
 import { PiFacebookLogoBold, PiLinkedinLogo } from "react-icons/pi";
 import { useNavigate, useParams } from "react-router-dom";
@@ -16,6 +16,9 @@ function PersonalLinksCard({ values }) {
   const [cardData, setCardData] = useState();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  const Businesslink = values?.businessCardLink || cardData?.businessCardLink;
+  const Link = Businesslink ? decodeURIComponent(Businesslink).split("/") : []; 
 
   useEffect(() => {
     const fetchProfileDetails = async () => {
@@ -218,6 +221,19 @@ function PersonalLinksCard({ values }) {
                     <SlPaypal className="text-2xl" />
                   </button>
                   <p className="text-xs text-center mt-2">PayPal</p>
+                </div>
+                <div className="flex flex-col items-center mb-4">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      handleRedirect(
+                        values?.businessCardLink || cardData?.businessCardLink
+                      )
+                    }
+                  >
+                    <FaLink className="text-2xl" />
+                  </button>
+                  <p className="text-xs text-center mt-2 w-24 line-clamp-1">{Link?.[4] ? Link[4] : "No Link available"}</p>
                 </div>
               </div>
             </div>

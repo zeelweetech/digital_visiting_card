@@ -13,6 +13,7 @@ import { MdOutlinePersonAddAlt } from "react-icons/md";
 import { useNavigate, useParams } from "react-router-dom";
 import { getProfileDetails } from "../../../services/ProfileServices";
 import Loader from "../../Loader";
+import { FaLink } from "react-icons/fa";
 
 function PersonalContactCard({ values }) {
   const { id } = useParams();
@@ -294,7 +295,7 @@ END
 
                 <div className="mt-8 md:mt-3">
                   <p className="text-lg">Connect with me on</p>
-                  <div className="flex justify-evenly px-16 mt-2 md:mt-0">
+                  <div className="flex justify-evenly items-center px-16 mt-2 md:mt-0">
                     <img
                       src={location}
                       className="w-10 h-10 bg-white shadow-lg p-2 rounded-full hover:cursor-pointer"
@@ -319,6 +320,14 @@ END
                       onClick={() => {
                         handleRedirect(values?.facebook || cardData?.facebook);
                       }}
+                    />
+                    <FaLink
+                      className="text-xl hover:cursor-pointer mt-2 ml-2"
+                      onClick={() =>
+                        handleRedirect(
+                          values?.businessCardLink || cardData?.businessCardLink
+                        )
+                      }
                     />
                   </div>
                 </div>

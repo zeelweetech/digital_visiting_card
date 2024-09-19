@@ -11,6 +11,7 @@ import { FiPhone } from "react-icons/fi";
 import { CiMail } from "react-icons/ci";
 import Loader from "../../Loader";
 import toast from "react-hot-toast";
+import { FaLink } from "react-icons/fa";
 
 function PersonalBusinessCard({ values }) {
   const { id } = useParams();
@@ -23,7 +24,7 @@ function PersonalBusinessCard({ values }) {
       setLoading(true);
       try {
         const res = await getProfileDetails({ id: id });
-        console.log("res", res);
+        console.log("res +++++++++", res);
         setCardData(res?.cardDetail);
         setLoading(false);
       } catch (err) {
@@ -246,6 +247,14 @@ function PersonalBusinessCard({ values }) {
                 alt="Not Foung"
                 onClick={() =>
                   handleRedirect(values?.paypal || cardData?.paypal)
+                }
+              />
+              <FaLink
+                className="text-xl hover:cursor-pointer"
+                onClick={() =>
+                  handleRedirect(
+                    values?.businessCardLink || cardData?.businessCardLink
+                  )
                 }
               />
             </div>
