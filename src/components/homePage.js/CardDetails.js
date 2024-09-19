@@ -18,14 +18,10 @@ function CardDetails({ cardDetails, loading }) {
                 className="max-w-xs sm:max-w-sm lg:max-w-md rounded overflow-hidden bg-white border-2 shadow-lg h-44 mx-auto"
                 onClick={() => {
                   if (item?.category === "businesscard") {
-                    navigate(
-                      `/business_digital_card/${item?.name}/${item?.businessCardId}`
-                    );
+                    navigate(`/${"WeetechInstitute"}`);
                   } else if (item?.category === "personalcard") {
                     if (item?.cardName === "PersonalBusinessCard") {
-                      navigate(
-                        `/PersonalBusinessCard/${item?.name}/${item?.personalCardId}`
-                      );
+                      navigate(`/${item?.userName}`);
                     } else if (item?.cardName === "PersonalContactCard") {
                       navigate(
                         `/PersonalContactCard/${item?.name}/${item?.personalCardId}`

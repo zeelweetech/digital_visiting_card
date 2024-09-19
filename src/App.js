@@ -36,18 +36,12 @@ function App() {
               element={<PersonalLayOut />}
             />
           </Route>
-          <Route
-            path="/business_digital_card/:name/:id"
-            element={<BusinessCardPreview />}
-          />
+          <Route path="/:name" element={<BusinessCardPreview />} />
           {/* <Route
               path="/personal_digital_card/:name/:id"
               element={<PersonalPreviewCard />}
             /> */}
-          <Route
-            path="/PersonalBusinessCard/:name/:id"
-            element={<PersonalBusinessCard />}
-          />
+          <Route path="/:userName" element={<PersonalBusinessCard />} />
           <Route
             path="/PersonalContactCard/:name/:id"
             element={<PersonalContactCard />}

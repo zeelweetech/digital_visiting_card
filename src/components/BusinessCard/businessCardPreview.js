@@ -6,9 +6,10 @@ import { getProfileDetails } from "../../services/ProfileServices";
 import { IoLogoInstagram } from "react-icons/io";
 import { TiSocialFacebook } from "react-icons/ti";
 import Loader from "../Loader";
+import toast from "react-hot-toast";
 
 function BusinessCardPreview({ selectTheme, values }) {
-  const { id } = useParams();
+  const { name } = useParams();
   const [cardData, setCardData] = useState();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ function BusinessCardPreview({ selectTheme, values }) {
     const fetchProfileDetails = async () => {
       setLoading(true);
       try {
-        const res = await getProfileDetails({ id: id });
+        const res = await getProfileDetails({ userName: name });
         console.log("res", res);
         setCardData(res?.cardDetail);
         setLoading(false);
@@ -39,13 +40,15 @@ function BusinessCardPreview({ selectTheme, values }) {
         setLoading(false);
       }
     };
-    if (id) {
+    if (name) {
       fetchProfileDetails();
     }
-  }, [id]);
+  }, [name]);
 
   const handleRedirect = (url) => {
-    if (url) {
+    if (!url || url === "undefined") {
+      toast("Not Available");
+    } else if (url) {
       window.open(url, "_blank");
     }
   };
@@ -78,8 +81,8 @@ function BusinessCardPreview({ selectTheme, values }) {
       {loading ? (
         <Loader />
       ) : (
-        <div className="flex flex-col items-center w-full max-w-md relative">
-          <div className="md:rounded-3xl w-full md:w-80 h-full md:h-30 bg-white shadow-xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div className="flex flex-col items-center w-full max-w-md relative ">
+          <div className="md:rounded-3xl w-full md:w-80 h-full scrollable-container overflow-y-auto overflow-x-hidden md:h-30 bg-white shadow-xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <div className={`${themeClass} h-72 md:h-64 md:rounded-t-3xl`}>
               <div className="flex justify-center items-center text-center pt-10">
                 <div>

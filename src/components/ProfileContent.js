@@ -176,14 +176,10 @@ function ProfileContent({
           toast.success(res?.message);
           setLoading(false);
           if (path === "business_profile_design") {
-            navigate(
-              `/business_digital_card/${res?.digitalBusinessCard?.name}/${res?.digitalBusinessCard?.businessCardId}`
-            );
+            navigate(`/${"WeetechInstitute"}`);
           } else if (path === "personal_profile_design") {
             if (selectCard === "PersonalBusinessCard") {
-              navigate(
-                `/PersonalBusinessCard/${res?.digitalPersonalCard?.name}/${res?.digitalPersonalCard?.personalCardId}`
-              );
+              navigate(`/${res?.digitalPersonalCard?.userName}`);
             } else if (selectCard === "PersonalContactCard") {
               navigate(
                 `/PersonalContactCard/${res?.digitalPersonalCard?.name}/${res?.digitalPersonalCard?.personalCardId}`

@@ -14,7 +14,7 @@ import toast from "react-hot-toast";
 import { FaLink } from "react-icons/fa";
 
 function PersonalBusinessCard({ values }) {
-  const { id } = useParams();
+  const { userName } = useParams();
   const [cardData, setCardData] = useState();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ function PersonalBusinessCard({ values }) {
     const fetchProfileDetails = async () => {
       setLoading(true);
       try {
-        const res = await getProfileDetails({ id: id });
+        const res = await getProfileDetails({ userName: userName });
         console.log("res +++++++++", res);
         setCardData(res?.cardDetail);
         setLoading(false);
@@ -32,18 +32,18 @@ function PersonalBusinessCard({ values }) {
         setLoading(false);
       }
     };
-    if (id) {
+    if (userName) {
       fetchProfileDetails();
     }
-  }, [id]);
+  }, [userName]);
 
   const handleRedirect = (url) => {
-    if (url) {
+    console.log("url", url);
+
+    if (!url || url === "undefined") {
+      toast("Not Available");
+    } else if (url) {
       window.open(url, "_blank");
-    } else {
-      {
-        toast("Not Available");
-      }
     }
   };
 
@@ -77,7 +77,7 @@ function PersonalBusinessCard({ values }) {
       {loading ? (
         <Loader />
       ) : (
-        <div className="flex flex-col items-center w-full max-w-md relative">
+        <div className="flex flex-col items-center w-full max-w-md relative ">
           <div
             className={`md:rounded-3xl w-full md:w-80 bg-white md:shadow-xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
           >
@@ -102,7 +102,7 @@ function PersonalBusinessCard({ values }) {
                         ? cardData?.image
                         : businessmen
                     }
-                    className="w-28 md:w-24 h-28 md:h-24 rounded-full"
+                    className="w-32 md:w-32 h-32 md:h-32 rounded-full"
                     alt="Not Found"
                   />
                 </div>

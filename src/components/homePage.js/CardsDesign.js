@@ -61,9 +61,7 @@ function CardsDesign({ cardDetails, loading }) {
                   className="rounded-2xl hover:cursor-pointer w-40 h-[22rem] md:w-52 md:h-[26rem] bg-white shadow-xl scrollable-container overflow-y-auto overflow-x-hidden"
                   onClick={() => {
                     if (item?.cardName === "PersonalBusinessCard") {
-                      navigate(
-                        `/PersonalBusinessCard/${item?.name}/${item?.personalCardId}`
-                      );
+                      navigate(`/${item?.userName}`);
                     }
                   }}
                 >
@@ -816,9 +814,7 @@ function CardsDesign({ cardDetails, loading }) {
                   className="relative hover:cursor-pointer"
                   onClick={() => {
                     if (item?.category === "businesscard") {
-                      navigate(
-                        `/business_digital_card/${item?.name}/${item?.businessCardId}`
-                      );
+                      navigate(`/${"WeetechInstitute"}`);
                     }
                   }}
                 >

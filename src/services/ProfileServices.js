@@ -33,10 +33,10 @@ export async function addBusinessDetails({ body: body }) {
 /**
  * GET Business Profile Details
  */
-export async function getProfileDetails({ id: id }) {
+export async function getProfileDetails({ userName: userName }) {
   try {
     const response = await axios.get(
-      `${process.env.REACT_APP_LOCAL_URL}/card/get/specific/${id}`
+      `${process.env.REACT_APP_LOCAL_URL}/card/get/specific/${userName}`
     );
     return response.data;
   } catch (error) {

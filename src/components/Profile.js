@@ -222,7 +222,13 @@ function Profile({
                 name="description"
                 value={values?.description}
                 onChange={(e) => handleOnChange(e)}
-                containerProps={{ style: { resize: "vertical" } }}
+                containerProps={{
+                  style: {
+                    resize: "vertical",
+                    maxHeight: "7rem",
+                    overflowY: "auto",
+                  },
+                }}
               >
                 <Toolbar>
                   <BtnUndo />
