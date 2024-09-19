@@ -36,7 +36,7 @@ function App() {
               element={<PersonalLayOut />}
             />
           </Route>
-          <Route path="/:name" element={<BusinessCardPreview />} />
+          <Route path="/WeetechInstitute" element={<BusinessCardPreview />} />
           {/* <Route
               path="/personal_digital_card/:name/:id"
               element={<PersonalPreviewCard />}

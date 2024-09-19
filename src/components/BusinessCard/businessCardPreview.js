@@ -31,7 +31,7 @@ function BusinessCardPreview({ selectTheme, values }) {
     const fetchProfileDetails = async () => {
       setLoading(true);
       try {
-        const res = await getProfileDetails({ userName: name });
+        const res = await getProfileDetails({ userName: "WeetechInstitute" });
         console.log("res", res);
         setCardData(res?.cardDetail);
         setLoading(false);
@@ -40,10 +40,10 @@ function BusinessCardPreview({ selectTheme, values }) {
         setLoading(false);
       }
     };
-    if (name) {
+    if ("WeetechInstitute") {
       fetchProfileDetails();
     }
-  }, [name]);
+  }, ["WeetechInstitute"]);
 
   const handleRedirect = (url) => {
     if (!url || url === "undefined") {

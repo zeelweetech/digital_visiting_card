@@ -663,8 +663,12 @@ function CardsDesign({ cardDetails, loading }) {
                       <div className="bg-gray-200 w-[8.4rem] md:w-44 rounded-xl flex flex-col justify-center text-center mt-14">
                         <div>
                           <p className="text-xl pt-12 mt-2">{item?.name}</p>
-                          <p className="text-base font-semibold">{item?.title}</p>
-                          <p className="text-base font-semibold">{item?.company}</p>
+                          <p className="text-base font-semibold">
+                            {item?.title}
+                          </p>
+                          <p className="text-base font-semibold">
+                            {item?.company}
+                          </p>
                           <p className="pt-3 text-xs leading-5 px-3 break-words line-clamp-3">
                             {item?.address}
                           </p>
@@ -814,7 +818,7 @@ function CardsDesign({ cardDetails, loading }) {
                   className="relative hover:cursor-pointer"
                   onClick={() => {
                     if (item?.category === "businesscard") {
-                      navigate(`/${"WeetechInstitute"}`);
+                      navigate(`/WeetechInstitute`);
                     }
                   }}
                 >
