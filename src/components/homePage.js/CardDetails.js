@@ -18,7 +18,7 @@ function CardDetails({ cardDetails, loading }) {
                 className="max-w-xs sm:max-w-sm lg:max-w-md rounded overflow-hidden bg-white border-2 shadow-lg h-44 mx-auto"
                 onClick={() => {
                   if (item?.category === "businesscard") {
-                    navigate(`/WeetechInstitute`);
+                    navigate(`/WeeTechInstitute`);
                   } else if (item?.category === "personalcard") {
                     if (item?.cardName === "PersonalBusinessCard") {
                       navigate(`/${item?.userName}`);

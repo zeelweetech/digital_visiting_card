@@ -176,7 +176,7 @@ function ProfileContent({
           toast.success(res?.message);
           setLoading(false);
           if (path === "business_profile_design") {
-            navigate(`/WeetechInstitute`);
+            navigate(`/WeeTechInstitute`);
           } else if (path === "personal_profile_design") {
             if (selectCard === "PersonalBusinessCard") {
               navigate(`/${res?.digitalPersonalCard?.userName}`);

@@ -818,7 +818,7 @@ function CardsDesign({ cardDetails, loading }) {
                   className="relative hover:cursor-pointer"
                   onClick={() => {
                     if (item?.category === "businesscard") {
-                      navigate(`/WeetechInstitute`);
+                      navigate(`/WeeTechInstitute`);
                     }
                   }}
                 >
