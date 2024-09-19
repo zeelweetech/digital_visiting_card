@@ -10,6 +10,7 @@ import { CiMail } from "react-icons/ci";
 import Loader from "../../Loader";
 import avatar from "../../../assets/image/avatar.png";
 import phone from "../../../assets/image/phone.png";
+import toast from "react-hot-toast";
 
 function PersonalPreviewCard({ selectTheme, values }) {
   const { id } = useParams();
@@ -51,6 +52,8 @@ function PersonalPreviewCard({ selectTheme, values }) {
   const handleRedirect = (url) => {
     if (url) {
       window.open(url, "_blank");
+    } else {
+      toast("Not Available");
     }
   };
 
@@ -178,7 +181,7 @@ function PersonalPreviewCard({ selectTheme, values }) {
                 <span className="flex-1 text-center">Address</span>
               </button>
             )}
-            {(values?.instagram || cardData) &&
+            {(values?.instagram || cardData?.instagram) &&
               cardData?.instagram !== "undefined" && (
                 <button
                   className="bg-neutral-700 text-white font-semibold my-3 py-2.5 w-full md:w-17 rounded-full shadow-md flex items-center overflow-auto"
@@ -190,7 +193,7 @@ function PersonalPreviewCard({ selectTheme, values }) {
                   <span className="flex-1 text-center">Instagram</span>
                 </button>
               )}
-            {(values?.website || cardData) &&
+            {(values?.website || cardData?.website) &&
               cardData?.website !== "undefined" && (
                 <button
                   className="bg-neutral-700 text-white font-semibold my-3 py-2.5 w-full md:w-17 rounded-full shadow-md flex items-center overflow-auto"
@@ -202,7 +205,7 @@ function PersonalPreviewCard({ selectTheme, values }) {
                   <span className="flex-1 text-center">Website</span>
                 </button>
               )}
-            {(values?.facebook || cardData) &&
+            {(values?.facebook || cardData?.facebook) &&
               cardData?.facebook !== "undefined" && (
                 <button
                   className="bg-neutral-700 text-white font-semibold my-3 py-2.5 w-full md:w-17 rounded-full shadow-md flex items-center overflow-auto"

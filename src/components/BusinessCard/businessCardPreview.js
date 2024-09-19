@@ -74,18 +74,13 @@ function BusinessCardPreview({ selectTheme, values }) {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center h-0 md:h-screen"
-      >
+    <div className="flex flex-col justify-center items-center h-0 md:h-screen">
       {loading ? (
         <Loader />
       ) : (
         <div className="flex flex-col items-center w-full max-w-md relative">
-          <div
-            className="md:rounded-3xl w-full md:w-80 h-full md:h-30 bg-white shadow-xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          >
-            <div
-              className={`${themeClass} h-72 md:h-64 md:rounded-t-3xl`}
-            >
+          <div className="md:rounded-3xl w-full md:w-80 h-full md:h-30 bg-white shadow-xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <div className={`${themeClass} h-72 md:h-64 md:rounded-t-3xl`}>
               <div className="flex justify-center items-center text-center pt-10">
                 <div>
                   <div className="flex justify-center">
@@ -131,7 +126,7 @@ function BusinessCardPreview({ selectTheme, values }) {
                   <HiOutlineMapPin />
                 </button>
               )}
-              {(values?.instagram || cardData) &&
+              {(values?.instagram || cardData?.instagram) &&
                 cardData?.instagram !== "undefined" && (
                   <button
                     className="bg-white text-2xl rounded-full py-2 px-2"
@@ -142,7 +137,7 @@ function BusinessCardPreview({ selectTheme, values }) {
                     <IoLogoInstagram />
                   </button>
                 )}
-              {(values?.facebook || cardData) &&
+              {(values?.facebook || cardData?.facebook) &&
                 cardData?.facebook !== "undefined" && (
                   <button
                     className="bg-white text-2xl rounded-full py-2 px-2"
@@ -194,7 +189,7 @@ function BusinessCardPreview({ selectTheme, values }) {
                   </Link>
                 </>
               )}
-              {(values?.website || cardData) &&
+              {(values?.website || cardData?.website) &&
                 cardData?.website !== "undefined" && (
                   <>
                     <p className="mt-6 md:mt-4">Website</p>

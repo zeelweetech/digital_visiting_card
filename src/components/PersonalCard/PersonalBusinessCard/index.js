@@ -10,6 +10,7 @@ import { HiOutlineMapPin } from "react-icons/hi2";
 import { FiPhone } from "react-icons/fi";
 import { CiMail } from "react-icons/ci";
 import Loader from "../../Loader";
+import toast from "react-hot-toast";
 
 function PersonalBusinessCard({ values }) {
   const { id } = useParams();
@@ -38,6 +39,10 @@ function PersonalBusinessCard({ values }) {
   const handleRedirect = (url) => {
     if (url) {
       window.open(url, "_blank");
+    } else {
+      {
+        toast("Not Available");
+      }
     }
   };
 
@@ -87,21 +92,21 @@ function PersonalBusinessCard({ values }) {
             >
               <div className="flex flex-col justify-center items-center text-center pt-10">
                 {/* <div> */}
+                <div className="flex justify-center">
+                  <img
+                    src={
+                      values?.image
+                        ? URL.createObjectURL(values?.image)
+                        : cardData?.image
+                        ? cardData?.image
+                        : businessmen
+                    }
+                    className="w-28 md:w-24 h-28 md:h-24 rounded-full"
+                    alt="Not Found"
+                  />
+                </div>
+                <div className="h-24 scrollable-container overflow-y-auto overflow-x-hidden">
                   <div className="flex justify-center">
-                    <img
-                      src={
-                        values?.image
-                          ? URL.createObjectURL(values?.image)
-                          : cardData?.image
-                          ? cardData?.image
-                          : businessmen
-                      }
-                      className="w-28 md:w-24 h-28 md:h-24 rounded-full"
-                      alt="Not Found"
-                    />
-                  </div>
-                  <div className="h-24 scrollable-container overflow-y-auto overflow-x-hidden">
-                    <div className="flex justify-center">
                     <p
                       className="text-2xl pt-2 w-56"
                       style={{
@@ -118,8 +123,8 @@ function PersonalBusinessCard({ values }) {
                         ? cardData?.name
                         : "Aaron Hotchner"}
                     </p>
-                    </div>
-                    <div className="flex justify-center">
+                  </div>
+                  <div className="flex justify-center">
                     <p
                       className="w-72"
                       style={{
@@ -136,8 +141,8 @@ function PersonalBusinessCard({ values }) {
                         ? cardData?.title
                         : "Manager, Logstics Mackwater pvt Ltd."}
                     </p>
-                    </div>
                   </div>
+                </div>
                 {/* </div> */}
               </div>
             </div>
@@ -190,19 +195,20 @@ function PersonalBusinessCard({ values }) {
                 </Link>
               </div>
 
-              <div>
-                <p className="mt-8 md:mt-4">Website</p>
-                <Link
-                  className="text-blue-800 font-semibold cursor-pointer break-words w-52"
-                  onClick={() =>
-                    handleRedirect(values?.website || cardData?.website)
-                  }
-                >
-                  {values?.website || cardData?.website
-                    ? values?.website || cardData?.website
-                    : "https://blackwater.com"}
-                </Link>
-              </div>
+              {(values?.website || cardData?.website) && (
+                <div>
+                  <p className="mt-8 md:mt-4">Website</p>
+                  <Link
+                    className="text-blue-800 font-semibold cursor-pointer break-words w-52"
+                    onClick={() =>
+                      handleRedirect(values?.website || cardData?.website)
+                    }
+                  >
+                    {(values?.website || cardData?.website) &&
+                      (values?.website || cardData?.website)}
+                  </Link>
+                </div>
+              )}
             </div>
 
             <p className="text-center mt-8 md:mt-4 font-semibold text-2xl md:text-lg">

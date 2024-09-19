@@ -7,6 +7,7 @@ import phone from "../../../assets/image/phone.png";
 import { useNavigate, useParams } from "react-router-dom";
 import { getProfileDetails } from "../../../services/ProfileServices";
 import Loader from "../../Loader";
+import toast from "react-hot-toast";
 
 function PersonalDetailsCard({ values }) {
   const { id } = useParams();
@@ -49,7 +50,7 @@ function PersonalDetailsCard({ values }) {
         ? values?.website
         : cardData?.website
         ? cardData?.website
-        : "www.websolutions.com",
+        : "Not Found",
     },
     {
       Icon: <FaMapMarkerAlt />,
@@ -83,6 +84,10 @@ function PersonalDetailsCard({ values }) {
   const handleRedirect = (url) => {
     if (url) {
       window.open(url, "_blank");
+    } else {
+      {
+        toast("Not Available");
+      }
     }
   };
 
@@ -218,13 +223,9 @@ function PersonalDetailsCard({ values }) {
                       <p className="font-semibold">{data.Filed}</p>
                       <p
                         className={`${
-                          data.Filed === "Address"
-                            ? "md:w-44 break-words"
-                            : ""
+                          data.Filed === "Address" ? "md:w-44 break-words" : ""
                         } ${
-                          data.Filed === "Website"
-                            ? "md:w-44 break-words"
-                            : ""
+                          data.Filed === "Website" ? "md:w-44 break-words" : ""
                         }`}
                       >
                         {data.filedDetail}

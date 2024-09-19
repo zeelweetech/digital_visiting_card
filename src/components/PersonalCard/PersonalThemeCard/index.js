@@ -96,7 +96,7 @@ END
   };
 
   return (
-    <div className="flex justify-center items-center h-0 md:h-screen mt-21 md:mt-0"> 
+    <div className="flex justify-center items-center h-0 md:h-screen mt-21 md:mt-0">
       {loading ? (
         <Loader />
       ) : (
@@ -111,8 +111,8 @@ END
           <div className="relative md:h-[36rem] scrollable-container overflow-y-auto overflow-x-hidden md:mt-10 theme-responsive">
             <img
               src={
-                values?.backgroundImage
-                  ? URL.createObjectURL(values?.backgroundImage)
+                values?.backgroundimage
+                  ? URL.createObjectURL(values?.backgroundimage)
                   : cardData?.backgroundImage
                   ? cardData?.backgroundImage
                   : triper
@@ -136,13 +136,13 @@ END
                   />
                 </div>
                 <div className="flex justify-center">
-                <p className="text-3xl md:text-2xl font-semibold mt-3 w-full md:w-56 break-words">
-                  {values?.name
-                    ? values?.name
-                    : cardData?.name
-                    ? cardData?.name
-                    : "Alex Thomson"}
-                </p>
+                  <p className="text-3xl md:text-2xl font-semibold mt-3 w-full md:w-56 break-words">
+                    {values?.name
+                      ? values?.name
+                      : cardData?.name
+                      ? cardData?.name
+                      : "Alex Thomson"}
+                  </p>
                 </div>
                 <p className="w-full md:w-64 break-words">
                   {values?.title
@@ -192,23 +192,25 @@ END
                     : "+31 61166 87576"}
                 </p>
               </div>
-              <div className="flex items-center px-7 space-x-3">
-                <button
-                  className="bg-zinc-900 text-white rounded-full p-3 md:p-2 text-2xl md:text-base"
-                  onClick={() =>
-                    handleRedirect(values?.website || cardData?.website)
-                  }
-                >
-                  <TbWorld />
-                </button>
-                <p className="break-words w-56">
-                  {values?.website
-                    ? values?.website
-                    : cardData?.website
-                    ? cardData?.website
-                    : "www.acmenet.com"}
-                </p>
-              </div>
+              {(values?.website || cardData?.website) && (
+                <div className="flex items-center px-7 space-x-3">
+                  <button
+                    className="bg-zinc-900 text-white rounded-full p-3 md:p-2 text-2xl md:text-base"
+                    onClick={() =>
+                      handleRedirect(values?.website || cardData?.website)
+                    }
+                  >
+                    <TbWorld />
+                  </button>
+                  <p className="break-words w-56">
+                    {values?.website
+                      ? values?.website
+                      : cardData?.website
+                      ? cardData?.website
+                      : "www.acmenet.com"}
+                  </p>
+                </div>
+              )}
               <div className="flex items-start px-7 space-x-3">
                 <button
                   className="bg-zinc-900 text-white rounded-full p-3 md:p-2 text-2xl md:text-base"

@@ -9,6 +9,7 @@ import { getProfileDetails } from "../../../services/ProfileServices";
 import Loader from "../../Loader";
 import { TfiWorld } from "react-icons/tfi";
 import { SlPaypal } from "react-icons/sl";
+import toast from "react-hot-toast";
 
 function PersonalLinksCard({ values }) {
   const { id } = useParams();
@@ -37,6 +38,8 @@ function PersonalLinksCard({ values }) {
   const handleRedirect = (url) => {
     if (url) {
       window.open(url, "_blank");
+    } else {
+      toast("Not Available");
     }
   };
 
@@ -70,11 +73,7 @@ function PersonalLinksCard({ values }) {
       ) : (
         <div className="relative w-full max-w-lg px-1.5 md:ml-44">
           <div className="absolute left-0 hidden md:block">
-            <img
-              src={phone}
-              className="w-80 h-30"
-              alt="Not Found"
-            />
+            <img src={phone} className="w-80 h-30" alt="Not Found" />
           </div>
           <div className="relative px-4 pt-16 mt-12 h-[36rem] scrollable-container overflow-y-auto overflow-x-hidden">
             <div
@@ -119,13 +118,13 @@ function PersonalLinksCard({ values }) {
                     : "Johannes GutMann"}
                 </p>
                 <div className="flex justify-center">
-                <p className="text-base w-52 break-words">
-                  {values?.title
-                    ? values?.title
-                    : cardData?.title
-                    ? cardData?.title
-                    : "Manager"}
-                </p>
+                  <p className="text-base w-52 break-words">
+                    {values?.title
+                      ? values?.title
+                      : cardData?.title
+                      ? cardData?.title
+                      : "Manager"}
+                  </p>
                 </div>
               </div>
             </div>

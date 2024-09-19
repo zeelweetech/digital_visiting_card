@@ -49,46 +49,46 @@ function ProfileContent({
       newErrors.address = "Please enter an address";
     }
 
-    if (
-      selectCard === "PersonalContactCard" ||
-      selectCard === "PersonalLinksCard" ||
-      selectCard === "PersonalBusinessCard" ||
-      selectCard === "PersonalPreviewCard" ||
-      path === "business_profile_design"
-    ) {
-      if (!values?.instagram) {
-        newErrors.instagram = "Please enter an instagram";
-      }
-    }
+    // if (
+    //   selectCard === "PersonalContactCard" ||
+    //   selectCard === "PersonalLinksCard" ||
+    //   selectCard === "PersonalBusinessCard" ||
+    //   selectCard === "PersonalPreviewCard" ||
+    //   path === "business_profile_design"
+    // ) {
+    //   if (!values?.instagram) {
+    //     newErrors.instagram = "Please enter an instagram";
+    //   }
+    // }
 
-    if (!values?.website) {
-      newErrors.website = "Please enter a website";
-    }
+    // if (!values?.website) {
+    //   newErrors.website = "Please enter a website";
+    // }
 
-    if (
-      selectCard === "PersonalContactCard" ||
-      selectCard === "PersonalLinksCard" ||
-      selectCard === "PersonalBusinessCard" ||
-      selectCard === "PersonalPreviewCard" ||
-      path === "business_profile_design"
-    ) {
-      if (!values?.facebook) {
-        newErrors.facebook = "Please enter a facebook";
-      }
-    }
+    // if (
+    //   selectCard === "PersonalContactCard" ||
+    //   selectCard === "PersonalLinksCard" ||
+    //   selectCard === "PersonalBusinessCard" ||
+    //   selectCard === "PersonalPreviewCard" ||
+    //   path === "business_profile_design"
+    // ) {
+    //   if (!values?.facebook) {
+    //     newErrors.facebook = "Please enter a facebook";
+    //   }
+    // }
 
-    if (
-      selectCard === "PersonalBusinessCard" ||
-      selectCard === "PersonalLinksCard"
-    ) {
-      if (!values?.linkedin) {
-        newErrors.linkedin = "Please enter a linkedin";
-      }
+    // if (
+    //   selectCard === "PersonalBusinessCard" ||
+    //   selectCard === "PersonalLinksCard"
+    // ) {
+    //   if (!values?.linkedin) {
+    //     newErrors.linkedin = "Please enter a linkedin";
+    //   }
 
-      if (!values?.paypal) {
-        newErrors.paypal = "Please enter a paypal";
-      }
-    }
+    //   if (!values?.paypal) {
+    //     newErrors.paypal = "Please enter a paypal";
+    //   }
+    // }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -287,9 +287,9 @@ function ProfileContent({
                 onChange={(e) => handleOnChange(e)}
               />
             </div>
-            {errors?.instagram && (
+            {/* {errors?.instagram && (
               <p className="text-xs text-red-500">{errors?.instagram}</p>
-            )}
+            )} */}
           </div>
         )}
 
@@ -308,9 +308,9 @@ function ProfileContent({
               onChange={(e) => handleOnChange(e)}
             />
           </div>
-          {errors?.website && (
+          {/* {errors?.website && (
             <p className="text-xs text-red-500">{errors?.website}</p>
-          )}
+          )} */}
         </div>
 
         {(selectCard === "PersonalContactCard" ||
@@ -333,9 +333,9 @@ function ProfileContent({
                 onChange={(e) => handleOnChange(e)}
               />
             </div>
-            {errors?.facebook && (
+            {/* {errors?.facebook && (
               <p className="text-xs text-red-500">{errors?.facebook}</p>
-            )}
+            )} */}
           </div>
         )}
 
@@ -356,9 +356,9 @@ function ProfileContent({
                 onChange={(e) => handleOnChange(e)}
               />
             </div>
-            {errors?.linkedin && (
+            {/* {errors?.linkedin && (
               <p className="text-xs text-red-500">{errors?.linkedin}</p>
-            )}
+            )} */}
           </div>
         )}
 
@@ -379,9 +379,9 @@ function ProfileContent({
                 onChange={(e) => handleOnChange(e)}
               />
             </div>
-            {errors?.paypal && (
+            {/* {errors?.paypal && (
               <p className="text-xs text-red-500">{errors?.paypal}</p>
-            )}
+            )} */}
           </div>
         )}
 

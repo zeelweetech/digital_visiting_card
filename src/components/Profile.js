@@ -244,7 +244,7 @@ function Profile({
             )}
           </div>
         )}
-        {console.log("values0", values)}
+
         {(selectCard === "PersonalLinksCard" ||
           selectCard === "PersonalContactCard" ||
           selectCard === "PersonalBusinessCard") && (
