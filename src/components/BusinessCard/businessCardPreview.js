@@ -31,7 +31,7 @@ function BusinessCardPreview({ selectTheme, values }) {
     const fetchProfileDetails = async () => {
       setLoading(true);
       try {
-        const res = await getProfileDetails({ userName: "WeetechInstitute" });
+        const res = await getProfileDetails({ userName: "WeeTechInstitute" });
         console.log("res", res);
         setCardData(res?.cardDetail);
         setLoading(false);
