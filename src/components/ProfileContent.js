@@ -90,18 +90,18 @@ function ProfileContent({
     //   }
     // }
 
-    if (
-      selectCard === "PersonalBusinessCard" ||
-      selectCard === "PersonalContactCard" ||
-      selectCard === "PersonalDetailsCard" ||
-      selectCard === "PersonalLinksCard" ||
-      selectCard === "PersonalPreviewCard" ||
-      selectCard === "PersonalThemeCard"
-    ) {
-      if (!values?.businessCardLink) {
-        newErrors.businessCardLink = "Please enter an Business CardLink";
-      }
-    }
+    // if (
+    //   selectCard === "PersonalBusinessCard" ||
+    //   selectCard === "PersonalContactCard" ||
+    //   selectCard === "PersonalDetailsCard" ||
+    //   selectCard === "PersonalLinksCard" ||
+    //   selectCard === "PersonalPreviewCard" ||
+    //   selectCard === "PersonalThemeCard"
+    // ) {
+    //   if (!values?.businessCardLink) {
+    //     newErrors.businessCardLink = "Please enter an Business CardLink";
+    //   }
+    // }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -420,9 +420,9 @@ function ProfileContent({
                 onChange={(e) => handleOnChange(e)}
               />
             </div>
-            {errors?.businessCardLink && (
+            {/* {errors?.businessCardLink && (
               <p className="text-xs text-red-500">{errors?.businessCardLink}</p>
-            )}
+            )} */}
           </div>
         )}
 

@@ -9,6 +9,7 @@ import { FaLink, FaMapMarker } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
 import { getProfileDetails } from "../../../services/ProfileServices";
 import Loader from "../../Loader";
+import toast from "react-hot-toast";
 
 function PersonalThemeCard({ values }) {
   const { id } = useParams();
@@ -17,7 +18,7 @@ function PersonalThemeCard({ values }) {
   const navigate = useNavigate();
 
   const Businesslink = values?.businessCardLink || cardData?.businessCardLink;
-  const Link = Businesslink ? decodeURIComponent(Businesslink).split("/") : []; 
+  const Link = Businesslink ? decodeURIComponent(Businesslink).split("/") : [];
 
   useEffect(() => {
     const fetchProfileDetails = async () => {
@@ -40,6 +41,8 @@ function PersonalThemeCard({ values }) {
   const handleRedirect = (url) => {
     if (url) {
       window.open(url, "_blank");
+    } else {
+      toast("Not Available");
     }
   };
 

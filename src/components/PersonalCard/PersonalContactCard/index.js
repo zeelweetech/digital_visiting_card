@@ -14,6 +14,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getProfileDetails } from "../../../services/ProfileServices";
 import Loader from "../../Loader";
 import { FaLink } from "react-icons/fa";
+import toast from "react-hot-toast";
 
 function PersonalContactCard({ values }) {
   const { id } = useParams();
@@ -42,6 +43,8 @@ function PersonalContactCard({ values }) {
   const handleRedirect = (url) => {
     if (url) {
       window.open(url, "_blank");
+    } else {
+      toast("Not Available");
     }
   };
 
@@ -260,38 +263,40 @@ END
                     <p>Work</p>
                   </div>
                 </div>
-                <div className="flex items-start px-8">
-                  <button
-                    className="text-xl p-2.5 rounded-full"
-                    onClick={() =>
-                      handleRedirect(values?.website || cardData?.website)
-                    }
-                    style={{
-                      backgroundColor: values?.backgroundcolor
-                        ? values?.backgroundcolor
-                        : cardData?.backgroundcolor
-                        ? cardData?.backgroundcolor
-                        : "rgb(204 251 241)",
-                      color: values?.fontcolor
-                        ? values?.fontcolor
-                        : cardData?.fontcolor
-                        ? cardData?.fontcolor
-                        : "rgb(20 184 166)",
-                    }}
-                  >
-                    <TbWorld />
-                  </button>
-                  <div className="text-start ml-2.5">
-                    <p className="font-semibold break-words w-52">
-                      {values?.website
-                        ? values?.website
-                        : cardData?.website
-                        ? cardData?.website
-                        : "www.cloudiech.com"}
-                    </p>
-                    <p>Company</p>
+                {(values?.website || cardData?.website) && (
+                  <div className="flex items-start px-8">
+                    <button
+                      className="text-xl p-2.5 rounded-full"
+                      onClick={() =>
+                        handleRedirect(values?.website || cardData?.website)
+                      }
+                      style={{
+                        backgroundColor: values?.backgroundcolor
+                          ? values?.backgroundcolor
+                          : cardData?.backgroundcolor
+                          ? cardData?.backgroundcolor
+                          : "rgb(204 251 241)",
+                        color: values?.fontcolor
+                          ? values?.fontcolor
+                          : cardData?.fontcolor
+                          ? cardData?.fontcolor
+                          : "rgb(20 184 166)",
+                      }}
+                    >
+                      <TbWorld />
+                    </button>
+                    <div className="text-start ml-2.5">
+                      <p className="font-semibold break-words w-52">
+                        {values?.website
+                          ? values?.website
+                          : cardData?.website
+                          ? cardData?.website
+                          : "www.cloudiech.com"}
+                      </p>
+                      <p>Company</p>
+                    </div>
                   </div>
-                </div>
+                )}
 
                 <div className="mt-8 md:mt-3">
                   <p className="text-lg">Connect with me on</p>
